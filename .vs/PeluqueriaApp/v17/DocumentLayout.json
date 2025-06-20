@@ -1,0 +1,171 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\SANTIAGO\\source\\repos\\PeluqueriaApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|c:\\users\\santiago\\source\\repos\\peluqueriaapp\\peluqueriaapp\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|c:\\users\\santiago\\source\\repos\\peluqueriaapp\\peluqueriaapp\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|c:\\users\\santiago\\source\\repos\\peluqueriaapp\\peluqueriaapp\\inicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\inicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|c:\\users\\santiago\\source\\repos\\peluqueriaapp\\peluqueriaapp\\inicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\inicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|c:\\users\\santiago\\source\\repos\\peluqueriaapp\\peluqueriaapp\\registrocliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\registrocliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|c:\\users\\santiago\\source\\repos\\peluqueriaapp\\peluqueriaapp\\registrocliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\registrocliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|c:\\users\\santiago\\source\\repos\\peluqueriaapp\\peluqueriaapp\\dbconn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\dbconn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|c:\\users\\santiago\\source\\repos\\peluqueriaapp\\peluqueriaapp\\entidades\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\entidades\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|c:\\users\\santiago\\source\\repos\\peluqueriaapp\\peluqueriaapp\\cliente.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\cliente.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DbConn.cs",
+              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\PeluqueriaApp\\PeluqueriaApp\\DbConn.cs",
+              "RelativeDocumentMoniker": "PeluqueriaApp\\DbConn.cs",
+              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\PeluqueriaApp\\PeluqueriaApp\\DbConn.cs",
+              "RelativeToolTip": "PeluqueriaApp\\DbConn.cs",
+              "ViewState": "AgIAAMEAAAAAAAAAAAAAAM0AAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T02:35:31.762Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RegistroCliente.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\PeluqueriaApp\\PeluqueriaApp\\RegistroCliente.cs",
+              "RelativeDocumentMoniker": "PeluqueriaApp\\RegistroCliente.cs",
+              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\PeluqueriaApp\\PeluqueriaApp\\RegistroCliente.cs [Dise\u00F1o]",
+              "RelativeToolTip": "PeluqueriaApp\\RegistroCliente.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T05:30:19.664Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Cliente.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\PeluqueriaApp\\PeluqueriaApp\\Cliente.Designer.cs",
+              "RelativeDocumentMoniker": "PeluqueriaApp\\Cliente.Designer.cs",
+              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\PeluqueriaApp\\PeluqueriaApp\\Cliente.Designer.cs",
+              "RelativeToolTip": "PeluqueriaApp\\Cliente.Designer.cs",
+              "ViewState": "AgIAACYBAAAAAAAAAADgvzoBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T05:25:12.086Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Cliente.cs",
+              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\PeluqueriaApp\\PeluqueriaApp\\Entidades\\Cliente.cs",
+              "RelativeDocumentMoniker": "PeluqueriaApp\\Entidades\\Cliente.cs",
+              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\PeluqueriaApp\\PeluqueriaApp\\Entidades\\Cliente.cs",
+              "RelativeToolTip": "PeluqueriaApp\\Entidades\\Cliente.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAuwBAAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T04:13:48.785Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Cliente.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\PeluqueriaApp\\PeluqueriaApp\\Cliente.cs",
+              "RelativeDocumentMoniker": "PeluqueriaApp\\Cliente.cs",
+              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\PeluqueriaApp\\PeluqueriaApp\\Cliente.cs [Dise\u00F1o]",
+              "RelativeToolTip": "PeluqueriaApp\\Cliente.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T03:12:56.868Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Cliente.cs",
+              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\PeluqueriaApp\\PeluqueriaApp\\Cliente.cs",
+              "RelativeDocumentMoniker": "PeluqueriaApp\\Cliente.cs",
+              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\PeluqueriaApp\\PeluqueriaApp\\Cliente.cs",
+              "RelativeToolTip": "PeluqueriaApp\\Cliente.cs",
+              "ViewState": "AgIAANoAAAAAAAAAAAAswPIAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T02:46:03.866Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Inicio.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\PeluqueriaApp\\PeluqueriaApp\\Inicio.cs",
+              "RelativeDocumentMoniker": "PeluqueriaApp\\Inicio.cs",
+              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\PeluqueriaApp\\PeluqueriaApp\\Inicio.cs [Dise\u00F1o]",
+              "RelativeToolTip": "PeluqueriaApp\\Inicio.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T01:27:47.401Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RegistroCliente.cs",
+              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\PeluqueriaApp\\PeluqueriaApp\\RegistroCliente.cs",
+              "RelativeDocumentMoniker": "PeluqueriaApp\\RegistroCliente.cs",
+              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\PeluqueriaApp\\PeluqueriaApp\\RegistroCliente.cs",
+              "RelativeToolTip": "PeluqueriaApp\\RegistroCliente.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAADwvxoAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T01:14:10.119Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Inicio.cs",
+              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\PeluqueriaApp\\PeluqueriaApp\\Inicio.cs",
+              "RelativeDocumentMoniker": "PeluqueriaApp\\Inicio.cs",
+              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\PeluqueriaApp\\PeluqueriaApp\\Inicio.cs",
+              "RelativeToolTip": "PeluqueriaApp\\Inicio.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAswF8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T00:53:35.872Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
