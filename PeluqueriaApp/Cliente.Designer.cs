@@ -45,6 +45,7 @@ namespace PeluqueriaApp
             lblNuevoCorte = new Label();
             lblEliminarCorte = new Label();
             btnGuardar = new CuoreUI.Controls.cuiButton();
+            txtPrecio = new CuoreUI.Controls.cuiTextBox();
             ((System.ComponentModel.ISupportInitialize)ptbCliente).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCortes).BeginInit();
             SuspendLayout();
@@ -69,7 +70,7 @@ namespace PeluqueriaApp
             btnFullScreen.ImageAutoCenter = true;
             btnFullScreen.ImageExpand = new Point(2, 2);
             btnFullScreen.ImageOffset = new Point(0, 0);
-            btnFullScreen.Location = new Point(400, 45);
+            btnFullScreen.Location = new Point(529, 47);
             btnFullScreen.Name = "btnFullScreen";
             btnFullScreen.NormalBackground = SystemColors.Control;
             btnFullScreen.NormalForeColor = Color.Black;
@@ -107,7 +108,7 @@ namespace PeluqueriaApp
             btnSizeMode.ImageAutoCenter = true;
             btnSizeMode.ImageExpand = new Point(2, 2);
             btnSizeMode.ImageOffset = new Point(0, 0);
-            btnSizeMode.Location = new Point(370, 45);
+            btnSizeMode.Location = new Point(499, 47);
             btnSizeMode.Name = "btnSizeMode";
             btnSizeMode.NormalBackground = SystemColors.Control;
             btnSizeMode.NormalForeColor = Color.Black;
@@ -145,7 +146,7 @@ namespace PeluqueriaApp
             btnRotar.ImageAutoCenter = true;
             btnRotar.ImageExpand = new Point(2, 2);
             btnRotar.ImageOffset = new Point(0, 0);
-            btnRotar.Location = new Point(340, 45);
+            btnRotar.Location = new Point(469, 47);
             btnRotar.Name = "btnRotar";
             btnRotar.NormalBackground = SystemColors.Control;
             btnRotar.NormalForeColor = Color.Black;
@@ -169,9 +170,9 @@ namespace PeluqueriaApp
             ptbCliente.BackgroundImage = Properties.Resources.addPhoto;
             ptbCliente.BackgroundImageLayout = ImageLayout.Center;
             ptbCliente.Enabled = false;
-            ptbCliente.Location = new Point(260, 62);
+            ptbCliente.Location = new Point(368, 62);
             ptbCliente.Name = "ptbCliente";
-            ptbCliente.Size = new Size(250, 250);
+            ptbCliente.Size = new Size(286, 250);
             ptbCliente.SizeMode = PictureBoxSizeMode.Zoom;
             ptbCliente.TabIndex = 16;
             ptbCliente.TabStop = false;
@@ -179,10 +180,10 @@ namespace PeluqueriaApp
             // 
             // txtObservacion
             // 
-            txtObservacion.Location = new Point(13, 169);
+            txtObservacion.Location = new Point(13, 204);
             txtObservacion.Name = "txtObservacion";
-            txtObservacion.Size = new Size(201, 143);
-            txtObservacion.TabIndex = 15;
+            txtObservacion.Size = new Size(237, 108);
+            txtObservacion.TabIndex = 4;
             txtObservacion.Text = "";
             // 
             // txtEmail
@@ -209,8 +210,8 @@ namespace PeluqueriaApp
             txtEmail.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtEmail.PlaceholderText = "Email";
             txtEmail.Rounding = new Padding(6);
-            txtEmail.Size = new Size(201, 28);
-            txtEmail.TabIndex = 14;
+            txtEmail.Size = new Size(237, 28);
+            txtEmail.TabIndex = 2;
             txtEmail.TextOffset = new Size(0, 0);
             txtEmail.UnderlinedStyle = true;
             // 
@@ -238,8 +239,8 @@ namespace PeluqueriaApp
             txtTelefono.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtTelefono.PlaceholderText = "Teléfono";
             txtTelefono.Rounding = new Padding(6);
-            txtTelefono.Size = new Size(201, 28);
-            txtTelefono.TabIndex = 13;
+            txtTelefono.Size = new Size(237, 28);
+            txtTelefono.TabIndex = 1;
             txtTelefono.TextOffset = new Size(0, 0);
             txtTelefono.UnderlinedStyle = true;
             // 
@@ -267,8 +268,8 @@ namespace PeluqueriaApp
             txtNombre.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtNombre.PlaceholderText = "Nombre";
             txtNombre.Rounding = new Padding(6);
-            txtNombre.Size = new Size(201, 28);
-            txtNombre.TabIndex = 12;
+            txtNombre.Size = new Size(237, 28);
+            txtNombre.TabIndex = 0;
             txtNombre.TextOffset = new Size(0, 0);
             txtNombre.UnderlinedStyle = true;
             // 
@@ -278,9 +279,11 @@ namespace PeluqueriaApp
             dgvCortes.Columns.AddRange(new DataGridViewColumn[] { id, fecha, descripcion, costo });
             dgvCortes.Location = new Point(12, 326);
             dgvCortes.Name = "dgvCortes";
-            dgvCortes.Size = new Size(498, 221);
-            dgvCortes.TabIndex = 20;
+            dgvCortes.Size = new Size(642, 221);
+            dgvCortes.TabIndex = 5;
             dgvCortes.CellClick += dgvCortes_CellClick;
+            dgvCortes.CellMouseEnter += dgvCortes_CellMouseEnter;
+            dgvCortes.CellMouseLeave += dgvCortes_CellMouseLeave;
             // 
             // id
             // 
@@ -318,12 +321,14 @@ namespace PeluqueriaApp
             // lblEliminarCorte
             // 
             lblEliminarCorte.AutoSize = true;
+            lblEliminarCorte.Cursor = Cursors.Hand;
             lblEliminarCorte.ForeColor = Color.Red;
-            lblEliminarCorte.Location = new Point(412, 9);
+            lblEliminarCorte.Location = new Point(13, 26);
             lblEliminarCorte.Name = "lblEliminarCorte";
             lblEliminarCorte.Size = new Size(98, 15);
             lblEliminarCorte.TabIndex = 23;
             lblEliminarCorte.Text = "[-] Eliminar Corte";
+            lblEliminarCorte.Click += lblEliminarCorte_Click;
             lblEliminarCorte.MouseEnter += lblEliminarCorte_MouseEnter;
             lblEliminarCorte.MouseLeave += lblEliminarCorte_MouseLeave;
             // 
@@ -348,7 +353,7 @@ namespace PeluqueriaApp
             btnGuardar.ImageAutoCenter = true;
             btnGuardar.ImageExpand = new Point(10, 10);
             btnGuardar.ImageOffset = new Point(0, 0);
-            btnGuardar.Location = new Point(182, 9);
+            btnGuardar.Location = new Point(622, 9);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.NormalBackground = Color.White;
             btnGuardar.NormalForeColor = Color.Black;
@@ -361,16 +366,48 @@ namespace PeluqueriaApp
             btnGuardar.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             btnGuardar.Rounding = new Padding(3);
             btnGuardar.Size = new Size(32, 32);
-            btnGuardar.TabIndex = 24;
+            btnGuardar.TabIndex = 6;
             btnGuardar.TextAlignment = StringAlignment.Center;
             btnGuardar.TextOffset = new Point(0, 0);
             btnGuardar.Click += btnGuardar_Click;
+            // 
+            // txtPrecio
+            // 
+            txtPrecio.BackgroundColor = Color.White;
+            txtPrecio.Content = "";
+            txtPrecio.Enabled = false;
+            txtPrecio.FocusBackgroundColor = Color.White;
+            txtPrecio.FocusImageTint = Color.White;
+            txtPrecio.FocusOutlineColor = Color.FromArgb(255, 106, 0);
+            txtPrecio.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPrecio.ForeColor = Color.Gray;
+            txtPrecio.Image = null;
+            txtPrecio.ImageExpand = new Point(0, 0);
+            txtPrecio.ImageOffset = new Point(0, 0);
+            txtPrecio.Location = new Point(13, 169);
+            txtPrecio.Margin = new Padding(4);
+            txtPrecio.Multiline = false;
+            txtPrecio.Name = "txtPrecio";
+            txtPrecio.NormalImageTint = Color.White;
+            txtPrecio.OutlineColor = Color.White;
+            txtPrecio.Padding = new Padding(15, 7, 15, 0);
+            txtPrecio.PasswordChar = false;
+            txtPrecio.PlaceholderColor = Color.FromArgb(64, 64, 64);
+            txtPrecio.PlaceholderText = "Precio";
+            txtPrecio.Rounding = new Padding(6);
+            txtPrecio.Size = new Size(237, 28);
+            txtPrecio.TabIndex = 3;
+            txtPrecio.TextOffset = new Size(0, 0);
+            txtPrecio.UnderlinedStyle = true;
+            txtPrecio.KeyPress += txtPrecio_KeyPress;
+            txtPrecio.Leave += txtPrecio_Leave;
             // 
             // Cliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(533, 604);
+            ClientSize = new Size(666, 604);
+            Controls.Add(txtPrecio);
             Controls.Add(btnGuardar);
             Controls.Add(lblEliminarCorte);
             Controls.Add(lblNuevoCorte);
@@ -411,5 +448,6 @@ namespace PeluqueriaApp
         private Label lblNuevoCorte;
         private Label lblEliminarCorte;
         private CuoreUI.Controls.cuiButton btnGuardar;
+        private CuoreUI.Controls.cuiTextBox txtPrecio;
     }
 }

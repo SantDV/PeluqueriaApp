@@ -6,7 +6,6 @@ C:\Users\SANTIAGO\source\repos\PeluqueriaApp\PeluqueriaApp\bin\Debug\net8.0-wind
 C:\Users\SANTIAGO\source\repos\PeluqueriaApp\PeluqueriaApp\bin\Debug\net8.0-windows\PeluqueriaApp.pdb
 C:\Users\SANTIAGO\source\repos\PeluqueriaApp\PeluqueriaApp\bin\Debug\net8.0-windows\CuoreUI.dll
 C:\Users\SANTIAGO\source\repos\PeluqueriaApp\PeluqueriaApp\obj\Debug\net8.0-windows\PeluqueriaApp.csproj.AssemblyReference.cache
-C:\Users\SANTIAGO\source\repos\PeluqueriaApp\PeluqueriaApp\obj\Debug\net8.0-windows\PeluqueriaApp.Form1.resources
 C:\Users\SANTIAGO\source\repos\PeluqueriaApp\PeluqueriaApp\obj\Debug\net8.0-windows\PeluqueriaApp.Properties.Resources.resources
 C:\Users\SANTIAGO\source\repos\PeluqueriaApp\PeluqueriaApp\obj\Debug\net8.0-windows\PeluqueriaApp.RegistroCliente.resources
 C:\Users\SANTIAGO\source\repos\PeluqueriaApp\PeluqueriaApp\obj\Debug\net8.0-windows\PeluqueriaApp.csproj.GenerateResource.cache
@@ -37,3 +36,6 @@ C:\Users\SANTIAGO\source\repos\PeluqueriaApp\PeluqueriaApp\bin\Debug\net8.0-wind
 C:\Users\SANTIAGO\source\repos\PeluqueriaApp\PeluqueriaApp\bin\Debug\net8.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\SANTIAGO\source\repos\PeluqueriaApp\PeluqueriaApp\obj\Debug\net8.0-windows\PeluqueriaApp.FormImagenCompleta.resources
 C:\Users\SANTIAGO\source\repos\PeluqueriaApp\PeluqueriaApp\obj\Debug\net8.0-windows\PeluqueriaApp.Cliente.resources
+C:\Users\SANTIAGO\source\repos\PeluqueriaApp\PeluqueriaApp\obj\Debug\net8.0-windows\PeluqueriaApp.sourcelink.json
+C:\Users\SANTIAGO\source\repos\PeluqueriaApp\PeluqueriaApp\obj\Debug\net8.0-windows\PeluqueriaApp.Ajustes.resources
+C:\Users\SANTIAGO\source\repos\PeluqueriaApp\PeluqueriaApp\obj\Debug\net8.0-windows\PeluqueriaApp.CorteApp.resources

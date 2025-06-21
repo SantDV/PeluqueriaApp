@@ -5,12 +5,14 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PeluqueriaApp
 {
@@ -21,6 +23,7 @@ namespace PeluqueriaApp
         DataView view = new();
         int idCliente = 0;
         DbConn dbConn = new DbConn();
+        int idCorte = -1;
 
         public Cliente(int id)
         {
@@ -51,6 +54,8 @@ namespace PeluqueriaApp
                 txtNombre.Content = cliente.Nombre;
                 txtTelefono.Content = cliente.Telefono;
                 txtEmail.Content = cliente.Email;
+                //txtObservacion.Text = cliente.Observaciones;
+                //txtPrecio.Content = cliente.PrecioCorte.ToString("C2"); // Formatear como moneda
             }
             else
             {
@@ -132,8 +137,8 @@ namespace PeluqueriaApp
         {
             if (e.RowIndex >= 0)
             {
-                int corteId = Convert.ToInt32(dgvCortes.Rows[e.RowIndex].Cells["Id"].Value);
-                ptbCliente.Image = dbConn.MostrarFotoDelCorte(-1, corteId);
+                idCorte = Convert.ToInt32(dgvCortes.Rows[e.RowIndex].Cells["Id"].Value);
+                ptbCliente.Image = dbConn.MostrarFotoDelCorte(-1, idCorte);
             }
         }
 
@@ -188,9 +193,10 @@ namespace PeluqueriaApp
 
             txtObservacion.Text = string.Empty;
             ptbCliente.Image = null;
-
+            txtPrecio.Enabled = true;
             txtNombre.Enabled = true;
             txtTelefono.Enabled = true;
+
             txtEmail.Enabled = true;
             ptbCliente.Enabled = true;
             ptbCliente.Cursor = Cursors.Hand;
@@ -238,7 +244,7 @@ namespace PeluqueriaApp
             {
 
 
-                MessageBox.Show(dbConn.AgregarCorte(new Entidades.Cliente { Id = idCliente, Nombre = txtNombre.Content.Trim(), Telefono = txtTelefono.Content.Trim(), Email = txtEmail.Content.Trim(), Observaciones = txtObservacion.Text, Foto = imagenBytes }));
+                MessageBox.Show(dbConn.AgregarCorte(new Entidades.Cliente { Id = idCliente, Nombre = txtNombre.Content.Trim(), Telefono = txtTelefono.Content.Trim(), Email = txtEmail.Content.Trim(), Observaciones = txtObservacion.Text, PrecioCorte = txtPrecio.Content, Foto = imagenBytes }));
                 btnGuardar.Enabled = false;
                 CargarCortes();
 
@@ -248,6 +254,96 @@ namespace PeluqueriaApp
                 MessageBox.Show("Debe ingresar un nombre para continuar.", "Campo requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
+        }
+
+        private void lblEliminarCorte_Click(object sender, EventArgs e)
+        {
+            if (idCorte == 0)
+            {
+                MessageBox.Show("No hay ningún corte seleccionado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            var resultado = MessageBox.Show("¿Estás seguro de que querés eliminar este corte?", "Confirmar eliminación",
+                                             MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (resultado == DialogResult.Yes)
+            {
+                dbConn.EliminarCorte(idCorte);
+
+                MessageBox.Show("Corte eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Actualizar interfaz (por ejemplo, recargar lista de cortes)
+                CargarCortes();
+            }
+        }
+
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter && !string.IsNullOrEmpty(txtPrecio.Content))
+            {
+                FormatearAPesosArgentinos();
+                e.Handled = true; // Evitar el "beep" al presionar Enter
+            }
+        }
+
+        private void FormatearAPesosArgentinos()
+        {
+            // Obtener el texto sin símbolos no numéricos
+            string texto = txtPrecio.Content.Replace("$", "").Replace(".", "").Trim();
+
+            if (decimal.TryParse(texto, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal monto))
+            {
+                // Formatear como pesos argentinos: $ 1.234,56
+                txtPrecio.Content = monto.ToString("C2", CultureInfo.GetCultureInfo("es-AR"));
+            }
+            else
+            {
+                // Si no es un número válido, mostrar $ 0,00
+                txtPrecio.Content = 0m.ToString("C2", CultureInfo.GetCultureInfo("es-AR"));
+            }
+        }
+
+        private void txtPrecio_Leave(object sender, EventArgs e)
+        {
+            FormatearAPesosArgentinos();
+        }
+
+
+
+        private void dgvCortes_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataGridView dgv = (DataGridView)sender;
+
+                // Obtener el rectángulo de la celda y su posición en pantalla
+                Rectangle cellDisplayRect = dgv.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false);
+                Point cellLocation = dgv.PointToScreen(cellDisplayRect.Location);
+
+                // Obtener el valor de la celda de descripción
+                string descripcion = dgv.Rows[e.RowIndex].Cells["descripcion"].Value?.ToString() ?? "Sin descripción";
+
+                // Configurar el ToolTip
+                System.Windows.Forms.ToolTip tooltip = new();
+
+                // Mostrar el ToolTip
+                tooltip.Show(
+                    descripcion,
+                    dgv,
+                    dgv.PointToClient(cellLocation).X + 10,
+                    dgv.PointToClient(cellLocation).Y + 10,
+                    5000); // Duración de 5 segundos
+            }
+        }
+
+        private void dgvCortes_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            var tooltips = this.Controls.OfType<System.Windows.Forms.ToolTip>();
+            foreach (var tt in tooltips)
+            {
+                tt.Hide((DataGridView)sender);
+            }
         }
     }
 }

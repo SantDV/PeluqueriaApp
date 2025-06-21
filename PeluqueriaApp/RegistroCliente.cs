@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,9 +43,10 @@ namespace PeluqueriaApp
 
                             using (SQLiteCommand cmdCliente = new SQLiteCommand(sqlCliente, conn, transaction))
                             {
-                                cmdCliente.Parameters.AddWithValue("@Nombre", txtNombre.Content); 
+                                cmdCliente.Parameters.AddWithValue("@Nombre", txtNombre.Content);
                                 cmdCliente.Parameters.AddWithValue("@Telefono", txtTelefono.Content);
                                 cmdCliente.Parameters.AddWithValue("@Email", txtEmail.Content);
+
 
                                 cmdCliente.ExecuteNonQuery();
                             }
@@ -53,13 +55,14 @@ namespace PeluqueriaApp
                             long clienteId = conn.LastInsertRowId;
 
                             // 3. Insertar en Cortes
-                            string sqlCorte = "INSERT INTO Cortes (ClienteId, Descripcion, Foto) " +
-                                              "VALUES (@ClienteId, @Descripcion, @Foto)";
+                            string sqlCorte = "INSERT INTO Cortes (ClienteId, Descripcion, Foto, Cobro) " +
+                                              "VALUES (@ClienteId, @Descripcion, @Foto, @Cobro)";
 
                             using (SQLiteCommand cmdCorte = new SQLiteCommand(sqlCorte, conn, transaction))
                             {
                                 cmdCorte.Parameters.AddWithValue("@ClienteId", clienteId);
                                 cmdCorte.Parameters.AddWithValue("@Descripcion", txtObservacion.Text);
+                                cmdCorte.Parameters.AddWithValue("@Cobro", txtPrecio.Content);
                                 cmdCorte.Parameters.Add("@Foto", DbType.Binary).Value = imagenBytes ?? (object)DBNull.Value;
 
                                 cmdCorte.ExecuteNonQuery();
@@ -141,6 +144,42 @@ namespace PeluqueriaApp
             {
                 MessageBox.Show("No hay imagen para mostrar.");
             }
+        }
+
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter && !string.IsNullOrEmpty(txtPrecio.Content))
+            {
+                FormatearAPesosArgentinos();
+                e.Handled = true; // Evitar el "beep" al presionar Enter
+            }
+        }
+
+        private decimal _valorNumerico; // Variable de clase
+
+        private void FormatearAPesosArgentinos()
+        {
+            if (decimal.TryParse(txtPrecio.Content, NumberStyles.Any, CultureInfo.GetCultureInfo("es-AR"), out decimal nuevoValor))
+            {
+                _valorNumerico = nuevoValor;
+            }
+
+            txtPrecio.Content = _valorNumerico.ToString("C2", CultureInfo.GetCultureInfo("es-AR"));
+        }
+
+        private void txtPrecio_Leave(object sender, EventArgs e)
+        {
+            FormatearAPesosArgentinos();
+        }
+
+        private void RegistroCliente_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPrecio_Enter(object sender, EventArgs e)
+        {
+            txtPrecio.Content = _valorNumerico.ToString(CultureInfo.GetCultureInfo("es-AR"));
         }
     }
 }

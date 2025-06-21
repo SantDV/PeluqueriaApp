@@ -184,13 +184,14 @@ namespace PeluqueriaApp
 
 
                         // 3. Insertar en Cortes
-                        string sqlCorte = "INSERT INTO Cortes (ClienteId, Descripcion, Foto) " +
-                                          "VALUES (@ClienteId, @Descripcion, @Foto)";
+                        string sqlCorte = "INSERT INTO Cortes (ClienteId, Descripcion, cobro, Foto) " +
+                                          "VALUES (@ClienteId, @Descripcion, @Cobro, @Foto)";
 
                         using (SQLiteCommand cmdCorte = new SQLiteCommand(sqlCorte, conn, transaction))
                         {
                             cmdCorte.Parameters.AddWithValue("@ClienteId", cliente.Id);
                             cmdCorte.Parameters.AddWithValue("@Descripcion", cliente.Observaciones);
+                            cmdCorte.Parameters.AddWithValue("@Cobro", cliente.PrecioCorte);
                             cmdCorte.Parameters.Add("@Foto", DbType.Binary).Value = cliente.Foto ?? (object)DBNull.Value;
 
                             cmdCorte.ExecuteNonQuery();
@@ -205,6 +206,21 @@ namespace PeluqueriaApp
                         transaction.Rollback();
                         return "Error al registrar el corte: " + ex.Message;
                     }
+                }
+            }
+        }
+
+
+        public void EliminarCorte(int idCorte)
+        {
+            using (var conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+                
+                using (var cmd = new SQLiteCommand("DELETE FROM Cortes WHERE Id = @Id", conn))
+                {
+                    cmd.Parameters.AddWithValue("@Id", idCorte);
+                    cmd.ExecuteNonQuery();
                 }
             }
         }

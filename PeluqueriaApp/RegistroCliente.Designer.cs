@@ -37,6 +37,7 @@
             btnNuevo = new CuoreUI.Controls.cuiButton();
             btnSizeMode = new CuoreUI.Controls.cuiButton();
             btnFullScreen = new CuoreUI.Controls.cuiButton();
+            txtPrecio = new CuoreUI.Controls.cuiTextBox();
             ((System.ComponentModel.ISupportInitialize)ptbCliente).BeginInit();
             SuspendLayout();
             // 
@@ -64,7 +65,7 @@
             txtNombre.PlaceholderText = "Nombre";
             txtNombre.Rounding = new Padding(6);
             txtNombre.Size = new Size(201, 28);
-            txtNombre.TabIndex = 2;
+            txtNombre.TabIndex = 0;
             txtNombre.TextOffset = new Size(0, 0);
             txtNombre.UnderlinedStyle = true;
             // 
@@ -80,7 +81,7 @@
             txtTelefono.Image = null;
             txtTelefono.ImageExpand = new Point(0, 0);
             txtTelefono.ImageOffset = new Point(0, 0);
-            txtTelefono.Location = new Point(28, 96);
+            txtTelefono.Location = new Point(28, 79);
             txtTelefono.Margin = new Padding(4);
             txtTelefono.Multiline = false;
             txtTelefono.Name = "txtTelefono";
@@ -92,7 +93,7 @@
             txtTelefono.PlaceholderText = "Teléfono";
             txtTelefono.Rounding = new Padding(6);
             txtTelefono.Size = new Size(201, 28);
-            txtTelefono.TabIndex = 3;
+            txtTelefono.TabIndex = 1;
             txtTelefono.TextOffset = new Size(0, 0);
             txtTelefono.UnderlinedStyle = true;
             // 
@@ -108,7 +109,7 @@
             txtEmail.Image = null;
             txtEmail.ImageExpand = new Point(0, 0);
             txtEmail.ImageOffset = new Point(0, 0);
-            txtEmail.Location = new Point(28, 142);
+            txtEmail.Location = new Point(28, 115);
             txtEmail.Margin = new Padding(4);
             txtEmail.Multiline = false;
             txtEmail.Name = "txtEmail";
@@ -120,7 +121,7 @@
             txtEmail.PlaceholderText = "Email";
             txtEmail.Rounding = new Padding(6);
             txtEmail.Size = new Size(201, 28);
-            txtEmail.TabIndex = 4;
+            txtEmail.TabIndex = 2;
             txtEmail.TextOffset = new Size(0, 0);
             txtEmail.UnderlinedStyle = true;
             // 
@@ -129,7 +130,7 @@
             txtObservacion.Location = new Point(28, 197);
             txtObservacion.Name = "txtObservacion";
             txtObservacion.Size = new Size(201, 96);
-            txtObservacion.TabIndex = 6;
+            txtObservacion.TabIndex = 4;
             txtObservacion.Text = "";
             // 
             // btnRegistrar
@@ -165,7 +166,7 @@
             btnRegistrar.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             btnRegistrar.Rounding = new Padding(4);
             btnRegistrar.Size = new Size(92, 28);
-            btnRegistrar.TabIndex = 7;
+            btnRegistrar.TabIndex = 5;
             btnRegistrar.TextAlignment = StringAlignment.Center;
             btnRegistrar.TextOffset = new Point(0, 0);
             btnRegistrar.Click += btnRegistrar_Click;
@@ -175,6 +176,7 @@
             ptbCliente.BackColor = Color.Gainsboro;
             ptbCliente.BackgroundImage = Properties.Resources.addPhoto;
             ptbCliente.BackgroundImageLayout = ImageLayout.Center;
+            ptbCliente.Cursor = Cursors.Hand;
             ptbCliente.Location = new Point(320, 43);
             ptbCliente.Name = "ptbCliente";
             ptbCliente.Size = new Size(250, 250);
@@ -297,11 +299,43 @@
             btnFullScreen.TextOffset = new Point(0, 0);
             btnFullScreen.Click += btnFullScreen_Click;
             // 
+            // txtPrecio
+            // 
+            txtPrecio.BackgroundColor = Color.White;
+            txtPrecio.Content = "";
+            txtPrecio.FocusBackgroundColor = Color.White;
+            txtPrecio.FocusImageTint = Color.White;
+            txtPrecio.FocusOutlineColor = Color.FromArgb(255, 106, 0);
+            txtPrecio.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPrecio.ForeColor = Color.Gray;
+            txtPrecio.Image = null;
+            txtPrecio.ImageExpand = new Point(0, 0);
+            txtPrecio.ImageOffset = new Point(0, 0);
+            txtPrecio.Location = new Point(28, 151);
+            txtPrecio.Margin = new Padding(4);
+            txtPrecio.Multiline = false;
+            txtPrecio.Name = "txtPrecio";
+            txtPrecio.NormalImageTint = Color.White;
+            txtPrecio.OutlineColor = Color.White;
+            txtPrecio.Padding = new Padding(15, 7, 15, 0);
+            txtPrecio.PasswordChar = false;
+            txtPrecio.PlaceholderColor = Color.FromArgb(64, 64, 64);
+            txtPrecio.PlaceholderText = "Precio";
+            txtPrecio.Rounding = new Padding(6);
+            txtPrecio.Size = new Size(201, 28);
+            txtPrecio.TabIndex = 3;
+            txtPrecio.TextOffset = new Size(0, 0);
+            txtPrecio.UnderlinedStyle = true;
+            txtPrecio.Enter += txtPrecio_Enter;
+            txtPrecio.KeyPress += txtPrecio_KeyPress;
+            txtPrecio.Leave += txtPrecio_Leave;
+            // 
             // RegistroCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(582, 384);
+            Controls.Add(txtPrecio);
             Controls.Add(btnFullScreen);
             Controls.Add(btnSizeMode);
             Controls.Add(btnNuevo);
@@ -313,6 +347,7 @@
             Controls.Add(txtNombre);
             Name = "RegistroCliente";
             Text = "RegistroCliente";
+            Load += RegistroCliente_Load;
             ((System.ComponentModel.ISupportInitialize)ptbCliente).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -329,5 +364,6 @@
         private CuoreUI.Controls.cuiButton btnNuevo;
         private CuoreUI.Controls.cuiButton btnSizeMode;
         private CuoreUI.Controls.cuiButton btnFullScreen;
+        private CuoreUI.Controls.cuiTextBox txtPrecio;
     }
 }

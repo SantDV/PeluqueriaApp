@@ -6,29 +6,31 @@ using System.Windows.Forms;
 
 namespace PeluqueriaApp
 {
-    public partial class Form1 : Form
+    public partial class CorteApp : Form
     {
 
         private static readonly string connectionString = ConfigurationManager.ConnectionStrings["cadenaConexion"].ConnectionString;
 
         DataTable table = new();
         DataView view = new();
-        public Form1()
+        public CorteApp()
         {
             InitializeComponent();
             EstilizarDataGridView(dgvClientes);
-
+            ConfigurarMonitoreoCambios();
             table.Columns.Add("id", typeof(string));
             table.Columns.Add("nombre", typeof(string));
             table.Columns.Add("telefono", typeof(string));
-            table.Columns.Add("mail", typeof(string));
+            table.Columns.Add("email", typeof(string));
+            table.Columns.Add("fechaCreacion", typeof(string));
 
 
 
             dgvClientes.Columns["id"].DataPropertyName = "id";
             dgvClientes.Columns["nombre"].DataPropertyName = "nombre";
             dgvClientes.Columns["telefono"].DataPropertyName = "telefono";
-            dgvClientes.Columns["mail"].DataPropertyName = "mail";
+            dgvClientes.Columns["email"].DataPropertyName = "email";
+            dgvClientes.Columns["fechaCreacion"].DataPropertyName = "fechaCreacion";
 
 
 
@@ -136,6 +138,39 @@ namespace PeluqueriaApp
                 Cliente frm = new Cliente(clienteId);
                 frm.ShowDialog();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Ajustes ajustes = new Ajustes();
+
+            ajustes.ShowDialog();
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            table.Clear();
+        }
+
+        private void ConfigurarMonitoreoCambios()
+        {
+            // Todos estos eventos llamarán a ActualizarConteoClientes()
+            dgvClientes.CellValueChanged += (s, e) => ActualizarConteoClientes();
+            dgvClientes.RowsAdded += (s, e) => ActualizarConteoClientes();
+            dgvClientes.RowsRemoved += (s, e) => ActualizarConteoClientes();
+            dgvClientes.DataSourceChanged += (s, e) => ActualizarConteoClientes();
+        }
+
+        private void ActualizarConteoClientes()
+        {
+            int filasValidas = dgvClientes.Rows
+                .Cast<DataGridViewRow>()
+                .Count(r => !r.IsNewRow && r.Cells[0].Value != null);
+
+            lblCustomerCount.Text = filasValidas.ToString();
+
+            // Opcional: Cambiar color si hay muchas filas
+            lblCustomerCount.ForeColor = filasValidas > 10 ? Color.Red : Color.Black;
         }
     }
 }
