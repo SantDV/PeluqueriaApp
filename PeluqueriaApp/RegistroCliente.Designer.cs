@@ -38,6 +38,7 @@
             btnSizeMode = new CuoreUI.Controls.cuiButton();
             btnFullScreen = new CuoreUI.Controls.cuiButton();
             txtPrecio = new CuoreUI.Controls.cuiTextBox();
+            txtDomicilio = new CuoreUI.Controls.cuiTextBox();
             ((System.ComponentModel.ISupportInitialize)ptbCliente).BeginInit();
             SuspendLayout();
             // 
@@ -127,9 +128,9 @@
             // 
             // txtObservacion
             // 
-            txtObservacion.Location = new Point(28, 197);
+            txtObservacion.Location = new Point(28, 234);
             txtObservacion.Name = "txtObservacion";
-            txtObservacion.Size = new Size(201, 96);
+            txtObservacion.Size = new Size(226, 149);
             txtObservacion.TabIndex = 4;
             txtObservacion.Text = "";
             // 
@@ -311,7 +312,7 @@
             txtPrecio.Image = null;
             txtPrecio.ImageExpand = new Point(0, 0);
             txtPrecio.ImageOffset = new Point(0, 0);
-            txtPrecio.Location = new Point(28, 151);
+            txtPrecio.Location = new Point(28, 187);
             txtPrecio.Margin = new Padding(4);
             txtPrecio.Multiline = false;
             txtPrecio.Name = "txtPrecio";
@@ -330,11 +331,40 @@
             txtPrecio.KeyPress += txtPrecio_KeyPress;
             txtPrecio.Leave += txtPrecio_Leave;
             // 
+            // txtDomicilio
+            // 
+            txtDomicilio.BackgroundColor = Color.White;
+            txtDomicilio.Content = "";
+            txtDomicilio.FocusBackgroundColor = Color.White;
+            txtDomicilio.FocusImageTint = Color.White;
+            txtDomicilio.FocusOutlineColor = Color.FromArgb(255, 106, 0);
+            txtDomicilio.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtDomicilio.ForeColor = Color.Gray;
+            txtDomicilio.Image = null;
+            txtDomicilio.ImageExpand = new Point(0, 0);
+            txtDomicilio.ImageOffset = new Point(0, 0);
+            txtDomicilio.Location = new Point(28, 151);
+            txtDomicilio.Margin = new Padding(4);
+            txtDomicilio.Multiline = false;
+            txtDomicilio.Name = "txtDomicilio";
+            txtDomicilio.NormalImageTint = Color.White;
+            txtDomicilio.OutlineColor = Color.White;
+            txtDomicilio.Padding = new Padding(15, 7, 15, 0);
+            txtDomicilio.PasswordChar = false;
+            txtDomicilio.PlaceholderColor = Color.FromArgb(64, 64, 64);
+            txtDomicilio.PlaceholderText = "Domicilio";
+            txtDomicilio.Rounding = new Padding(6);
+            txtDomicilio.Size = new Size(201, 28);
+            txtDomicilio.TabIndex = 12;
+            txtDomicilio.TextOffset = new Size(0, 0);
+            txtDomicilio.UnderlinedStyle = true;
+            // 
             // RegistroCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(582, 384);
+            Controls.Add(txtDomicilio);
             Controls.Add(txtPrecio);
             Controls.Add(btnFullScreen);
             Controls.Add(btnSizeMode);
@@ -365,5 +395,6 @@
         private CuoreUI.Controls.cuiButton btnSizeMode;
         private CuoreUI.Controls.cuiButton btnFullScreen;
         private CuoreUI.Controls.cuiTextBox txtPrecio;
+        private CuoreUI.Controls.cuiTextBox txtDomicilio;
     }
 }

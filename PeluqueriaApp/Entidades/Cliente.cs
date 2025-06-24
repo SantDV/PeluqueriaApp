@@ -14,6 +14,7 @@ namespace PeluqueriaApp.Entidades
         public string Email { get; set; }
         public string Observaciones { get; set; }
         public string PrecioCorte { get; set; } // Precio del corte, no nulo
+        public string Domicilio { get; set; } // Precio del corte, no nulo
 
         public byte[]? Foto { get; set; } // Puede ser nulo, si no se proporciona una foto
         public DateTime FechaCreacion { get; set; }

@@ -4,10 +4,25 @@
     <Compile Update="Ajustes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Cliente.cs">
+    <Compile Update="ClienteCortes.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormImagenCompleta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ClientesGestion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmEstadisticas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmGaleria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AcercaDe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmSplash.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Inicio.cs">

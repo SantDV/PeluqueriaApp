@@ -38,14 +38,15 @@ namespace PeluqueriaApp
                         try
                         {
                             // 1. Insertar en Clientes
-                            string sqlCliente = "INSERT INTO Clientes (Nombre, Telefono, Email) " +
-                                                "VALUES (@Nombre, @Telefono, @Email)";
+                            string sqlCliente = "INSERT INTO Clientes (Nombre, Telefono, Email, Domicilio) " +
+                                                "VALUES (@Nombre, @Telefono, @Email, @Domicilio)";
 
                             using (SQLiteCommand cmdCliente = new SQLiteCommand(sqlCliente, conn, transaction))
                             {
                                 cmdCliente.Parameters.AddWithValue("@Nombre", txtNombre.Content);
                                 cmdCliente.Parameters.AddWithValue("@Telefono", txtTelefono.Content);
                                 cmdCliente.Parameters.AddWithValue("@Email", txtEmail.Content);
+                                cmdCliente.Parameters.AddWithValue("@Domicilio", txtDomicilio.Content);
 
 
                                 cmdCliente.ExecuteNonQuery();

@@ -16,19 +16,20 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PeluqueriaApp
 {
-    public partial class Cliente : Form
+    public partial class ClienteCortes : Form
     {
 
+        Cliente cliente = new();
         DataTable table = new();
         DataView view = new();
-        int idCliente = 0;
+
         DbConn dbConn = new DbConn();
         int idCorte = -1;
 
-        public Cliente(int id)
+        public ClienteCortes(int id)
         {
             InitializeComponent();
-            idCliente = id;
+            cliente.Id = id;
 
             table.Columns.Add("Id", typeof(string));
             table.Columns.Add("Descripcion", typeof(string));
@@ -48,12 +49,13 @@ namespace PeluqueriaApp
 
             CargarCortes();
 
-            Entidades.Cliente cliente = dbConn.BuscarClientePorId(idCliente);
+            this.cliente = dbConn.BuscarClientePorId(cliente.Id);
             if (cliente != null)
             {
                 txtNombre.Content = cliente.Nombre;
                 txtTelefono.Content = cliente.Telefono;
                 txtEmail.Content = cliente.Email;
+                txtDomicilio.Content = cliente.Domicilio;
                 //txtObservacion.Text = cliente.Observaciones;
                 //txtPrecio.Content = cliente.PrecioCorte.ToString("C2"); // Formatear como moneda
             }
@@ -63,12 +65,12 @@ namespace PeluqueriaApp
                 this.Close();
             }
 
-            ptbCliente.Image = dbConn.MostrarFotoDelCorte(idCliente, -1);
+            ptbCliente.Image = dbConn.MostrarFotoDelCorte(cliente.Id, -1);
         }
 
         private void CargarCortes()
         {
-            table = dbConn.ObtenerCortesPorCliente(idCliente);
+            table = dbConn.ObtenerCortesPorCliente(cliente.Id);
             view = table.DefaultView;
             dgvCortes.DataSource = view;
         }
@@ -196,6 +198,7 @@ namespace PeluqueriaApp
             txtPrecio.Enabled = true;
             txtNombre.Enabled = true;
             txtTelefono.Enabled = true;
+            txtDomicilio.Enabled = true;
 
             txtEmail.Enabled = true;
             ptbCliente.Enabled = true;
@@ -244,7 +247,7 @@ namespace PeluqueriaApp
             {
 
 
-                MessageBox.Show(dbConn.AgregarCorte(new Entidades.Cliente { Id = idCliente, Nombre = txtNombre.Content.Trim(), Telefono = txtTelefono.Content.Trim(), Email = txtEmail.Content.Trim(), Observaciones = txtObservacion.Text, PrecioCorte = txtPrecio.Content, Foto = imagenBytes }));
+                MessageBox.Show(dbConn.AgregarCorte(new Entidades.Cliente { Id = cliente.Id, Nombre = txtNombre.Content.Trim(), Telefono = txtTelefono.Content.Trim(), Email = txtEmail.Content.Trim(), Observaciones = txtObservacion.Text, PrecioCorte = txtPrecio.Content, Foto = imagenBytes }));
                 btnGuardar.Enabled = false;
                 CargarCortes();
 
@@ -344,6 +347,12 @@ namespace PeluqueriaApp
             {
                 tt.Hide((DataGridView)sender);
             }
+        }
+        private void btnGaleria_Click_1(object sender, EventArgs e)
+        {
+            FrmGaleria frmGaleria = new FrmGaleria(cliente);
+
+            frmGaleria.ShowDialog();
         }
     }
 }

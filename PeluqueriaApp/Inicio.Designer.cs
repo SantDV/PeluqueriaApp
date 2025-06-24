@@ -1,14 +1,14 @@
 ﻿namespace PeluqueriaApp
 {
-    partial class CorteApp
+    partial class Inicio
     {
         /// <summary>
-        ///  Required designer variable.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        ///  Clean up any resources being used.
+        /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -23,373 +23,247 @@
         #region Windows Form Designer generated code
 
         /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CorteApp));
-            dgvClientes = new DataGridView();
-            id = new DataGridViewTextBoxColumn();
-            nombre = new DataGridViewTextBoxColumn();
-            telefono = new DataGridViewTextBoxColumn();
-            email = new DataGridViewTextBoxColumn();
-            fechaCreacion = new DataGridViewTextBoxColumn();
-            txtBuscarNombre = new CuoreUI.Controls.cuiTextBox();
-            cuiTextBox2 = new CuoreUI.Controls.cuiTextBox();
-            cuiTextBox3 = new CuoreUI.Controls.cuiTextBox();
-            btnNuevo = new CuoreUI.Controls.cuiButton();
-            dateTimePicker1 = new DateTimePicker();
-            dateTimePicker2 = new DateTimePicker();
-            btnLimpiar = new CuoreUI.Controls.cuiButton();
-            btnBuscar = new CuoreUI.Controls.cuiButton();
-            customerCount = new CuoreUI.Controls.cuiButton();
-            lblCustomerCount = new Label();
-            ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
+            flpanel = new FlowLayoutPanel();
+            btnInicio = new CuoreUI.Controls.cuiButton();
+            btnClientes = new CuoreUI.Controls.cuiButton();
+            btnGaleria = new CuoreUI.Controls.cuiButton();
+            btnMenu = new CuoreUI.Controls.cuiButton();
+            btnInfo = new CuoreUI.Controls.cuiButton();
+            flpanel.SuspendLayout();
             SuspendLayout();
             // 
-            // dgvClientes
+            // flpanel
             // 
-            dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClientes.Columns.AddRange(new DataGridViewColumn[] { id, nombre, telefono, email, fechaCreacion });
-            dgvClientes.Location = new Point(12, 114);
-            dgvClientes.Name = "dgvClientes";
-            dgvClientes.Size = new Size(710, 373);
-            dgvClientes.TabIndex = 0;
-            dgvClientes.CellClick += dgvClientes_CellClick;
+            flpanel.Controls.Add(btnInicio);
+            flpanel.Controls.Add(btnClientes);
+            flpanel.Controls.Add(btnGaleria);
+            flpanel.Controls.Add(btnMenu);
+            flpanel.Controls.Add(btnInfo);
+            flpanel.Dock = DockStyle.Left;
+            flpanel.Location = new Point(0, 0);
+            flpanel.Margin = new Padding(0, 3, 3, 3);
+            flpanel.Name = "flpanel";
+            flpanel.Size = new Size(122, 471);
+            flpanel.TabIndex = 0;
             // 
-            // id
+            // btnInicio
             // 
-            id.HeaderText = "ID";
-            id.Name = "id";
+            btnInicio.CheckButton = false;
+            btnInicio.Checked = false;
+            btnInicio.CheckedBackground = Color.FromArgb(255, 106, 0);
+            btnInicio.CheckedForeColor = Color.White;
+            btnInicio.CheckedImageTint = Color.White;
+            btnInicio.CheckedOutline = Color.FromArgb(255, 106, 0);
+            btnInicio.Content = "Inicio";
+            btnInicio.DialogResult = DialogResult.None;
+            btnInicio.Font = new Font("Microsoft Sans Serif", 9.75F);
+            btnInicio.ForeColor = Color.Black;
+            btnInicio.HoverBackground = Color.White;
+            btnInicio.HoveredImageTint = Color.White;
+            btnInicio.HoverForeColor = Color.Black;
+            btnInicio.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            btnInicio.Image = Properties.Resources.home;
+            btnInicio.ImageAutoCenter = false;
+            btnInicio.ImageExpand = new Point(15, 15);
+            btnInicio.ImageOffset = new Point(12, 0);
+            btnInicio.Location = new Point(3, 3);
+            btnInicio.Name = "btnInicio";
+            btnInicio.NormalBackground = Color.White;
+            btnInicio.NormalForeColor = Color.Black;
+            btnInicio.NormalImageTint = Color.White;
+            btnInicio.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            btnInicio.OutlineThickness = 1F;
+            btnInicio.PressedBackground = Color.WhiteSmoke;
+            btnInicio.PressedForeColor = Color.FromArgb(32, 32, 32);
+            btnInicio.PressedImageTint = Color.White;
+            btnInicio.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            btnInicio.Rounding = new Padding(8);
+            btnInicio.Size = new Size(115, 45);
+            btnInicio.TabIndex = 1;
+            btnInicio.TextAlignment = StringAlignment.Near;
+            btnInicio.TextOffset = new Point(0, 0);
+            btnInicio.Click += btnInicio_Click;
             // 
-            // nombre
+            // btnClientes
             // 
-            nombre.HeaderText = "Nombre";
-            nombre.Name = "nombre";
+            btnClientes.CheckButton = false;
+            btnClientes.Checked = false;
+            btnClientes.CheckedBackground = Color.FromArgb(255, 106, 0);
+            btnClientes.CheckedForeColor = Color.White;
+            btnClientes.CheckedImageTint = Color.White;
+            btnClientes.CheckedOutline = Color.FromArgb(255, 106, 0);
+            btnClientes.Content = "Clientes";
+            btnClientes.DialogResult = DialogResult.None;
+            btnClientes.Font = new Font("Microsoft Sans Serif", 9.75F);
+            btnClientes.ForeColor = Color.Black;
+            btnClientes.HoverBackground = Color.White;
+            btnClientes.HoveredImageTint = Color.White;
+            btnClientes.HoverForeColor = Color.Black;
+            btnClientes.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            btnClientes.Image = Properties.Resources.person;
+            btnClientes.ImageAutoCenter = false;
+            btnClientes.ImageExpand = new Point(15, 15);
+            btnClientes.ImageOffset = new Point(12, 0);
+            btnClientes.Location = new Point(3, 54);
+            btnClientes.Name = "btnClientes";
+            btnClientes.NormalBackground = Color.White;
+            btnClientes.NormalForeColor = Color.Black;
+            btnClientes.NormalImageTint = Color.White;
+            btnClientes.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            btnClientes.OutlineThickness = 1F;
+            btnClientes.PressedBackground = Color.WhiteSmoke;
+            btnClientes.PressedForeColor = Color.FromArgb(32, 32, 32);
+            btnClientes.PressedImageTint = Color.White;
+            btnClientes.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            btnClientes.Rounding = new Padding(8);
+            btnClientes.Size = new Size(115, 45);
+            btnClientes.TabIndex = 0;
+            btnClientes.TextAlignment = StringAlignment.Near;
+            btnClientes.TextOffset = new Point(0, 0);
+            btnClientes.Click += btnClientes_Click;
             // 
-            // telefono
+            // btnGaleria
             // 
-            telefono.HeaderText = "Teléfono";
-            telefono.Name = "telefono";
+            btnGaleria.CheckButton = false;
+            btnGaleria.Checked = false;
+            btnGaleria.CheckedBackground = Color.FromArgb(255, 106, 0);
+            btnGaleria.CheckedForeColor = Color.White;
+            btnGaleria.CheckedImageTint = Color.White;
+            btnGaleria.CheckedOutline = Color.FromArgb(255, 106, 0);
+            btnGaleria.Content = "Clientes";
+            btnGaleria.DialogResult = DialogResult.None;
+            btnGaleria.Font = new Font("Microsoft Sans Serif", 9.75F);
+            btnGaleria.ForeColor = Color.Black;
+            btnGaleria.HoverBackground = Color.White;
+            btnGaleria.HoveredImageTint = Color.White;
+            btnGaleria.HoverForeColor = Color.Black;
+            btnGaleria.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            btnGaleria.Image = Properties.Resources.gallery3;
+            btnGaleria.ImageAutoCenter = false;
+            btnGaleria.ImageExpand = new Point(15, 15);
+            btnGaleria.ImageOffset = new Point(12, 0);
+            btnGaleria.Location = new Point(3, 105);
+            btnGaleria.Name = "btnGaleria";
+            btnGaleria.NormalBackground = Color.White;
+            btnGaleria.NormalForeColor = Color.Black;
+            btnGaleria.NormalImageTint = Color.White;
+            btnGaleria.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            btnGaleria.OutlineThickness = 1F;
+            btnGaleria.PressedBackground = Color.WhiteSmoke;
+            btnGaleria.PressedForeColor = Color.FromArgb(32, 32, 32);
+            btnGaleria.PressedImageTint = Color.White;
+            btnGaleria.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            btnGaleria.Rounding = new Padding(8);
+            btnGaleria.Size = new Size(115, 45);
+            btnGaleria.TabIndex = 3;
+            btnGaleria.TextAlignment = StringAlignment.Near;
+            btnGaleria.TextOffset = new Point(0, 0);
+            btnGaleria.Click += btnGaleria_Click;
             // 
-            // email
+            // btnMenu
             // 
-            email.HeaderText = "Email";
-            email.Name = "email";
+            btnMenu.CheckButton = false;
+            btnMenu.Checked = false;
+            btnMenu.CheckedBackground = Color.FromArgb(255, 106, 0);
+            btnMenu.CheckedForeColor = Color.White;
+            btnMenu.CheckedImageTint = Color.White;
+            btnMenu.CheckedOutline = Color.FromArgb(255, 106, 0);
+            btnMenu.Content = "";
+            btnMenu.DialogResult = DialogResult.None;
+            btnMenu.Font = new Font("Microsoft Sans Serif", 9.75F);
+            btnMenu.ForeColor = Color.Black;
+            btnMenu.HoverBackground = Color.White;
+            btnMenu.HoveredImageTint = Color.White;
+            btnMenu.HoverForeColor = Color.Black;
+            btnMenu.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            btnMenu.Image = Properties.Resources.arrow_menu_close;
+            btnMenu.ImageAutoCenter = true;
+            btnMenu.ImageExpand = new Point(0, 0);
+            btnMenu.ImageOffset = new Point(0, 0);
+            btnMenu.Location = new Point(95, 156);
+            btnMenu.Margin = new Padding(95, 3, 3, 3);
+            btnMenu.Name = "btnMenu";
+            btnMenu.NormalBackground = Color.White;
+            btnMenu.NormalForeColor = Color.Black;
+            btnMenu.NormalImageTint = Color.White;
+            btnMenu.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            btnMenu.OutlineThickness = 1F;
+            btnMenu.PressedBackground = Color.WhiteSmoke;
+            btnMenu.PressedForeColor = Color.FromArgb(32, 32, 32);
+            btnMenu.PressedImageTint = Color.White;
+            btnMenu.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            btnMenu.Rounding = new Padding(8);
+            btnMenu.Size = new Size(22, 25);
+            btnMenu.TabIndex = 2;
+            btnMenu.TextAlignment = StringAlignment.Center;
+            btnMenu.TextOffset = new Point(0, 0);
+            btnMenu.Click += btnMenu_Click;
             // 
-            // fechaCreacion
+            // btnInfo
             // 
-            fechaCreacion.HeaderText = "Feche Creación";
-            fechaCreacion.Name = "fechaCreacion";
+            btnInfo.CheckButton = false;
+            btnInfo.Checked = false;
+            btnInfo.CheckedBackground = Color.FromArgb(255, 106, 0);
+            btnInfo.CheckedForeColor = Color.White;
+            btnInfo.CheckedImageTint = Color.White;
+            btnInfo.CheckedOutline = Color.FromArgb(255, 106, 0);
+            btnInfo.Content = "";
+            btnInfo.DialogResult = DialogResult.None;
+            btnInfo.Font = new Font("Microsoft Sans Serif", 9.75F);
+            btnInfo.ForeColor = Color.Black;
+            btnInfo.HoverBackground = Color.White;
+            btnInfo.HoveredImageTint = Color.White;
+            btnInfo.HoverForeColor = Color.Black;
+            btnInfo.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            btnInfo.Image = Properties.Resources.info;
+            btnInfo.ImageAutoCenter = true;
+            btnInfo.ImageExpand = new Point(0, 0);
+            btnInfo.ImageOffset = new Point(0, 0);
+            btnInfo.Location = new Point(3, 442);
+            btnInfo.Margin = new Padding(3, 258, 3, 3);
+            btnInfo.Name = "btnInfo";
+            btnInfo.NormalBackground = Color.White;
+            btnInfo.NormalForeColor = Color.Black;
+            btnInfo.NormalImageTint = Color.White;
+            btnInfo.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            btnInfo.OutlineThickness = 1F;
+            btnInfo.PressedBackground = Color.WhiteSmoke;
+            btnInfo.PressedForeColor = Color.FromArgb(32, 32, 32);
+            btnInfo.PressedImageTint = Color.White;
+            btnInfo.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            btnInfo.Rounding = new Padding(8);
+            btnInfo.Size = new Size(22, 25);
+            btnInfo.TabIndex = 4;
+            btnInfo.TextAlignment = StringAlignment.Center;
+            btnInfo.TextOffset = new Point(0, 0);
+            btnInfo.Click += btnInfo_Click;
             // 
-            // txtBuscarNombre
-            // 
-            txtBuscarNombre.BackgroundColor = Color.White;
-            txtBuscarNombre.Content = "";
-            txtBuscarNombre.FocusBackgroundColor = Color.White;
-            txtBuscarNombre.FocusImageTint = Color.White;
-            txtBuscarNombre.FocusOutlineColor = Color.FromArgb(15, 108, 189);
-            txtBuscarNombre.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBuscarNombre.ForeColor = Color.Gray;
-            txtBuscarNombre.Image = null;
-            txtBuscarNombre.ImageExpand = new Point(0, 0);
-            txtBuscarNombre.ImageOffset = new Point(0, 0);
-            txtBuscarNombre.Location = new Point(12, 32);
-            txtBuscarNombre.Margin = new Padding(4);
-            txtBuscarNombre.Multiline = false;
-            txtBuscarNombre.Name = "txtBuscarNombre";
-            txtBuscarNombre.NormalImageTint = Color.White;
-            txtBuscarNombre.OutlineColor = Color.White;
-            txtBuscarNombre.Padding = new Padding(15, 7, 15, 0);
-            txtBuscarNombre.PasswordChar = false;
-            txtBuscarNombre.PlaceholderColor = Color.FromArgb(64, 64, 64);
-            txtBuscarNombre.PlaceholderText = "Nombre";
-            txtBuscarNombre.Rounding = new Padding(6);
-            txtBuscarNombre.Size = new Size(172, 28);
-            txtBuscarNombre.TabIndex = 1;
-            txtBuscarNombre.TextOffset = new Size(0, 0);
-            txtBuscarNombre.UnderlinedStyle = true;
-            txtBuscarNombre.KeyPress += txtBuscarNombre_KeyPress;
-            // 
-            // cuiTextBox2
-            // 
-            cuiTextBox2.BackgroundColor = Color.White;
-            cuiTextBox2.Content = "";
-            cuiTextBox2.FocusBackgroundColor = Color.White;
-            cuiTextBox2.FocusImageTint = Color.White;
-            cuiTextBox2.FocusOutlineColor = Color.FromArgb(15, 108, 189);
-            cuiTextBox2.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiTextBox2.ForeColor = Color.Gray;
-            cuiTextBox2.Image = null;
-            cuiTextBox2.ImageExpand = new Point(0, 0);
-            cuiTextBox2.ImageOffset = new Point(0, 0);
-            cuiTextBox2.Location = new Point(192, 32);
-            cuiTextBox2.Margin = new Padding(4);
-            cuiTextBox2.Multiline = false;
-            cuiTextBox2.Name = "cuiTextBox2";
-            cuiTextBox2.NormalImageTint = Color.White;
-            cuiTextBox2.OutlineColor = Color.White;
-            cuiTextBox2.Padding = new Padding(15, 7, 15, 0);
-            cuiTextBox2.PasswordChar = false;
-            cuiTextBox2.PlaceholderColor = Color.FromArgb(64, 64, 64);
-            cuiTextBox2.PlaceholderText = "Teléfono";
-            cuiTextBox2.Rounding = new Padding(6);
-            cuiTextBox2.Size = new Size(172, 28);
-            cuiTextBox2.TabIndex = 2;
-            cuiTextBox2.TextOffset = new Size(0, 0);
-            cuiTextBox2.UnderlinedStyle = true;
-            // 
-            // cuiTextBox3
-            // 
-            cuiTextBox3.BackgroundColor = Color.White;
-            cuiTextBox3.Content = "";
-            cuiTextBox3.FocusBackgroundColor = Color.White;
-            cuiTextBox3.FocusImageTint = Color.White;
-            cuiTextBox3.FocusOutlineColor = Color.FromArgb(15, 108, 189);
-            cuiTextBox3.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cuiTextBox3.ForeColor = Color.Gray;
-            cuiTextBox3.Image = null;
-            cuiTextBox3.ImageExpand = new Point(0, 0);
-            cuiTextBox3.ImageOffset = new Point(0, 0);
-            cuiTextBox3.Location = new Point(372, 32);
-            cuiTextBox3.Margin = new Padding(4);
-            cuiTextBox3.Multiline = false;
-            cuiTextBox3.Name = "cuiTextBox3";
-            cuiTextBox3.NormalImageTint = Color.White;
-            cuiTextBox3.OutlineColor = Color.White;
-            cuiTextBox3.Padding = new Padding(15, 7, 15, 0);
-            cuiTextBox3.PasswordChar = false;
-            cuiTextBox3.PlaceholderColor = Color.FromArgb(64, 64, 64);
-            cuiTextBox3.PlaceholderText = "Email";
-            cuiTextBox3.Rounding = new Padding(6);
-            cuiTextBox3.Size = new Size(172, 28);
-            cuiTextBox3.TabIndex = 3;
-            cuiTextBox3.TextOffset = new Size(0, 0);
-            cuiTextBox3.UnderlinedStyle = true;
-            // 
-            // btnNuevo
-            // 
-            btnNuevo.CheckButton = false;
-            btnNuevo.Checked = false;
-            btnNuevo.CheckedBackground = Color.FromArgb(255, 106, 0);
-            btnNuevo.CheckedForeColor = Color.White;
-            btnNuevo.CheckedImageTint = Color.White;
-            btnNuevo.CheckedOutline = Color.FromArgb(255, 106, 0);
-            btnNuevo.Content = "";
-            btnNuevo.DialogResult = DialogResult.None;
-            btnNuevo.Font = new Font("Microsoft Sans Serif", 9.75F);
-            btnNuevo.ForeColor = Color.Black;
-            btnNuevo.HoverBackground = Color.White;
-            btnNuevo.HoveredImageTint = Color.White;
-            btnNuevo.HoverForeColor = Color.Black;
-            btnNuevo.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            btnNuevo.Image = Properties.Resources.register;
-            btnNuevo.ImageAutoCenter = true;
-            btnNuevo.ImageExpand = new Point(6, 6);
-            btnNuevo.ImageOffset = new Point(0, 0);
-            btnNuevo.Location = new Point(686, 24);
-            btnNuevo.Name = "btnNuevo";
-            btnNuevo.NormalBackground = Color.WhiteSmoke;
-            btnNuevo.NormalForeColor = Color.Black;
-            btnNuevo.NormalImageTint = Color.White;
-            btnNuevo.NormalOutline = Color.WhiteSmoke;
-            btnNuevo.OutlineThickness = 1F;
-            btnNuevo.PressedBackground = Color.WhiteSmoke;
-            btnNuevo.PressedForeColor = Color.FromArgb(32, 32, 32);
-            btnNuevo.PressedImageTint = Color.White;
-            btnNuevo.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            btnNuevo.Rounding = new Padding(4);
-            btnNuevo.Size = new Size(36, 36);
-            btnNuevo.TabIndex = 4;
-            btnNuevo.TextAlignment = StringAlignment.Center;
-            btnNuevo.TextOffset = new Point(0, 0);
-            btnNuevo.Click += btnNuevo_Click;
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.CalendarFont = new Font("Segoe UI", 10F);
-            dateTimePicker1.CalendarForeColor = Color.Gray;
-            dateTimePicker1.Font = new Font("Segoe UI", 10F);
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(14, 72);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(172, 25);
-            dateTimePicker1.TabIndex = 5;
-            // 
-            // dateTimePicker2
-            // 
-            dateTimePicker2.CalendarFont = new Font("Segoe UI", 10F);
-            dateTimePicker2.CalendarForeColor = Color.Gray;
-            dateTimePicker2.Font = new Font("Segoe UI", 10F);
-            dateTimePicker2.Format = DateTimePickerFormat.Short;
-            dateTimePicker2.Location = new Point(192, 72);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(172, 25);
-            dateTimePicker2.TabIndex = 6;
-            // 
-            // btnLimpiar
-            // 
-            btnLimpiar.CheckButton = false;
-            btnLimpiar.Checked = false;
-            btnLimpiar.CheckedBackground = Color.WhiteSmoke;
-            btnLimpiar.CheckedForeColor = Color.FromArgb(51, 51, 51);
-            btnLimpiar.CheckedImageTint = Color.White;
-            btnLimpiar.CheckedOutline = Color.FromArgb(221, 221, 221);
-            btnLimpiar.Content = "Limpiar";
-            btnLimpiar.DialogResult = DialogResult.None;
-            btnLimpiar.Font = new Font("Microsoft Sans Serif", 9.75F);
-            btnLimpiar.ForeColor = Color.FromArgb(51, 51, 51);
-            btnLimpiar.HoverBackground = Color.FromArgb(224, 224, 224);
-            btnLimpiar.HoveredImageTint = Color.White;
-            btnLimpiar.HoverForeColor = Color.FromArgb(34, 34, 34);
-            btnLimpiar.HoverOutline = Color.FromArgb(204, 204, 204);
-            btnLimpiar.Image = null;
-            btnLimpiar.ImageAutoCenter = true;
-            btnLimpiar.ImageExpand = new Point(0, 0);
-            btnLimpiar.ImageOffset = new Point(0, 0);
-            btnLimpiar.Location = new Point(512, 72);
-            btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.NormalBackground = Color.WhiteSmoke;
-            btnLimpiar.NormalForeColor = Color.FromArgb(51, 51, 51);
-            btnLimpiar.NormalImageTint = Color.White;
-            btnLimpiar.NormalOutline = Color.FromArgb(221, 221, 221);
-            btnLimpiar.OutlineThickness = 1F;
-            btnLimpiar.PressedBackground = Color.FromArgb(208, 208, 208);
-            btnLimpiar.PressedForeColor = Color.FromArgb(17, 17, 17);
-            btnLimpiar.PressedImageTint = Color.White;
-            btnLimpiar.PressedOutline = Color.FromArgb(187, 187, 187);
-            btnLimpiar.Rounding = new Padding(4);
-            btnLimpiar.Size = new Size(102, 28);
-            btnLimpiar.TabIndex = 7;
-            btnLimpiar.TextAlignment = StringAlignment.Center;
-            btnLimpiar.TextOffset = new Point(0, 0);
-            btnLimpiar.Click += btnLimpiar_Click;
-            // 
-            // btnBuscar
-            // 
-            btnBuscar.CheckButton = false;
-            btnBuscar.Checked = false;
-            btnBuscar.CheckedBackground = Color.FromArgb(52, 152, 219);
-            btnBuscar.CheckedForeColor = Color.White;
-            btnBuscar.CheckedImageTint = Color.White;
-            btnBuscar.CheckedOutline = Color.FromArgb(52, 152, 219);
-            btnBuscar.Content = "Buscar";
-            btnBuscar.DialogResult = DialogResult.None;
-            btnBuscar.Font = new Font("Microsoft Sans Serif", 9.75F);
-            btnBuscar.ForeColor = Color.White;
-            btnBuscar.HoverBackground = Color.FromArgb(41, 128, 185);
-            btnBuscar.HoveredImageTint = Color.White;
-            btnBuscar.HoverForeColor = Color.White;
-            btnBuscar.HoverOutline = Color.FromArgb(41, 128, 185);
-            btnBuscar.Image = null;
-            btnBuscar.ImageAutoCenter = true;
-            btnBuscar.ImageExpand = new Point(0, 0);
-            btnBuscar.ImageOffset = new Point(0, 0);
-            btnBuscar.Location = new Point(620, 72);
-            btnBuscar.Name = "btnBuscar";
-            btnBuscar.NormalBackground = Color.FromArgb(52, 152, 219);
-            btnBuscar.NormalForeColor = Color.White;
-            btnBuscar.NormalImageTint = Color.White;
-            btnBuscar.NormalOutline = Color.FromArgb(52, 152, 219);
-            btnBuscar.OutlineThickness = 1F;
-            btnBuscar.PressedBackground = Color.FromArgb(36, 114, 164);
-            btnBuscar.PressedForeColor = Color.White;
-            btnBuscar.PressedImageTint = Color.White;
-            btnBuscar.PressedOutline = Color.FromArgb(36, 114, 164);
-            btnBuscar.Rounding = new Padding(4);
-            btnBuscar.Size = new Size(102, 28);
-            btnBuscar.TabIndex = 8;
-            btnBuscar.TextAlignment = StringAlignment.Center;
-            btnBuscar.TextOffset = new Point(0, 0);
-            // 
-            // customerCount
-            // 
-            customerCount.CheckButton = false;
-            customerCount.Checked = false;
-            customerCount.CheckedBackground = Color.FromArgb(255, 106, 0);
-            customerCount.CheckedForeColor = Color.White;
-            customerCount.CheckedImageTint = Color.White;
-            customerCount.CheckedOutline = Color.FromArgb(255, 106, 0);
-            customerCount.Content = "";
-            customerCount.DialogResult = DialogResult.None;
-            customerCount.Font = new Font("Microsoft Sans Serif", 9.75F);
-            customerCount.ForeColor = Color.Black;
-            customerCount.HoverBackground = Color.White;
-            customerCount.HoveredImageTint = Color.White;
-            customerCount.HoverForeColor = Color.Black;
-            customerCount.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            customerCount.Image = Properties.Resources.cliente;
-            customerCount.ImageAutoCenter = true;
-            customerCount.ImageExpand = new Point(6, 6);
-            customerCount.ImageOffset = new Point(0, 0);
-            customerCount.Location = new Point(12, 493);
-            customerCount.Name = "customerCount";
-            customerCount.NormalBackground = SystemColors.Control;
-            customerCount.NormalForeColor = Color.Black;
-            customerCount.NormalImageTint = Color.White;
-            customerCount.NormalOutline = Color.WhiteSmoke;
-            customerCount.OutlineThickness = 1F;
-            customerCount.PressedBackground = Color.WhiteSmoke;
-            customerCount.PressedForeColor = Color.FromArgb(32, 32, 32);
-            customerCount.PressedImageTint = Color.White;
-            customerCount.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            customerCount.Rounding = new Padding(4);
-            customerCount.Size = new Size(26, 26);
-            customerCount.TabIndex = 9;
-            customerCount.TextAlignment = StringAlignment.Center;
-            customerCount.TextOffset = new Point(0, 0);
-            // 
-            // lblCustomerCount
-            // 
-            lblCustomerCount.AutoSize = true;
-            lblCustomerCount.Location = new Point(44, 499);
-            lblCustomerCount.Name = "lblCustomerCount";
-            lblCustomerCount.Size = new Size(38, 15);
-            lblCustomerCount.TabIndex = 10;
-            lblCustomerCount.Text = "label1";
-            // 
-            // CorteApp
+            // Inicio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(734, 520);
-            Controls.Add(lblCustomerCount);
-            Controls.Add(customerCount);
-            Controls.Add(btnBuscar);
-            Controls.Add(btnLimpiar);
-            Controls.Add(dateTimePicker2);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(btnNuevo);
-            Controls.Add(cuiTextBox3);
-            Controls.Add(cuiTextBox2);
-            Controls.Add(txtBuscarNombre);
-            Controls.Add(dgvClientes);
-            Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "CorteApp";
-            Text = "CorteApp";
-            ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
+            ClientSize = new Size(890, 471);
+            Controls.Add(flpanel);
+            IsMdiContainer = true;
+            Name = "Inicio";
+            Text = "Inicio";
+            Load += Inicio_Load;
+            flpanel.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dgvClientes;
-        private CuoreUI.Controls.cuiTextBox txtBuscarNombre;
-        private CuoreUI.Controls.cuiTextBox cuiTextBox2;
-        private CuoreUI.Controls.cuiTextBox cuiTextBox3;
-        private CuoreUI.Controls.cuiButton btnNuevo;
-        private DateTimePicker dateTimePicker1;
-        private DateTimePicker dateTimePicker2;
-        private CuoreUI.Controls.cuiButton btnLimpiar;
-        private CuoreUI.Controls.cuiButton btnBuscar;
-        private DataGridViewTextBoxColumn id;
-        private DataGridViewTextBoxColumn nombre;
-        private DataGridViewTextBoxColumn telefono;
-        private DataGridViewTextBoxColumn email;
-        private DataGridViewTextBoxColumn fechaCreacion;
-        private CuoreUI.Controls.cuiButton customerCount;
-        private Label lblCustomerCount;
+        private FlowLayoutPanel flpanel;
+        private CuoreUI.Controls.cuiButton btnClientes;
+        private CuoreUI.Controls.cuiButton btnInicio;
+        private CuoreUI.Controls.cuiButton btnMenu;
+        private CuoreUI.Controls.cuiButton btnGaleria;
+        private CuoreUI.Controls.cuiButton btnInfo;
     }
 }

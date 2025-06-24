@@ -15,33 +15,38 @@ namespace PeluqueriaApp
 
         private static readonly string connectionString = ConfigurationManager.ConnectionStrings["cadenaConexion"].ConnectionString;
 
-        public DataTable BuscarClientePorNombre(string nombre)
+        public DataTable BuscarCliente(string criterio, string campoBusqueda)
         {
             DataTable table = new DataTable();
 
+            // Validar que el campo de búsqueda sea válido para prevenir SQL injection
+            string[] camposValidos = { "Nombre", "Telefono", "Email" };
+            if (!camposValidos.Contains(campoBusqueda))
+            {
+                throw new ArgumentException("Campo de búsqueda no válido");
+            }
 
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
             {
                 conn.Open();
-                string sql = "SELECT Id, Nombre, Telefono, Email, FechaCreacion " +
-                             "FROM Clientes " +
-                             "WHERE Nombre LIKE @Nombre";
+                string sql = $"SELECT Id, Nombre, Telefono, Email, FechaCreacion " +
+                             $"FROM Clientes " +
+                             $"WHERE {campoBusqueda} LIKE @Criterio";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
                 {
-                    cmd.Parameters.AddWithValue("@Nombre", "%" + nombre + "%");
+                    cmd.Parameters.AddWithValue("@Criterio", "%" + criterio + "%");
 
                     using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd))
                     {
                         adapter.Fill(table);
-
                         return table;
                     }
                 }
             }
         }
 
-        public Entidades.Cliente BuscarClientePorId(int id)
+        public Cliente BuscarClientePorId(int id)
         {
             DataTable table = new DataTable();
 
@@ -49,7 +54,7 @@ namespace PeluqueriaApp
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
             {
                 conn.Open();
-                string sql = "SELECT Id, Nombre, Telefono, Email, FechaCreacion " +
+                string sql = "SELECT Id, Nombre, Telefono, Email, FechaCreacion, Domicilio " +
                              "FROM Clientes " +
                              "WHERE Id = @Id";
 
@@ -68,14 +73,26 @@ namespace PeluqueriaApp
                     {
                         if (reader.Read())
                         {
-                            return new Entidades.Cliente
-                            {
-                                Id = reader.GetInt32(0),
-                                Nombre = reader.GetString(1),
-                                Telefono = reader.IsDBNull(2) ? null : reader.GetString(2),
-                                Email = reader.IsDBNull(3) ? null : reader.GetString(3),
-                                FechaCreacion = reader.GetDateTime(4)
-                            };
+                            Cliente cliente = new Cliente();
+
+                                cliente.Id = reader.GetInt32(0);
+                                cliente.Nombre = reader.GetString(1);
+                                cliente.Telefono = reader.IsDBNull(2) ? null : reader.GetString(2);
+                                cliente.Email = reader.IsDBNull(3) ? null : reader.GetString(3);
+                                cliente.FechaCreacion = reader.GetDateTime(4);
+                                cliente.Domicilio = reader.IsDBNull(5) ? null : reader.GetString(5);
+                       
+
+                            return cliente;
+                            //return new Cliente
+                            //{
+                            //    Id = reader.GetInt32(0),
+                            //    Nombre = reader.GetString(1),
+                            //    Telefono = reader.IsDBNull(2) ? null : reader.GetString(2),
+                            //    Email = reader.IsDBNull(3) ? null : reader.GetString(3),
+                            //    FechaCreacion = reader.GetDateTime(4),
+                            //    Domicilio = reader.IsDBNull(5) ? null : reader.GetString(5)
+                            //};
                         }
                         else
                         {
@@ -224,6 +241,117 @@ namespace PeluqueriaApp
                 }
             }
         }
+
+
+
+        //----------------------------------------------------------------------------------------------------------
+
+        //ESTADISTICAS DE CLIENTES
+
+        public class EstadisticasService
+        {
+
+            public EstadisticasService()
+            {
+           
+            }
+
+            private object EjecutarEscalar(string sql)
+            {
+                using (var conn = new SQLiteConnection(connectionString))
+                using (var cmd = new SQLiteCommand(sql, conn))
+                {
+                    conn.Open();
+                    return cmd.ExecuteScalar();
+                }
+            }
+
+            public int ObtenerTotalClientes()
+            {
+                return Convert.ToInt32(EjecutarEscalar("SELECT COUNT(*) FROM Clientes"));
+            }
+
+            public int ObtenerCortesEsteMes()
+            {
+                return Convert.ToInt32(EjecutarEscalar(@"
+            SELECT COUNT(*) FROM Cortes 
+            WHERE strftime('%Y-%m', FechaCreacion) = strftime('%Y-%m', 'now')
+        "));
+            }
+
+            public int ObtenerTotalCortes()
+            {
+                return Convert.ToInt32(EjecutarEscalar("SELECT COUNT(*) FROM Cortes"));
+            }
+
+            public string ObtenerCorteMasReciente()
+            {
+                using (var conn = new SQLiteConnection(connectionString))
+                using (var cmd = new SQLiteCommand(@"
+            SELECT cl.Nombre || ' ' || cl.Apellido || ' - ' || c.FechaCreacion 
+            FROM Cortes c
+            JOIN Clientes cl ON cl.Id = c.ClienteId
+            ORDER BY c.FechaCreacion DESC LIMIT 1
+        ", conn))
+                {
+                    conn.Open();
+                    return cmd.ExecuteScalar()?.ToString() ?? "N/A";
+                }
+            }
+
+            public int ObtenerNuevosClientesEsteMes()
+            {
+                return Convert.ToInt32(EjecutarEscalar(@"
+            SELECT COUNT(*) FROM Clientes 
+            WHERE strftime('%Y-%m', FechaCreacion) = strftime('%Y-%m', 'now')
+        "));
+            }
+
+            public string ObtenerClienteMasFrecuente()
+            {
+                using (var conn = new SQLiteConnection(connectionString))
+                using (var cmd = new SQLiteCommand(@"
+            SELECT cl.Nombre || ' ' || cl.Apellido || ' (' || COUNT(*) || ' cortes)' 
+            FROM Cortes c
+            JOIN Clientes cl ON cl.Id = c.ClienteId
+            GROUP BY ClienteId
+            ORDER BY COUNT(*) DESC
+            LIMIT 1
+        ", conn))
+                {
+                    conn.Open();
+                    return cmd.ExecuteScalar()?.ToString() ?? "N/A";
+                }
+            }
+
+            public double ObtenerPromedioCortesPorCliente()
+            {
+                using (var conn = new SQLiteConnection(connectionString))
+                using (var cmd = new SQLiteCommand(@"
+            SELECT ROUND(1.0 * COUNT(*) / (SELECT COUNT(*) FROM Clientes), 2)
+            FROM Cortes
+        ", conn))
+                {
+                    conn.Open();
+                    return Convert.ToDouble(cmd.ExecuteScalar());
+                }
+            }
+
+            public int ObtenerDiasDesdeUltimoCorte()
+            {
+                using (var conn = new SQLiteConnection(connectionString))
+                using (var cmd = new SQLiteCommand("SELECT MAX(FechaCreacion) FROM Cortes", conn))
+                {
+                    conn.Open();
+                    object result = cmd.ExecuteScalar();
+                    if (result == DBNull.Value) return -1;
+
+                    DateTime fechaUltimoCorte = Convert.ToDateTime(result);
+                    return (DateTime.Today - fechaUltimoCorte.Date).Days;
+                }
+            }
+        }
+
 
 
     }
