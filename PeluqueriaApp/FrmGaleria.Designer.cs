@@ -30,17 +30,15 @@
         {
             flpGaleria = new FlowLayoutPanel();
             btnExport = new CuoreUI.Controls.cuiButton();
-            flpGaleria.SuspendLayout();
             SuspendLayout();
             // 
             // flpGaleria
             // 
             flpGaleria.AutoScroll = true;
-            flpGaleria.Controls.Add(btnExport);
-            flpGaleria.Dock = DockStyle.Fill;
+            flpGaleria.Dock = DockStyle.Left;
             flpGaleria.Location = new Point(0, 0);
             flpGaleria.Name = "flpGaleria";
-            flpGaleria.Size = new Size(800, 450);
+            flpGaleria.Size = new Size(715, 420);
             flpGaleria.TabIndex = 0;
             // 
             // btnExport
@@ -63,7 +61,7 @@
             btnExport.ImageAutoCenter = true;
             btnExport.ImageExpand = new Point(0, 0);
             btnExport.ImageOffset = new Point(0, 0);
-            btnExport.Location = new Point(3, 3);
+            btnExport.Location = new Point(730, 22);
             btnExport.Name = "btnExport";
             btnExport.NormalBackground = Color.White;
             btnExport.NormalForeColor = Color.Black;
@@ -75,7 +73,7 @@
             btnExport.PressedImageTint = Color.White;
             btnExport.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             btnExport.Rounding = new Padding(8);
-            btnExport.Size = new Size(153, 45);
+            btnExport.Size = new Size(53, 45);
             btnExport.TabIndex = 0;
             btnExport.TextAlignment = StringAlignment.Center;
             btnExport.TextOffset = new Point(0, 0);
@@ -85,12 +83,12 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(795, 420);
+            Controls.Add(btnExport);
             Controls.Add(flpGaleria);
             Name = "FrmGaleria";
             Text = "FrmGaleria";
             Load += FrmGaleria_Load;
-            flpGaleria.ResumeLayout(false);
             ResumeLayout(false);
         }
 

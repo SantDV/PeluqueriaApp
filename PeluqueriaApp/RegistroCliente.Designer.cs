@@ -65,7 +65,7 @@
             txtNombre.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtNombre.PlaceholderText = "Nombre";
             txtNombre.Rounding = new Padding(6);
-            txtNombre.Size = new Size(201, 28);
+            txtNombre.Size = new Size(237, 28);
             txtNombre.TabIndex = 0;
             txtNombre.TextOffset = new Size(0, 0);
             txtNombre.UnderlinedStyle = true;
@@ -93,7 +93,7 @@
             txtTelefono.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtTelefono.PlaceholderText = "Teléfono";
             txtTelefono.Rounding = new Padding(6);
-            txtTelefono.Size = new Size(201, 28);
+            txtTelefono.Size = new Size(237, 28);
             txtTelefono.TabIndex = 1;
             txtTelefono.TextOffset = new Size(0, 0);
             txtTelefono.UnderlinedStyle = true;
@@ -121,7 +121,7 @@
             txtEmail.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtEmail.PlaceholderText = "Email";
             txtEmail.Rounding = new Padding(6);
-            txtEmail.Size = new Size(201, 28);
+            txtEmail.Size = new Size(237, 28);
             txtEmail.TabIndex = 2;
             txtEmail.TextOffset = new Size(0, 0);
             txtEmail.UnderlinedStyle = true;
@@ -130,8 +130,8 @@
             // 
             txtObservacion.Location = new Point(28, 234);
             txtObservacion.Name = "txtObservacion";
-            txtObservacion.Size = new Size(226, 149);
-            txtObservacion.TabIndex = 4;
+            txtObservacion.Size = new Size(237, 149);
+            txtObservacion.TabIndex = 5;
             txtObservacion.Text = "";
             // 
             // btnRegistrar
@@ -154,7 +154,7 @@
             btnRegistrar.ImageAutoCenter = true;
             btnRegistrar.ImageExpand = new Point(0, 0);
             btnRegistrar.ImageOffset = new Point(0, 0);
-            btnRegistrar.Location = new Point(478, 344);
+            btnRegistrar.Location = new Point(562, 355);
             btnRegistrar.Name = "btnRegistrar";
             btnRegistrar.NormalBackground = Color.FromArgb(46, 204, 113);
             btnRegistrar.NormalForeColor = Color.White;
@@ -167,7 +167,7 @@
             btnRegistrar.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             btnRegistrar.Rounding = new Padding(4);
             btnRegistrar.Size = new Size(92, 28);
-            btnRegistrar.TabIndex = 5;
+            btnRegistrar.TabIndex = 6;
             btnRegistrar.TextAlignment = StringAlignment.Center;
             btnRegistrar.TextOffset = new Point(0, 0);
             btnRegistrar.Click += btnRegistrar_Click;
@@ -178,9 +178,9 @@
             ptbCliente.BackgroundImage = Properties.Resources.addPhoto;
             ptbCliente.BackgroundImageLayout = ImageLayout.Center;
             ptbCliente.Cursor = Cursors.Hand;
-            ptbCliente.Location = new Point(320, 43);
+            ptbCliente.Location = new Point(330, 43);
             ptbCliente.Name = "ptbCliente";
-            ptbCliente.Size = new Size(250, 250);
+            ptbCliente.Size = new Size(324, 286);
             ptbCliente.SizeMode = PictureBoxSizeMode.AutoSize;
             ptbCliente.TabIndex = 8;
             ptbCliente.TabStop = false;
@@ -206,7 +206,7 @@
             btnNuevo.ImageAutoCenter = true;
             btnNuevo.ImageExpand = new Point(2, 2);
             btnNuevo.ImageOffset = new Point(0, 0);
-            btnNuevo.Location = new Point(409, 22);
+            btnNuevo.Location = new Point(459, 24);
             btnNuevo.Name = "btnNuevo";
             btnNuevo.NormalBackground = SystemColors.Control;
             btnNuevo.NormalForeColor = Color.Black;
@@ -244,7 +244,7 @@
             btnSizeMode.ImageAutoCenter = true;
             btnSizeMode.ImageExpand = new Point(2, 2);
             btnSizeMode.ImageOffset = new Point(0, 0);
-            btnSizeMode.Location = new Point(439, 22);
+            btnSizeMode.Location = new Point(489, 24);
             btnSizeMode.Name = "btnSizeMode";
             btnSizeMode.NormalBackground = SystemColors.Control;
             btnSizeMode.NormalForeColor = Color.Black;
@@ -282,7 +282,7 @@
             btnFullScreen.ImageAutoCenter = true;
             btnFullScreen.ImageExpand = new Point(2, 2);
             btnFullScreen.ImageOffset = new Point(0, 0);
-            btnFullScreen.Location = new Point(469, 22);
+            btnFullScreen.Location = new Point(519, 24);
             btnFullScreen.Name = "btnFullScreen";
             btnFullScreen.NormalBackground = SystemColors.Control;
             btnFullScreen.NormalForeColor = Color.Black;
@@ -323,8 +323,8 @@
             txtPrecio.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtPrecio.PlaceholderText = "Precio";
             txtPrecio.Rounding = new Padding(6);
-            txtPrecio.Size = new Size(201, 28);
-            txtPrecio.TabIndex = 3;
+            txtPrecio.Size = new Size(237, 28);
+            txtPrecio.TabIndex = 4;
             txtPrecio.TextOffset = new Size(0, 0);
             txtPrecio.UnderlinedStyle = true;
             txtPrecio.Enter += txtPrecio_Enter;
@@ -354,8 +354,8 @@
             txtDomicilio.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtDomicilio.PlaceholderText = "Domicilio";
             txtDomicilio.Rounding = new Padding(6);
-            txtDomicilio.Size = new Size(201, 28);
-            txtDomicilio.TabIndex = 12;
+            txtDomicilio.Size = new Size(237, 28);
+            txtDomicilio.TabIndex = 3;
             txtDomicilio.TextOffset = new Size(0, 0);
             txtDomicilio.UnderlinedStyle = true;
             // 
@@ -363,7 +363,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(582, 384);
+            ClientSize = new Size(666, 406);
             Controls.Add(txtDomicilio);
             Controls.Add(txtPrecio);
             Controls.Add(btnFullScreen);

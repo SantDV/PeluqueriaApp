@@ -32,8 +32,8 @@
             btnInicio = new CuoreUI.Controls.cuiButton();
             btnClientes = new CuoreUI.Controls.cuiButton();
             btnGaleria = new CuoreUI.Controls.cuiButton();
-            btnMenu = new CuoreUI.Controls.cuiButton();
             btnInfo = new CuoreUI.Controls.cuiButton();
+            panelContenedor = new Panel();
             flpanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -42,13 +42,12 @@
             flpanel.Controls.Add(btnInicio);
             flpanel.Controls.Add(btnClientes);
             flpanel.Controls.Add(btnGaleria);
-            flpanel.Controls.Add(btnMenu);
             flpanel.Controls.Add(btnInfo);
             flpanel.Dock = DockStyle.Left;
             flpanel.Location = new Point(0, 0);
             flpanel.Margin = new Padding(0, 3, 3, 3);
             flpanel.Name = "flpanel";
-            flpanel.Size = new Size(122, 471);
+            flpanel.Size = new Size(122, 525);
             flpanel.TabIndex = 0;
             // 
             // btnInicio
@@ -165,45 +164,6 @@
             btnGaleria.TextOffset = new Point(0, 0);
             btnGaleria.Click += btnGaleria_Click;
             // 
-            // btnMenu
-            // 
-            btnMenu.CheckButton = false;
-            btnMenu.Checked = false;
-            btnMenu.CheckedBackground = Color.FromArgb(255, 106, 0);
-            btnMenu.CheckedForeColor = Color.White;
-            btnMenu.CheckedImageTint = Color.White;
-            btnMenu.CheckedOutline = Color.FromArgb(255, 106, 0);
-            btnMenu.Content = "";
-            btnMenu.DialogResult = DialogResult.None;
-            btnMenu.Font = new Font("Microsoft Sans Serif", 9.75F);
-            btnMenu.ForeColor = Color.Black;
-            btnMenu.HoverBackground = Color.White;
-            btnMenu.HoveredImageTint = Color.White;
-            btnMenu.HoverForeColor = Color.Black;
-            btnMenu.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            btnMenu.Image = Properties.Resources.arrow_menu_close;
-            btnMenu.ImageAutoCenter = true;
-            btnMenu.ImageExpand = new Point(0, 0);
-            btnMenu.ImageOffset = new Point(0, 0);
-            btnMenu.Location = new Point(95, 156);
-            btnMenu.Margin = new Padding(95, 3, 3, 3);
-            btnMenu.Name = "btnMenu";
-            btnMenu.NormalBackground = Color.White;
-            btnMenu.NormalForeColor = Color.Black;
-            btnMenu.NormalImageTint = Color.White;
-            btnMenu.NormalOutline = Color.FromArgb(64, 128, 128, 128);
-            btnMenu.OutlineThickness = 1F;
-            btnMenu.PressedBackground = Color.WhiteSmoke;
-            btnMenu.PressedForeColor = Color.FromArgb(32, 32, 32);
-            btnMenu.PressedImageTint = Color.White;
-            btnMenu.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            btnMenu.Rounding = new Padding(8);
-            btnMenu.Size = new Size(22, 25);
-            btnMenu.TabIndex = 2;
-            btnMenu.TextAlignment = StringAlignment.Center;
-            btnMenu.TextOffset = new Point(0, 0);
-            btnMenu.Click += btnMenu_Click;
-            // 
             // btnInfo
             // 
             btnInfo.CheckButton = false;
@@ -224,8 +184,8 @@
             btnInfo.ImageAutoCenter = true;
             btnInfo.ImageExpand = new Point(0, 0);
             btnInfo.ImageOffset = new Point(0, 0);
-            btnInfo.Location = new Point(3, 442);
-            btnInfo.Margin = new Padding(3, 258, 3, 3);
+            btnInfo.Location = new Point(3, 498);
+            btnInfo.Margin = new Padding(3, 345, 3, 3);
             btnInfo.Name = "btnInfo";
             btnInfo.NormalBackground = Color.White;
             btnInfo.NormalForeColor = Color.Black;
@@ -243,13 +203,23 @@
             btnInfo.TextOffset = new Point(0, 0);
             btnInfo.Click += btnInfo_Click;
             // 
+            // panelContenedor
+            // 
+            panelContenedor.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panelContenedor.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            panelContenedor.BackColor = SystemColors.ActiveCaption;
+            panelContenedor.Location = new Point(124, 54);
+            panelContenedor.Name = "panelContenedor";
+            panelContenedor.Size = new Size(811, 459);
+            panelContenedor.TabIndex = 1;
+            // 
             // Inicio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(890, 471);
+            ClientSize = new Size(935, 525);
+            Controls.Add(panelContenedor);
             Controls.Add(flpanel);
-            IsMdiContainer = true;
             Name = "Inicio";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Inicio";
@@ -263,8 +233,8 @@
         private FlowLayoutPanel flpanel;
         private CuoreUI.Controls.cuiButton btnClientes;
         private CuoreUI.Controls.cuiButton btnInicio;
-        private CuoreUI.Controls.cuiButton btnMenu;
         private CuoreUI.Controls.cuiButton btnGaleria;
         private CuoreUI.Controls.cuiButton btnInfo;
+        private Panel panelContenedor;
     }
 }

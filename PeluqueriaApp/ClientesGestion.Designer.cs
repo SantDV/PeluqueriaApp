@@ -43,8 +43,7 @@
             dateTimePicker2 = new DateTimePicker();
             btnLimpiar = new CuoreUI.Controls.cuiButton();
             btnBuscar = new CuoreUI.Controls.cuiButton();
-            customerCount = new CuoreUI.Controls.cuiButton();
-            lblCustomerCount = new Label();
+            lblCargarTodo = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
             // 
@@ -54,7 +53,7 @@
             dgvClientes.Columns.AddRange(new DataGridViewColumn[] { id, nombre, telefono, email, fechaCreacion });
             dgvClientes.Location = new Point(12, 114);
             dgvClientes.Name = "dgvClientes";
-            dgvClientes.Size = new Size(706, 373);
+            dgvClientes.Size = new Size(787, 333);
             dgvClientes.TabIndex = 0;
             dgvClientes.CellClick += dgvClientes_CellClick;
             // 
@@ -190,7 +189,7 @@
             btnNuevo.ImageAutoCenter = true;
             btnNuevo.ImageExpand = new Point(6, 6);
             btnNuevo.ImageOffset = new Point(0, 0);
-            btnNuevo.Location = new Point(682, 24);
+            btnNuevo.Location = new Point(763, 24);
             btnNuevo.Name = "btnNuevo";
             btnNuevo.NormalBackground = Color.WhiteSmoke;
             btnNuevo.NormalForeColor = Color.Black;
@@ -250,7 +249,7 @@
             btnLimpiar.ImageAutoCenter = true;
             btnLimpiar.ImageExpand = new Point(0, 0);
             btnLimpiar.ImageOffset = new Point(0, 0);
-            btnLimpiar.Location = new Point(508, 72);
+            btnLimpiar.Location = new Point(589, 72);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.NormalBackground = Color.WhiteSmoke;
             btnLimpiar.NormalForeColor = Color.FromArgb(51, 51, 51);
@@ -288,7 +287,7 @@
             btnBuscar.ImageAutoCenter = true;
             btnBuscar.ImageExpand = new Point(0, 0);
             btnBuscar.ImageOffset = new Point(0, 0);
-            btnBuscar.Location = new Point(616, 72);
+            btnBuscar.Location = new Point(697, 72);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.NormalBackground = Color.FromArgb(52, 152, 219);
             btnBuscar.NormalForeColor = Color.White;
@@ -305,59 +304,25 @@
             btnBuscar.TextAlignment = StringAlignment.Center;
             btnBuscar.TextOffset = new Point(0, 0);
             // 
-            // customerCount
+            // lblCargarTodo
             // 
-            customerCount.CheckButton = false;
-            customerCount.Checked = false;
-            customerCount.CheckedBackground = Color.FromArgb(255, 106, 0);
-            customerCount.CheckedForeColor = Color.White;
-            customerCount.CheckedImageTint = Color.White;
-            customerCount.CheckedOutline = Color.FromArgb(255, 106, 0);
-            customerCount.Content = "";
-            customerCount.DialogResult = DialogResult.None;
-            customerCount.Font = new Font("Microsoft Sans Serif", 9.75F);
-            customerCount.ForeColor = Color.Black;
-            customerCount.HoverBackground = Color.White;
-            customerCount.HoveredImageTint = Color.White;
-            customerCount.HoverForeColor = Color.Black;
-            customerCount.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            customerCount.Image = Properties.Resources.cliente;
-            customerCount.ImageAutoCenter = true;
-            customerCount.ImageExpand = new Point(6, 6);
-            customerCount.ImageOffset = new Point(0, 0);
-            customerCount.Location = new Point(12, 493);
-            customerCount.Name = "customerCount";
-            customerCount.NormalBackground = SystemColors.Control;
-            customerCount.NormalForeColor = Color.Black;
-            customerCount.NormalImageTint = Color.White;
-            customerCount.NormalOutline = Color.WhiteSmoke;
-            customerCount.OutlineThickness = 1F;
-            customerCount.PressedBackground = Color.WhiteSmoke;
-            customerCount.PressedForeColor = Color.FromArgb(32, 32, 32);
-            customerCount.PressedImageTint = Color.White;
-            customerCount.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            customerCount.Rounding = new Padding(4);
-            customerCount.Size = new Size(26, 26);
-            customerCount.TabIndex = 9;
-            customerCount.TextAlignment = StringAlignment.Center;
-            customerCount.TextOffset = new Point(0, 0);
-            // 
-            // lblCustomerCount
-            // 
-            lblCustomerCount.AutoSize = true;
-            lblCustomerCount.Location = new Point(44, 499);
-            lblCustomerCount.Name = "lblCustomerCount";
-            lblCustomerCount.Size = new Size(38, 15);
-            lblCustomerCount.TabIndex = 10;
-            lblCustomerCount.Text = "label1";
+            lblCargarTodo.AutoSize = true;
+            lblCargarTodo.Cursor = Cursors.Hand;
+            lblCargarTodo.Location = new Point(372, 80);
+            lblCargarTodo.Name = "lblCargarTodo";
+            lblCargarTodo.Size = new Size(95, 15);
+            lblCargarTodo.TabIndex = 23;
+            lblCargarTodo.Text = "[+] Cargar Todos";
+            lblCargarTodo.Click += lblCargarTodo_Click;
+            lblCargarTodo.MouseEnter += lblCargarTodo_MouseEnter;
+            lblCargarTodo.MouseLeave += lblCargarTodo_MouseLeave;
             // 
             // ClientesGestion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(730, 520);
-            Controls.Add(lblCustomerCount);
-            Controls.Add(customerCount);
+            ClientSize = new Size(811, 459);
+            Controls.Add(lblCargarTodo);
             Controls.Add(btnBuscar);
             Controls.Add(btnLimpiar);
             Controls.Add(dateTimePicker2);
@@ -392,7 +357,6 @@
         private DataGridViewTextBoxColumn telefono;
         private DataGridViewTextBoxColumn email;
         private DataGridViewTextBoxColumn fechaCreacion;
-        private CuoreUI.Controls.cuiButton customerCount;
-        private Label lblCustomerCount;
+        private Label lblCargarTodo;
     }
 }

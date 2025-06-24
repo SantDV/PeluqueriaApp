@@ -46,6 +46,31 @@ namespace PeluqueriaApp
             }
         }
 
+        public DataTable CargarTodosLosClientes()
+        {
+            DataTable table = new DataTable();
+
+         
+
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+                string sql = "SELECT Id, Nombre, Telefono, Email, FechaCreacion FROM Clientes ORDER BY fechaCreacion DESC";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
+                {
+
+
+                    using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd))
+                    {
+                        adapter.Fill(table);
+                        return table;
+                    }
+                }
+            }
+        }
+
+
         public Cliente BuscarClientePorId(int id)
         {
             DataTable table = new DataTable();
@@ -288,7 +313,7 @@ namespace PeluqueriaApp
             {
                 using (var conn = new SQLiteConnection(connectionString))
                 using (var cmd = new SQLiteCommand(@"
-            SELECT cl.Nombre || ' ' || cl.Apellido || ' - ' || c.FechaCreacion 
+            SELECT cl.Nombre || ' - ' || c.FechaCreacion 
             FROM Cortes c
             JOIN Clientes cl ON cl.Id = c.ClienteId
             ORDER BY c.FechaCreacion DESC LIMIT 1
@@ -311,7 +336,7 @@ namespace PeluqueriaApp
             {
                 using (var conn = new SQLiteConnection(connectionString))
                 using (var cmd = new SQLiteCommand(@"
-            SELECT cl.Nombre || ' ' || cl.Apellido || ' (' || COUNT(*) || ' cortes)' 
+            SELECT cl.Nombre || ' (' || COUNT(*) || ' cortes)' 
             FROM Cortes c
             JOIN Clientes cl ON cl.Id = c.ClienteId
             GROUP BY ClienteId

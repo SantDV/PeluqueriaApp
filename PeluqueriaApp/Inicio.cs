@@ -18,26 +18,27 @@ namespace PeluqueriaApp
             InitializeComponent();
         }
 
-        private void AbrirFormulario<MiForm>() where MiForm : Form, new()
+        private void AbrirFormulario<Formulario>() where Formulario : Form, new()
         {
-            // Busca si ya hay una instancia del formulario abierto
-            MiForm form = this.MdiChildren.OfType<MiForm>().FirstOrDefault();
-
-            // Si no hay una instancia abierta, crea una nueva
+            Form form = panelContenedor.Controls.OfType<Formulario>().FirstOrDefault();
             if (form == null)
             {
-                form = new MiForm();
-                //form.TopLevel = false;
-                //form.FormBorderStyle = FormBorderStyle.None;
-                form.MdiParent = this;  // Establece el formulario principal como el padre MDI
+                form = new Formulario();
+                form.TopLevel = false;
+                form.FormBorderStyle = FormBorderStyle.None;
                 form.Dock = DockStyle.Fill;
-                form.FormClosed += (s, args) => form = null;  // Maneja el evento de cierre del formulario para liberar la referencia
+               
+
+                panelContenedor.Controls.Clear(); // Opcional si querés un solo formulario a la vez
+                panelContenedor.Controls.Add(form);
                 form.Show();
             }
-
-            // Trae el formulario al frente
-            form.BringToFront();
+            else
+            {
+                form.BringToFront();
+            }
         }
+
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
@@ -75,39 +76,7 @@ namespace PeluqueriaApp
             AbrirFormulario<FrmEstadisticas>();
         }
 
-        private void btnMenu_Click(object sender, EventArgs e)
-        {
-            flpanel.Width = flpanel.Width == 122 ? 42 : 122;
-            btnMenu.Margin = new Padding(btnMenu.Margin.Left == 95 ? 3 : 95, btnMenu.Margin.Top, btnMenu.Margin.Right, btnMenu.Margin.Bottom);
-            if (btnMenu.Margin.Left == 95)
-            {
-                btnMenu.Image = Properties.Resources.arrow_menu_close; // por ejemplo: un ícono de flecha izquierda
-            }
-            else
-            {
-                btnMenu.Image = Properties.Resources.arrow_menu_open; // por ejemplo: ícono de flecha derecha
-            }
-
-            btnClientes.Width = btnClientes.Width == 115 ? 38 : 115;
-            btnInicio.Width = btnInicio.Width == 115 ? 38 : 115;
-            btnGaleria.Width = btnInicio.Width == 115 ? 38 : 115;
-
-            // Solución: Crear una nueva instancia de Padding para modificar la propiedad Rounding
-            var rounding = btnInicio.Rounding;
-            rounding = new Padding(8, 8, 8, 8);
-            btnInicio.Rounding = rounding;
-            btnInicio.Invalidate();
-
-            var rounding1 = btnClientes.Rounding;
-            rounding1 = new Padding(8, 8, 8, 8);
-            btnClientes.Rounding = rounding1;
-            btnClientes.Invalidate();
-
-            var rounding2 = btnGaleria.Rounding;
-            rounding1 = new Padding(8, 8, 8, 8);
-            btnGaleria.Rounding = rounding2;
-            btnGaleria.Invalidate();
-        }
+        
 
         private void btnGaleria_Click(object sender, EventArgs e)
         {

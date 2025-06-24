@@ -355,7 +355,7 @@ namespace PeluqueriaApp
             btnGuardar.ImageAutoCenter = true;
             btnGuardar.ImageExpand = new Point(10, 10);
             btnGuardar.ImageOffset = new Point(0, 0);
-            btnGuardar.Location = new Point(330, 9);
+            btnGuardar.Location = new Point(217, 9);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.NormalBackground = Color.White;
             btnGuardar.NormalForeColor = Color.Black;

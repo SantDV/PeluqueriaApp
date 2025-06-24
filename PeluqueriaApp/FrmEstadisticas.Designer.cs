@@ -34,7 +34,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(734, 520);
+            ClientSize = new Size(795, 420);
             Name = "FrmEstadisticas";
             Text = "FrmEstadisticas";
             Load += FrmEstadisticas_Load;

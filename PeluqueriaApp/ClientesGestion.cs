@@ -155,23 +155,23 @@ namespace PeluqueriaApp
         private void ConfigurarMonitoreoCambios()
         {
             // Todos estos eventos llamarán a ActualizarConteoClientes()
-            dgvClientes.CellValueChanged += (s, e) => ActualizarConteoClientes();
-            dgvClientes.RowsAdded += (s, e) => ActualizarConteoClientes();
-            dgvClientes.RowsRemoved += (s, e) => ActualizarConteoClientes();
-            dgvClientes.DataSourceChanged += (s, e) => ActualizarConteoClientes();
+            //dgvClientes.CellValueChanged += (s, e) => ActualizarConteoClientes();
+            //dgvClientes.RowsAdded += (s, e) => ActualizarConteoClientes();
+            //dgvClientes.RowsRemoved += (s, e) => ActualizarConteoClientes();
+            //dgvClientes.DataSourceChanged += (s, e) => ActualizarConteoClientes();
         }
 
-        private void ActualizarConteoClientes()
-        {
-            int filasValidas = dgvClientes.Rows
-                .Cast<DataGridViewRow>()
-                .Count(r => !r.IsNewRow && r.Cells[0].Value != null);
+        //private void ActualizarConteoClientes()
+        //{
+        //    int filasValidas = dgvClientes.Rows
+        //        .Cast<DataGridViewRow>()
+        //        .Count(r => !r.IsNewRow && r.Cells[0].Value != null);
 
-            lblCustomerCount.Text = filasValidas.ToString();
+        //    lblCustomerCount.Text = filasValidas.ToString();
 
-            // Opcional: Cambiar color si hay muchas filas
-            lblCustomerCount.ForeColor = filasValidas > 10 ? Color.Red : Color.Black;
-        }
+        //    // Opcional: Cambiar color si hay muchas filas
+        //    lblCustomerCount.ForeColor = filasValidas > 10 ? Color.Red : Color.Black;
+        //}
 
         private void txtBuscarTelefono_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -216,6 +216,37 @@ namespace PeluqueriaApp
                     MessageBox.Show("Error al buscar cliente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
+            }
+        }
+
+
+
+        private void lblCargarTodo_MouseLeave(object sender, EventArgs e)
+        {
+            lblCargarTodo.ForeColor = Color.Black;
+        }
+
+        private void lblCargarTodo_MouseEnter(object sender, EventArgs e)
+        {
+            lblCargarTodo.ForeColor = Color.Silver;
+        }
+
+        private void lblCargarTodo_Click(object sender, EventArgs e)
+        {
+
+            DbConn dbConn = new DbConn();
+
+            try
+            {
+
+                table = dbConn.CargarTodosLosClientes();
+                view = table.DefaultView;
+
+                dgvClientes.DataSource = view;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar cliente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -38,7 +38,7 @@
             flpGaleria.Dock = DockStyle.Left;
             flpGaleria.Location = new Point(0, 0);
             flpGaleria.Name = "flpGaleria";
-            flpGaleria.Size = new Size(751, 450);
+            flpGaleria.Size = new Size(751, 420);
             flpGaleria.TabIndex = 0;
             // 
             // btnExport
@@ -83,7 +83,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(795, 420);
             Controls.Add(btnExport);
             Controls.Add(flpGaleria);
             Name = "FrmGaleriaTodos";
