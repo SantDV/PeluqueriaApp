@@ -68,6 +68,17 @@ namespace PeluqueriaApp
             this.Controls.Add(linea);
             this.Controls.Add(lblDev);
             this.Controls.Add(btnCerrar);
+
+
+            Label lblVersion = new Label();
+            lblVersion.Text = $"Versión: {AppInfo.Version}";
+            lblVersion.Font = new Font("Segoe UI", 9, FontStyle.Italic);
+            lblVersion.ForeColor = Color.Gray;
+            lblVersion.AutoSize = true;
+            lblVersion.Location = new Point(25, this.ClientSize.Height - 30);
+            lblVersion.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            this.Controls.Add(lblVersion);
+
         }
 
         private void Info_Load(object sender, EventArgs e)

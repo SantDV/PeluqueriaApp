@@ -52,3 +52,4 @@ C:\Users\SANTIAGO\source\repos\PeluqueriaApp\PeluqueriaApp\obj\Debug\net8.0-wind
 C:\Users\SANTIAGO\source\repos\PeluqueriaApp\PeluqueriaApp\obj\Debug\net8.0-windows\PeluqueriaApp.genruntimeconfig.cache
 C:\Users\SANTIAGO\source\repos\PeluqueriaApp\PeluqueriaApp\obj\Debug\net8.0-windows\ref\PeluqueriaApp.dll
 C:\Users\SANTIAGO\source\repos\PeluqueriaApp\PeluqueriaApp\obj\Debug\net8.0-windows\PeluqueriaApp.AcercaDe.resources
+C:\Users\SANTIAGO\source\repos\PeluqueriaApp\PeluqueriaApp\obj\Debug\net8.0-windows\PeluqueriaApp.FrmSplash.resources

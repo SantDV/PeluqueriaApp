@@ -251,6 +251,7 @@
             Controls.Add(flpanel);
             IsMdiContainer = true;
             Name = "Inicio";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Inicio";
             Load += Inicio_Load;
             flpanel.ResumeLayout(false);
