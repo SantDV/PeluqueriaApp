@@ -18,10 +18,11 @@ namespace PeluqueriaApp
     {
 
         private static readonly string connectionString = ConfigurationManager.ConnectionStrings["cadenaConexion"].ConnectionString;
-
+        List<byte> imageList = new List<byte>();
         public RegistroCliente()
         {
             InitializeComponent();
+
         }
 
         private byte[] imagenBytes;
@@ -149,29 +150,40 @@ namespace PeluqueriaApp
 
         private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter && !string.IsNullOrEmpty(txtPrecio.Content))
+            if (e.KeyChar == (char)Keys.Enter && !string.IsNullOrWhiteSpace(txtPrecio.Content))
             {
                 FormatearAPesosArgentinos();
-                e.Handled = true; // Evitar el "beep" al presionar Enter
+                e.Handled = true;
             }
-        }
-
-        private decimal _valorNumerico; // Variable de clase
-
-        private void FormatearAPesosArgentinos()
-        {
-            if (decimal.TryParse(txtPrecio.Content, NumberStyles.Any, CultureInfo.GetCultureInfo("es-AR"), out decimal nuevoValor))
-            {
-                _valorNumerico = nuevoValor;
-            }
-
-            txtPrecio.Content = _valorNumerico.ToString("C2", CultureInfo.GetCultureInfo("es-AR"));
         }
 
         private void txtPrecio_Leave(object sender, EventArgs e)
         {
             FormatearAPesosArgentinos();
         }
+        private decimal _valorNumerico; // Variable de clase
+
+        private void FormatearAPesosArgentinos()
+        {
+            // Cultura argentina
+            var cultura = CultureInfo.GetCultureInfo("es-AR");
+
+            // Limpiar símbolo de moneda y espacios
+            string texto = txtPrecio.Content
+                .Replace("$", "")
+                .Replace("ARS", "")
+                .Trim();
+
+            if (decimal.TryParse(texto, NumberStyles.Any, cultura, out decimal monto))
+            {
+                txtPrecio.Content = monto.ToString("C2", cultura); // "$ 1.000,00"
+            }
+            else
+            {
+                txtPrecio.Content = 0m.ToString("C2", cultura); // "$ 0,00"
+            }
+        }
+
 
         private void RegistroCliente_Load(object sender, EventArgs e)
         {

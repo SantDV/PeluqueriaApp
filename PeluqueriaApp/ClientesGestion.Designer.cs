@@ -249,7 +249,7 @@
             btnLimpiar.ImageAutoCenter = true;
             btnLimpiar.ImageExpand = new Point(0, 0);
             btnLimpiar.ImageOffset = new Point(0, 0);
-            btnLimpiar.Location = new Point(589, 72);
+            btnLimpiar.Location = new Point(551, 72);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.NormalBackground = Color.WhiteSmoke;
             btnLimpiar.NormalForeColor = Color.FromArgb(51, 51, 51);
@@ -287,7 +287,7 @@
             btnBuscar.ImageAutoCenter = true;
             btnBuscar.ImageExpand = new Point(0, 0);
             btnBuscar.ImageOffset = new Point(0, 0);
-            btnBuscar.Location = new Point(697, 72);
+            btnBuscar.Location = new Point(551, 32);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.NormalBackground = Color.FromArgb(52, 152, 219);
             btnBuscar.NormalForeColor = Color.White;
@@ -303,6 +303,7 @@
             btnBuscar.TabIndex = 8;
             btnBuscar.TextAlignment = StringAlignment.Center;
             btnBuscar.TextOffset = new Point(0, 0);
+            btnBuscar.Click += btnBuscar_Click;
             // 
             // lblCargarTodo
             // 

@@ -24,19 +24,22 @@ namespace PeluqueriaApp
             {
                 var stats = new EstadisticasService();
 
-                // Datos
+                // Plan en pseudocódigo:
+                // 1. Revisar cada llamada a stats.ObtenerXxx() para detectar posibles valores null o DBNull.
+                // 2. Para cada valor, comprobar si es null o DBNull antes de llamar a ToString() o concatenar.
+                // 3. Si es null o DBNull, mostrar un valor por defecto como "N/A".
+                // 4. Modificar la creación del array 'estadisticas' para aplicar esta lógica.
+
                 var estadisticas = new (string Titulo, string Valor)[]
                 {
- 
-                    ("Total de clientes", stats.ObtenerTotalClientes().ToString()),
-                    ("Total de cortes", stats.ObtenerTotalCortes().ToString()),
-                    ("Cortes este mes", stats.ObtenerCortesEsteMes().ToString()),
-                    ("Último corte", stats.ObtenerCorteMasReciente()),
-                    ("Nuevos clientes este mes", stats.ObtenerNuevosClientesEsteMes().ToString()),
-                    ("Cliente más frecuente", stats.ObtenerClienteMasFrecuente()),
-                    ("Promedio de cortes por cliente", stats.ObtenerPromedioCortesPorCliente().ToString("0.00")),
-                    ("Días desde último corte", stats.ObtenerDiasDesdeUltimoCorte() + " días"),
-
+                        ("Total de clientes", stats.ObtenerTotalClientes() == null ? "N/A" : stats.ObtenerTotalClientes().ToString()),
+                        ("Total de cortes", stats.ObtenerTotalCortes() == null ? "N/A" : stats.ObtenerTotalCortes().ToString()),
+                        ("Cortes este mes", stats.ObtenerCortesEsteMes() == null ? "N/A" : stats.ObtenerCortesEsteMes().ToString()),
+                        ("Último corte", stats.ObtenerCorteMasReciente() == null ? "N/A" : stats.ObtenerCorteMasReciente().ToString()),
+                        ("Nuevos clientes este mes", stats.ObtenerNuevosClientesEsteMes() == null ? "N/A" : stats.ObtenerNuevosClientesEsteMes().ToString()),
+                        ("Cliente más frecuente", stats.ObtenerClienteMasFrecuente() == null ? "N/A" : stats.ObtenerClienteMasFrecuente().ToString()),
+                        ("Promedio de cortes por cliente", stats.ObtenerPromedioCortesPorCliente() == null ? "N/A" : ((double)stats.ObtenerPromedioCortesPorCliente()).ToString("0.00")),
+                        ("Días desde último corte", stats.ObtenerDiasDesdeUltimoCorte() == null ? "N/A" : stats.ObtenerDiasDesdeUltimoCorte() + " días"),
                 };
 
                 // Configurar TableLayoutPanel

@@ -22,6 +22,7 @@ namespace PeluqueriaApp
         Cliente cliente = new();
         DataTable table = new();
         DataView view = new();
+        List<byte> imageList = new List<byte>();
 
         DbConn dbConn = new DbConn();
         int idCorte = -1;
@@ -282,27 +283,10 @@ namespace PeluqueriaApp
 
         private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter && !string.IsNullOrEmpty(txtPrecio.Content))
+            if (e.KeyChar == (char)Keys.Enter && !string.IsNullOrWhiteSpace(txtPrecio.Content))
             {
                 FormatearAPesosArgentinos();
-                e.Handled = true; // Evitar el "beep" al presionar Enter
-            }
-        }
-
-        private void FormatearAPesosArgentinos()
-        {
-            // Obtener el texto sin símbolos no numéricos
-            string texto = txtPrecio.Content.Replace("$", "").Replace(".", "").Trim();
-
-            if (decimal.TryParse(texto, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal monto))
-            {
-                // Formatear como pesos argentinos: $ 1.234,56
-                txtPrecio.Content = monto.ToString("C2", CultureInfo.GetCultureInfo("es-AR"));
-            }
-            else
-            {
-                // Si no es un número válido, mostrar $ 0,00
-                txtPrecio.Content = 0m.ToString("C2", CultureInfo.GetCultureInfo("es-AR"));
+                e.Handled = true;
             }
         }
 
@@ -310,6 +294,28 @@ namespace PeluqueriaApp
         {
             FormatearAPesosArgentinos();
         }
+
+        private void FormatearAPesosArgentinos()
+        {
+            // Cultura argentina
+            var cultura = CultureInfo.GetCultureInfo("es-AR");
+
+            // Limpiar símbolo de moneda y espacios
+            string texto = txtPrecio.Content
+                .Replace("$", "")
+                .Replace("ARS", "")
+                .Trim();
+
+            if (decimal.TryParse(texto, NumberStyles.Any, cultura, out decimal monto))
+            {
+                txtPrecio.Content = monto.ToString("C2", cultura); // "$ 1.000,00"
+            }
+            else
+            {
+                txtPrecio.Content = 0m.ToString("C2", cultura); // "$ 0,00"
+            }
+        }
+
 
 
 

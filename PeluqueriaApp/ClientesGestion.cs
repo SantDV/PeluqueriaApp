@@ -109,22 +109,56 @@ namespace PeluqueriaApp
         {
             if (e.KeyChar == (char)Keys.Enter && !string.IsNullOrEmpty(txtBuscarNombre.Content))
             {
-                DbConn dbConn = new DbConn();
+                BuscarCliente();
 
-                try
+            }
+        }
+
+        void BuscarPorNombre()
+        {
+            BuscarCliente();
+        }
+
+        void BuscarCliente()
+        {
+            DbConn dbConn = new DbConn();
+
+            try
+            {
+                string valorBusqueda = "";
+                string tipoBusqueda = "";
+
+                // Determinar qué campo usar para la búsqueda
+                if (!string.IsNullOrWhiteSpace(txtBuscarNombre.Content))
                 {
-
-
-                    table = dbConn.BuscarCliente(txtBuscarNombre.Content.Trim(), "Nombre");
-                    view = table.DefaultView;
-
-                    dgvClientes.DataSource = view;
+                    valorBusqueda = txtBuscarNombre.Content.Trim();
+                    tipoBusqueda = "Nombre";
                 }
-                catch (Exception ex)
+                else if (!string.IsNullOrWhiteSpace(txtBuscarTelefono.Content))
                 {
-                    MessageBox.Show("Error al buscar cliente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    valorBusqueda = txtBuscarTelefono.Content.Trim();
+                    tipoBusqueda = "Telefono";
+                }
+                else if (!string.IsNullOrWhiteSpace(txtBuscarEmail.Content))
+                {
+                    valorBusqueda = txtBuscarEmail.Content.Trim();
+                    tipoBusqueda = "Email";
+                }
+                else
+                {
+                    MessageBox.Show("Ingrese al menos un criterio de búsqueda (Nombre, Teléfono o Email).", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return; // Salir si no hay nada que buscar
                 }
 
+                // Realizar la búsqueda
+                table = dbConn.BuscarCliente(valorBusqueda, tipoBusqueda);
+                view = table.DefaultView;
+
+                dgvClientes.DataSource = view;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar cliente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -177,45 +211,18 @@ namespace PeluqueriaApp
         {
             if (e.KeyChar == (char)Keys.Enter && !string.IsNullOrEmpty(txtBuscarTelefono.Content))
             {
-                DbConn dbConn = new DbConn();
-
-                try
-                {
-
-
-                    table = dbConn.BuscarCliente(txtBuscarTelefono.Content.Trim(), "Telefono");
-                    view = table.DefaultView;
-
-                    dgvClientes.DataSource = view;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al buscar cliente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
+                BuscarCliente();
             }
+            
         }
+
+
 
         private void txtBuscarEmail_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter && !string.IsNullOrEmpty(txtBuscarEmail.Content))
             {
-                DbConn dbConn = new DbConn();
-
-                try
-                {
-
-
-                    table = dbConn.BuscarCliente(txtBuscarEmail.Content.Trim(), "Email");
-                    view = table.DefaultView;
-
-                    dgvClientes.DataSource = view;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al buscar cliente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
+                BuscarCliente();
             }
         }
 
@@ -248,6 +255,11 @@ namespace PeluqueriaApp
             {
                 MessageBox.Show("Error al buscar cliente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            BuscarCliente();
         }
     }
 }

@@ -36,10 +36,10 @@ namespace PeluqueriaApp
             using (var conn = new SQLiteConnection(conexion))
             {
                 conn.Open();
-                string sql = "SELECT Foto, FechaCreacion FROM Cortes WHERE Foto IS NOT NULL ORDER BY FechaCreacion DESC";
+                string sql = "SELECT Foto, FechaCreacion FROM Cortes WHERE ClienteId = @ClienteId and Foto IS NOT NULL ORDER BY FechaCreacion DESC";
                 using (var cmd = new SQLiteCommand(sql, conn))
                 {
-                    //cmd.Parameters.AddWithValue("@ClienteId", cliente.Id);
+                    cmd.Parameters.AddWithValue("@ClienteId", cliente.Id);
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
