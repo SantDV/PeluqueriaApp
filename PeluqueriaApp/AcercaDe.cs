@@ -24,7 +24,7 @@ namespace PeluqueriaApp
 
             // Etiqueta título
             Label lblTitulo = new Label();
-            lblTitulo.Text = "💈 LEMOTIFF - Sergio Coiffeur";
+            lblTitulo.Text = "✂ LEMOTIFF - Sergio Coiffeur";
             lblTitulo.Font = new Font("Segoe UI", 14, FontStyle.Bold);
             lblTitulo.ForeColor = Color.DarkMagenta;
             lblTitulo.AutoSize = true;

@@ -71,6 +71,33 @@ namespace PeluqueriaApp
         }
 
 
+        public int ObtenerUltimoCorteId(int clienteId)
+        {
+            using (var conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+                string sql = @"SELECT Id FROM Cortes 
+                       WHERE ClienteId = @ClienteId 
+                       ORDER BY FechaCreacion DESC 
+                       LIMIT 1";
+
+                using (var cmd = new SQLiteCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@ClienteId", clienteId);
+
+                    object result = cmd.ExecuteScalar();
+                    if (result != null && int.TryParse(result.ToString(), out int corteId))
+                    {
+                        return corteId;
+                    }
+                }
+            }
+
+            return -1; // Si no se encontró corte
+        }
+
+
+
         public Cliente BuscarClientePorId(int id)
         {
             DataTable table = new DataTable();
@@ -157,49 +184,36 @@ namespace PeluqueriaApp
         }
 
 
-        public Image MostrarFotoDelCorte(int clienteId = -1, int corteId = -1)
+        public List<byte[]> MostrarFotosDelCorte(int corteId)
         {
+            List<byte[]> listaImagenes = new List<byte[]>();
+
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
             {
                 conn.Open();
 
-                string sql;
-                int parametroId;
-
-                if (clienteId != -1)
-                {
-                    sql = "SELECT Foto FROM Cortes WHERE ClienteId = @Id ORDER BY FechaCreacion DESC LIMIT 1";
-                    parametroId = clienteId;
-                }
-                else
-                {
-                    sql = "SELECT Foto FROM Cortes WHERE Id = @Id";
-                    parametroId = corteId;
-                }
+                string sql = "SELECT Imagen FROM FotosCorte WHERE CorteId = @CorteId ORDER BY Id";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
                 {
-                    cmd.Parameters.AddWithValue("@Id", parametroId);
+                    cmd.Parameters.AddWithValue("@CorteId", corteId);
 
                     using (SQLiteDataReader reader = cmd.ExecuteReader())
                     {
-                        if (reader.Read() && !reader.IsDBNull(0))
+                        while (reader.Read() && !reader.IsDBNull(0))
                         {
-                            byte[] imagenBytes = (byte[])reader["Foto"];
-                            using (MemoryStream ms = new MemoryStream(imagenBytes))
-                            {
-                                return Image.FromStream(ms);
-                            }
+                            byte[] imagenBytes = (byte[])reader["Imagen"];
+                            listaImagenes.Add(imagenBytes);
                         }
                     }
                 }
             }
 
-            return null; // No hay imagen
+            return listaImagenes;
         }
 
 
-        public string AgregarCorte(Entidades.Cliente cliente)
+        public string AgregarCorte(Cliente cliente, List<byte[]> listaImagenes)
         {
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
             {
@@ -209,10 +223,10 @@ namespace PeluqueriaApp
                 {
                     try
                     {
-                     
-
-                        string sqlCliente = @"UPDATE Clientes SET Nombre = @Nombre, Telefono = @Telefono, Email = @Email WHERE Id = @Id";
-
+                        // Actualizar los datos del cliente
+                        string sqlCliente = @"UPDATE Clientes 
+                                      SET Nombre = @Nombre, Telefono = @Telefono, Email = @Email 
+                                      WHERE Id = @Id";
 
                         using (SQLiteCommand cmdCliente = new SQLiteCommand(sqlCliente, conn, transaction))
                         {
@@ -224,24 +238,37 @@ namespace PeluqueriaApp
                             cmdCliente.ExecuteNonQuery();
                         }
 
+                        // Insertar nuevo corte
+                        string sqlCorte = "INSERT INTO Cortes (ClienteId, Descripcion, Cobro) " +
+                                          "VALUES (@ClienteId, @Descripcion, @Cobro)";
 
-                        // 3. Insertar en Cortes
-                        string sqlCorte = "INSERT INTO Cortes (ClienteId, Descripcion, cobro, Foto) " +
-                                          "VALUES (@ClienteId, @Descripcion, @Cobro, @Foto)";
+                        long corteId;
 
                         using (SQLiteCommand cmdCorte = new SQLiteCommand(sqlCorte, conn, transaction))
                         {
                             cmdCorte.Parameters.AddWithValue("@ClienteId", cliente.Id);
                             cmdCorte.Parameters.AddWithValue("@Descripcion", cliente.Observaciones);
                             cmdCorte.Parameters.AddWithValue("@Cobro", cliente.PrecioCorte);
-                            cmdCorte.Parameters.Add("@Foto", DbType.Binary).Value = cliente.Foto ?? (object)DBNull.Value;
 
                             cmdCorte.ExecuteNonQuery();
+                            corteId = conn.LastInsertRowId;
+                        }
+
+                        // Insertar imágenes en la nueva tabla FotosCorte
+                        string sqlFoto = "INSERT INTO FotosCorte (CorteId, Imagen) VALUES (@CorteId, @Imagen)";
+
+                        foreach (var img in listaImagenes)
+                        {
+                            using (SQLiteCommand cmdFoto = new SQLiteCommand(sqlFoto, conn, transaction))
+                            {
+                                cmdFoto.Parameters.AddWithValue("@CorteId", corteId);
+                                cmdFoto.Parameters.Add("@Imagen", DbType.Binary).Value = img ?? (object)DBNull.Value;
+                                cmdFoto.ExecuteNonQuery();
+                            }
                         }
 
                         transaction.Commit();
                         return "Corte registrado correctamente.";
-
                     }
                     catch (Exception ex)
                     {
@@ -293,90 +320,166 @@ namespace PeluqueriaApp
 
             public int ObtenerTotalClientes()
             {
-                return Convert.ToInt32(EjecutarEscalar("SELECT COUNT(*) FROM Clientes"));
+                using (var conn = new SQLiteConnection(connectionString))
+                {
+                    conn.Open();
+                    string sql = "SELECT COUNT(*) FROM Clientes";
+                    using (var cmd = new SQLiteCommand(sql, conn))
+                    {
+                        object result = cmd.ExecuteScalar();
+                        return result == DBNull.Value ? 0 : Convert.ToInt32(result);
+                    }
+                }
             }
 
             public int ObtenerCortesEsteMes()
             {
-                return Convert.ToInt32(EjecutarEscalar(@"
-            SELECT COUNT(*) FROM Cortes 
-            WHERE strftime('%Y-%m', FechaCreacion) = strftime('%Y-%m', 'now')
-        "));
+                using (var conn = new SQLiteConnection(connectionString))
+                {
+                    conn.Open();
+                    string sql = "SELECT COUNT(*) FROM Cortes WHERE strftime('%m-%Y', FechaCreacion) = strftime('%m-%Y', 'now')";
+                    using (var cmd = new SQLiteCommand(sql, conn))
+                    {
+                        object result = cmd.ExecuteScalar();
+                        return result == DBNull.Value ? 0 : Convert.ToInt32(result);
+                    }
+                }
             }
 
             public int ObtenerTotalCortes()
             {
-                return Convert.ToInt32(EjecutarEscalar("SELECT COUNT(*) FROM Cortes"));
+                using (var conn = new SQLiteConnection(connectionString))
+                {
+                    conn.Open();
+                    string sql = "SELECT COUNT(*) FROM Cortes";
+                    using (var cmd = new SQLiteCommand(sql, conn))
+                    {
+                        object result = cmd.ExecuteScalar();
+                        return result == DBNull.Value ? 0 : Convert.ToInt32(result);
+                    }
+                }
             }
 
             public string ObtenerCorteMasReciente()
             {
                 using (var conn = new SQLiteConnection(connectionString))
-                using (var cmd = new SQLiteCommand(@"
-            SELECT cl.Nombre || ' - ' || c.FechaCreacion 
-            FROM Cortes c
-            JOIN Clientes cl ON cl.Id = c.ClienteId
-            ORDER BY c.FechaCreacion DESC LIMIT 1
-        ", conn))
                 {
                     conn.Open();
-                    return cmd.ExecuteScalar()?.ToString() ?? "N/A";
+                    string sql = "SELECT MAX(FechaCreacion) FROM Cortes";
+                    using (var cmd = new SQLiteCommand(sql, conn))
+                    {
+                        object result = cmd.ExecuteScalar();
+                        return result == DBNull.Value ? "Sin cortes" : Convert.ToDateTime(result).ToString("dd/MM/yyyy");
+                    }
                 }
             }
 
             public int ObtenerNuevosClientesEsteMes()
             {
-                return Convert.ToInt32(EjecutarEscalar(@"
-            SELECT COUNT(*) FROM Clientes 
-            WHERE strftime('%Y-%m', FechaCreacion) = strftime('%Y-%m', 'now')
-        "));
+                using (var conn = new SQLiteConnection(connectionString))
+                {
+                    conn.Open();
+                    string sql = "SELECT COUNT(*) FROM Clientes WHERE strftime('%m-%Y', FechaCreacion) = strftime('%m-%Y', 'now')";
+                    using (var cmd = new SQLiteCommand(sql, conn))
+                    {
+                        object result = cmd.ExecuteScalar();
+                        return result == DBNull.Value ? 0 : Convert.ToInt32(result);
+                    }
+                }
             }
 
             public string ObtenerClienteMasFrecuente()
             {
                 using (var conn = new SQLiteConnection(connectionString))
-                using (var cmd = new SQLiteCommand(@"
-            SELECT cl.Nombre || ' (' || COUNT(*) || ' cortes)' 
-            FROM Cortes c
-            JOIN Clientes cl ON cl.Id = c.ClienteId
-            GROUP BY ClienteId
-            ORDER BY COUNT(*) DESC
-            LIMIT 1
-        ", conn))
                 {
                     conn.Open();
-                    return cmd.ExecuteScalar()?.ToString() ?? "N/A";
+                    string sql = @"SELECT Nombre FROM Clientes 
+                       WHERE Id = (SELECT ClienteId 
+                                   FROM Cortes 
+                                   GROUP BY ClienteId 
+                                   ORDER BY COUNT(*) DESC 
+                                   LIMIT 1)";
+                    using (var cmd = new SQLiteCommand(sql, conn))
+                    {
+                        object result = cmd.ExecuteScalar();
+
+                        if (result == null || result == DBNull.Value)
+                            return "Sin datos";
+
+                        return result.ToString();
+                    }
                 }
             }
+
 
             public double ObtenerPromedioCortesPorCliente()
             {
                 using (var conn = new SQLiteConnection(connectionString))
-                using (var cmd = new SQLiteCommand(@"
-            SELECT ROUND(1.0 * COUNT(*) / (SELECT COUNT(*) FROM Clientes), 2)
-            FROM Cortes
-        ", conn))
                 {
                     conn.Open();
-                    return Convert.ToDouble(cmd.ExecuteScalar());
+                    string sql = "SELECT COUNT(*) * 1.0 / (SELECT COUNT(*) FROM Clientes) FROM Cortes";
+                    using (var cmd = new SQLiteCommand(sql, conn))
+                    {
+                        object result = cmd.ExecuteScalar();
+                        return result == DBNull.Value ? 0 : Convert.ToDouble(result);
+                    }
                 }
             }
 
             public int ObtenerDiasDesdeUltimoCorte()
             {
                 using (var conn = new SQLiteConnection(connectionString))
-                using (var cmd = new SQLiteCommand("SELECT MAX(FechaCreacion) FROM Cortes", conn))
                 {
                     conn.Open();
-                    object result = cmd.ExecuteScalar();
-                    if (result == DBNull.Value) return -1;
+                    string sql = "SELECT MAX(FechaCreacion) FROM Cortes";
+                    using (var cmd = new SQLiteCommand(sql, conn))
+                    {
+                        object result = cmd.ExecuteScalar();
+                        if (result == DBNull.Value)
+                            return -1;
 
-                    DateTime fechaUltimoCorte = Convert.ToDateTime(result);
-                    return (DateTime.Today - fechaUltimoCorte.Date).Days;
+                        DateTime ultimaFecha = Convert.ToDateTime(result);
+                        return (DateTime.Now - ultimaFecha).Days;
+                    }
                 }
             }
         }
 
+
+        public DataTable ObtenerClientesPorRangoFechas(DateTime desde, DateTime hasta)
+        {
+            
+
+            // Asegurarse de que la fecha "hasta" incluya todo el día
+            hasta = hasta.AddDays(1).AddSeconds(-1);
+
+            string query = @"
+                            SELECT Id, Nombre, Telefono, Email, FechaCreacion 
+                            FROM Clientes 
+                            WHERE FechaCreacion BETWEEN @Desde AND @Hasta
+                            ORDER BY FechaCreacion DESC";
+
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+                DataTable table = new DataTable();
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Desde", desde);
+                    cmd.Parameters.AddWithValue("@Hasta", hasta);
+
+                    using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd))
+                    {
+                        adapter.Fill(table);
+                        return table;
+                    }
+
+                   
+                }
+            }
+
+            
+        }
 
 
     }

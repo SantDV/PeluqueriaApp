@@ -60,7 +60,7 @@
             btnInicio.CheckedOutline = Color.FromArgb(255, 106, 0);
             btnInicio.Content = "Inicio";
             btnInicio.DialogResult = DialogResult.None;
-            btnInicio.Font = new Font("Microsoft Sans Serif", 9.75F);
+            btnInicio.Font = new Font("Segoe UI", 12F);
             btnInicio.ForeColor = Color.Black;
             btnInicio.HoverBackground = Color.White;
             btnInicio.HoveredImageTint = Color.White;
@@ -98,7 +98,7 @@
             btnClientes.CheckedOutline = Color.FromArgb(255, 106, 0);
             btnClientes.Content = "Clientes";
             btnClientes.DialogResult = DialogResult.None;
-            btnClientes.Font = new Font("Microsoft Sans Serif", 9.75F);
+            btnClientes.Font = new Font("Segoe UI", 12F);
             btnClientes.ForeColor = Color.Black;
             btnClientes.HoverBackground = Color.White;
             btnClientes.HoveredImageTint = Color.White;
@@ -134,9 +134,9 @@
             btnGaleria.CheckedForeColor = Color.White;
             btnGaleria.CheckedImageTint = Color.White;
             btnGaleria.CheckedOutline = Color.FromArgb(255, 106, 0);
-            btnGaleria.Content = "Clientes";
+            btnGaleria.Content = "Galería";
             btnGaleria.DialogResult = DialogResult.None;
-            btnGaleria.Font = new Font("Microsoft Sans Serif", 9.75F);
+            btnGaleria.Font = new Font("Segoe UI", 12F);
             btnGaleria.ForeColor = Color.Black;
             btnGaleria.HoverBackground = Color.White;
             btnGaleria.HoveredImageTint = Color.White;

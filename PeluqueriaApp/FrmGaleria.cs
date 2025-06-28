@@ -36,15 +36,23 @@ namespace PeluqueriaApp
             using (var conn = new SQLiteConnection(conexion))
             {
                 conn.Open();
-                string sql = "SELECT Foto, FechaCreacion FROM Cortes WHERE ClienteId = @ClienteId and Foto IS NOT NULL ORDER BY FechaCreacion DESC";
+
+                string sql = @"
+            SELECT f.Imagen, c.FechaCreacion
+            FROM FotosCorte f
+            JOIN Cortes c ON c.Id = f.CorteId
+            WHERE c.ClienteId = @ClienteId
+            ORDER BY c.FechaCreacion DESC";
+
                 using (var cmd = new SQLiteCommand(sql, conn))
                 {
                     cmd.Parameters.AddWithValue("@ClienteId", cliente.Id);
+
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            byte[] bytes = (byte[])reader["Foto"];
+                            byte[] bytes = (byte[])reader["Imagen"];
                             DateTime fecha = DateTime.Parse(reader["FechaCreacion"].ToString());
 
                             if (bytes.Length > 0)
@@ -103,7 +111,13 @@ namespace PeluqueriaApp
             }
         }
 
+
         private void btnExport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        void Exportar()
         {
             if (cliente.Id == 0)
             {
@@ -199,5 +213,9 @@ namespace PeluqueriaApp
             }
         }
 
+        private void btnExport_Click_1(object sender, EventArgs e)
+        {
+            Exportar();
+        }
     }
 }

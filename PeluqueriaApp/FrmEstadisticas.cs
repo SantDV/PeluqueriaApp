@@ -24,22 +24,26 @@ namespace PeluqueriaApp
             {
                 var stats = new EstadisticasService();
 
-                // Plan en pseudocódigo:
-                // 1. Revisar cada llamada a stats.ObtenerXxx() para detectar posibles valores null o DBNull.
-                // 2. Para cada valor, comprobar si es null o DBNull antes de llamar a ToString() o concatenar.
-                // 3. Si es null o DBNull, mostrar un valor por defecto como "N/A".
-                // 4. Modificar la creación del array 'estadisticas' para aplicar esta lógica.
+                // Convertidores seguros para null o DBNull
+                string SafeToString(object val) =>
+                    val == null || val == DBNull.Value ? "N/A" : val.ToString();
+
+                string SafeToDecimal(object val) =>
+                    val == null || val == DBNull.Value ? "N/A" : ((double)val).ToString("0.00");
+
+                string SafeToDias(object val) =>
+                    val == null || val == DBNull.Value ? "N/A" : val + " días";
 
                 var estadisticas = new (string Titulo, string Valor)[]
                 {
-                        ("Total de clientes", stats.ObtenerTotalClientes() == null ? "N/A" : stats.ObtenerTotalClientes().ToString()),
-                        ("Total de cortes", stats.ObtenerTotalCortes() == null ? "N/A" : stats.ObtenerTotalCortes().ToString()),
-                        ("Cortes este mes", stats.ObtenerCortesEsteMes() == null ? "N/A" : stats.ObtenerCortesEsteMes().ToString()),
-                        ("Último corte", stats.ObtenerCorteMasReciente() == null ? "N/A" : stats.ObtenerCorteMasReciente().ToString()),
-                        ("Nuevos clientes este mes", stats.ObtenerNuevosClientesEsteMes() == null ? "N/A" : stats.ObtenerNuevosClientesEsteMes().ToString()),
-                        ("Cliente más frecuente", stats.ObtenerClienteMasFrecuente() == null ? "N/A" : stats.ObtenerClienteMasFrecuente().ToString()),
-                        ("Promedio de cortes por cliente", stats.ObtenerPromedioCortesPorCliente() == null ? "N/A" : ((double)stats.ObtenerPromedioCortesPorCliente()).ToString("0.00")),
-                        ("Días desde último corte", stats.ObtenerDiasDesdeUltimoCorte() == null ? "N/A" : stats.ObtenerDiasDesdeUltimoCorte() + " días"),
+            ("Total de clientes", SafeToString(stats.ObtenerTotalClientes())),
+            ("Total de cortes", SafeToString(stats.ObtenerTotalCortes())),
+            ("Cortes este mes", SafeToString(stats.ObtenerCortesEsteMes())),
+            ("Último corte", SafeToString(stats.ObtenerCorteMasReciente())),
+            ("Nuevos clientes este mes", SafeToString(stats.ObtenerNuevosClientesEsteMes())),
+            ("Cliente más frecuente", SafeToString(stats.ObtenerClienteMasFrecuente())),
+            ("Promedio de cortes por cliente", SafeToDecimal(stats.ObtenerPromedioCortesPorCliente())),
+            ("Días desde último corte", SafeToDias(stats.ObtenerDiasDesdeUltimoCorte()))
                 };
 
                 // Configurar TableLayoutPanel
@@ -51,26 +55,23 @@ namespace PeluqueriaApp
                     RowCount = estadisticas.Length,
                     Padding = new Padding(10)
                 };
-                tablePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F)); // Columna título
-                tablePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F)); // Columna valor
+                tablePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F)); // Títulos
+                tablePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F)); // Valores
 
-                // Añadir filas dinámicamente
                 for (int i = 0; i < estadisticas.Length; i++)
                 {
-                    // Label título
                     Label lblTitulo = new Label
                     {
                         Text = estadisticas[i].Titulo,
-                        Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                        Font = new Font("Segoe UI", 12, FontStyle.Bold),
                         Anchor = AnchorStyles.Left,
                         AutoSize = true
                     };
 
-                    // Label valor
                     Label lblValor = new Label
                     {
                         Text = estadisticas[i].Valor,
-                        Font = new Font("Segoe UI", 11, FontStyle.Regular),
+                        Font = new Font("Segoe UI", 12, FontStyle.Regular),
                         ForeColor = Color.DarkSlateGray,
                         Anchor = AnchorStyles.Left,
                         AutoSize = true
@@ -78,7 +79,7 @@ namespace PeluqueriaApp
 
                     tablePanel.Controls.Add(lblTitulo, 0, i);
                     tablePanel.Controls.Add(lblValor, 1, i);
-                    tablePanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F)); // Altura de fila
+                    tablePanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
                 }
 
                 this.Controls.Add(tablePanel);
@@ -89,47 +90,5 @@ namespace PeluqueriaApp
             }
         }
 
-
-        //private void FrmEstadisticas_Load(object sender, EventArgs e)
-        //{
-        //    var stats = new EstadisticasService();
-
-        //    var estadisticas = new (string Titulo, string Valor)[]
-        //    {
-        //("Total de clientes", stats.ObtenerTotalClientes().ToString()),
-        //("Total de cortes", stats.ObtenerTotalCortes().ToString()),
-        //("Cortes este mes", stats.ObtenerCortesEsteMes().ToString()),
-        //("Último corte", stats.ObtenerCorteMasReciente()),
-        //("Nuevos clientes este mes", stats.ObtenerNuevosClientesEsteMes().ToString()),
-        //("Cliente más frecuente", stats.ObtenerClienteMasFrecuente()),
-        //("Promedio de cortes por cliente", stats.ObtenerPromedioCortesPorCliente().ToString("0.00")),
-        //("Días desde último corte", stats.ObtenerDiasDesdeUltimoCorte() + " días"),
-        //    };
-
-        //    int y = 20;
-        //    int espacio = 45;
-
-        //    foreach (var est in estadisticas)
-        //    {
-        //        // Label de título
-        //        Label lblTitulo = new Label();
-        //        lblTitulo.Text = est.Titulo;
-        //        lblTitulo.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-        //        lblTitulo.Location = new Point(20, y);
-        //        lblTitulo.AutoSize = true;
-        //        this.Controls.Add(lblTitulo);
-
-        //        // Label de valor
-        //        Label lblValor = new Label();
-        //        lblValor.Text = est.Valor;
-        //        lblValor.Font = new Font("Segoe UI", 11, FontStyle.Regular);
-        //        lblValor.ForeColor = Color.DarkSlateGray;
-        //        lblValor.Location = new Point(250, y);
-        //        lblValor.AutoSize = true;
-        //        this.Controls.Add(lblValor);
-
-        //        y += espacio;
-        //    }
-        //}
     }
 }

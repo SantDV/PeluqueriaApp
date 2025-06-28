@@ -49,7 +49,7 @@
             btnExport.CheckedForeColor = Color.White;
             btnExport.CheckedImageTint = Color.White;
             btnExport.CheckedOutline = Color.FromArgb(255, 106, 0);
-            btnExport.Content = "Your text here!";
+            btnExport.Content = "";
             btnExport.DialogResult = DialogResult.None;
             btnExport.Font = new Font("Microsoft Sans Serif", 9.75F);
             btnExport.ForeColor = Color.Black;
@@ -57,13 +57,13 @@
             btnExport.HoveredImageTint = Color.White;
             btnExport.HoverForeColor = Color.Black;
             btnExport.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            btnExport.Image = null;
+            btnExport.Image = Properties.Resources.download;
             btnExport.ImageAutoCenter = true;
-            btnExport.ImageExpand = new Point(0, 0);
+            btnExport.ImageExpand = new Point(10, 10);
             btnExport.ImageOffset = new Point(0, 0);
-            btnExport.Location = new Point(730, 22);
+            btnExport.Location = new Point(743, 100);
             btnExport.Name = "btnExport";
-            btnExport.NormalBackground = Color.White;
+            btnExport.NormalBackground = SystemColors.Control;
             btnExport.NormalForeColor = Color.Black;
             btnExport.NormalImageTint = Color.White;
             btnExport.NormalOutline = Color.FromArgb(64, 128, 128, 128);
@@ -72,12 +72,12 @@
             btnExport.PressedForeColor = Color.FromArgb(32, 32, 32);
             btnExport.PressedImageTint = Color.White;
             btnExport.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            btnExport.Rounding = new Padding(8);
-            btnExport.Size = new Size(53, 45);
-            btnExport.TabIndex = 0;
+            btnExport.Rounding = new Padding(6);
+            btnExport.Size = new Size(31, 34);
+            btnExport.TabIndex = 1;
             btnExport.TextAlignment = StringAlignment.Center;
             btnExport.TextOffset = new Point(0, 0);
-            btnExport.Click += btnExport_Click;
+            btnExport.Click += this.btnExport_Click_1;
             // 
             // FrmGaleria
             // 
@@ -96,5 +96,6 @@
 
         private FlowLayoutPanel flpGaleria;
         private CuoreUI.Controls.cuiButton btnExport;
+        
     }
 }

@@ -1,3 +1,4 @@
+using PeluqueriaApp.Entidades;
 using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
@@ -13,6 +14,7 @@ namespace PeluqueriaApp
 
         DataTable table = new();
         DataView view = new();
+        DbConn dbConn = new DbConn();
         public ClientesGestion()
         {
             InitializeComponent();
@@ -50,7 +52,7 @@ namespace PeluqueriaApp
             // Estilo de los encabezados de columna
             dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(44, 145, 225); // Azul moderno
             dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgv.ColumnHeadersDefaultCellStyle.Padding = new Padding(10, 0, 0, 0);
             dgv.ColumnHeadersHeight = 40;
@@ -59,7 +61,7 @@ namespace PeluqueriaApp
             // Estilo de las filas
             dgv.DefaultCellStyle.BackColor = Color.White;
             dgv.DefaultCellStyle.ForeColor = Color.FromArgb(64, 64, 64); // Gris oscuro para mejor legibilidad
-            dgv.DefaultCellStyle.Font = new Font("Segoe UI", 9.5F);
+            dgv.DefaultCellStyle.Font = new Font("Segoe UI", 12F);
             dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(230, 240, 255); // Azul muy claro
             dgv.DefaultCellStyle.SelectionForeColor = Color.FromArgb(64, 64, 64);
             dgv.DefaultCellStyle.Padding = new Padding(10, 0, 0, 0);
@@ -114,14 +116,10 @@ namespace PeluqueriaApp
             }
         }
 
-        void BuscarPorNombre()
-        {
-            BuscarCliente();
-        }
 
         void BuscarCliente()
         {
-            DbConn dbConn = new DbConn();
+
 
             try
             {
@@ -213,7 +211,7 @@ namespace PeluqueriaApp
             {
                 BuscarCliente();
             }
-            
+
         }
 
 
@@ -261,5 +259,36 @@ namespace PeluqueriaApp
         {
             BuscarCliente();
         }
+
+        private void hasta_ValueChanged(object sender, EventArgs e)
+        {
+            BuscarPorFecha();
+        }
+
+        void BuscarPorFecha()
+        {
+            try
+            {
+                DateTime desde = dtpDesde.Value.Date; // Fecha inicial (00:00:00)
+                DateTime hasta = dtpHasta.Value.Date; // Fecha final (se ajustará para incluir todo el día)
+
+
+                table = dbConn.ObtenerClientesPorRangoFechas(desde, hasta);
+                view = table.DefaultView;
+
+                dgvClientes.DataSource = view;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al buscar clientes: {ex.Message}");
+            }
+        }
+
+        private void dtpDesde_ValueChanged(object sender, EventArgs e)
+        {
+            BuscarPorFecha();
+        }
     }
+
 }

@@ -103,6 +103,16 @@ namespace PeluqueriaApp.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrow_back_ios {
+            get {
+                object obj = ResourceManager.GetObject("arrow_back_ios", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arrow_menu_close {
             get {
                 object obj = ResourceManager.GetObject("arrow_menu_close", resourceCulture);

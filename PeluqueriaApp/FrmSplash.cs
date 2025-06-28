@@ -12,7 +12,15 @@ namespace PeluqueriaApp
 {
     public partial class FrmSplash : Form
     {
+        private Label lblTitulo;
+        private Label lblSub;
+
         public FrmSplash()
+        {
+            InicializarComponentes();
+        }
+
+        private void InicializarComponentes()
         {
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -20,30 +28,44 @@ namespace PeluqueriaApp
             this.Size = new Size(400, 250);
             this.TopMost = true;
 
+            // Contenedor para centrar elementos
+            var layout = new TableLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                RowCount = 3,
+                ColumnCount = 1,
+                BackColor = Color.White,
+            };
+            layout.RowStyles.Add(new RowStyle(SizeType.Percent, 40F)); // Espaciado superior
+            layout.RowStyles.Add(new RowStyle(SizeType.AutoSize));     // Título
+            layout.RowStyles.Add(new RowStyle(SizeType.Percent, 60F)); // Subtítulo y margen
+
             // Label principal
-            Label lblTitulo = new Label();
-            lblTitulo.Text = "💈 LEMOTIFF";
-            lblTitulo.Font = new Font("Segoe UI", 24, FontStyle.Bold);
-            lblTitulo.ForeColor = Color.DarkMagenta;
-            lblTitulo.AutoSize = true;
-            lblTitulo.Location = new Point((this.Width - lblTitulo.Width) / 2, 60);
-            lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
+            lblTitulo = new Label
+            {
+                Text = "✂ LEMOTIFF",
+                Font = new Font("Segoe UI", 26, FontStyle.Bold),
+                ForeColor = Color.MediumVioletRed,
+                AutoSize = true,
+                Anchor = AnchorStyles.None,
+                TextAlign = ContentAlignment.MiddleCenter
+            };
 
             // Subtítulo
-            Label lblSub = new Label();
-            lblSub.Text = "Cargando sistema...";
-            lblSub.Font = new Font("Segoe UI", 12, FontStyle.Italic);
-            lblSub.ForeColor = Color.Gray;
-            lblSub.AutoSize = true;
-            lblSub.Location = new Point((this.Width - lblSub.Width) / 2, 120);
-            lblSub.TextAlign = ContentAlignment.MiddleCenter;
+            lblSub = new Label
+            {
+                Text = "Cargando sistema...",
+                Font = new Font("Segoe UI", 12, FontStyle.Italic),
+                ForeColor = Color.Gray,
+                AutoSize = true,
+                Anchor = AnchorStyles.None,
+                TextAlign = ContentAlignment.MiddleCenter
+            };
 
-            // Agregamos manualmente centrados
-            lblTitulo.Left = (this.ClientSize.Width - lblTitulo.Width) / 2;
-            lblSub.Left = (this.ClientSize.Width - lblSub.Width) / 2;
+            layout.Controls.Add(lblTitulo, 0, 1);
+            layout.Controls.Add(lblSub, 0, 2);
 
-            this.Controls.Add(lblTitulo);
-            this.Controls.Add(lblSub);
+            this.Controls.Add(layout);
         }
 
         public async Task MostrarYSaltarAsync()

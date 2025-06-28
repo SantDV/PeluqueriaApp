@@ -18,17 +18,16 @@ namespace PeluqueriaApp
     {
 
         private static readonly string connectionString = ConfigurationManager.ConnectionStrings["cadenaConexion"].ConnectionString;
-        List<byte> imageList = new List<byte>();
+        private List<byte[]> imageList = new List<byte[]>(); // ← ya lo tenés con tus imágenes
         public RegistroCliente()
         {
             InitializeComponent();
 
         }
 
-        private byte[] imagenBytes;
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtNombre.Content)) // Cambio: txtNombre.Text (en WinForms) en lugar de Content
+            if (!string.IsNullOrWhiteSpace(txtNombre.Content))
             {
                 using (SQLiteConnection conn = new SQLiteConnection(connectionString))
                 {
@@ -38,7 +37,7 @@ namespace PeluqueriaApp
                     {
                         try
                         {
-                            // 1. Insertar en Clientes
+                            // 1. Insertar cliente
                             string sqlCliente = "INSERT INTO Clientes (Nombre, Telefono, Email, Domicilio) " +
                                                 "VALUES (@Nombre, @Telefono, @Email, @Domicilio)";
 
@@ -48,30 +47,43 @@ namespace PeluqueriaApp
                                 cmdCliente.Parameters.AddWithValue("@Telefono", txtTelefono.Content);
                                 cmdCliente.Parameters.AddWithValue("@Email", txtEmail.Content);
                                 cmdCliente.Parameters.AddWithValue("@Domicilio", txtDomicilio.Content);
-
-
                                 cmdCliente.ExecuteNonQuery();
                             }
 
-                            // 2. Obtener el ID del cliente recién insertado
                             long clienteId = conn.LastInsertRowId;
 
-                            // 3. Insertar en Cortes
-                            string sqlCorte = "INSERT INTO Cortes (ClienteId, Descripcion, Foto, Cobro) " +
-                                              "VALUES (@ClienteId, @Descripcion, @Foto, @Cobro)";
+                            // 2. Insertar corte (sin foto)
+                            string sqlCorte = "INSERT INTO Cortes (ClienteId, Descripcion, Cobro) " +
+                                              "VALUES (@ClienteId, @Descripcion, @Cobro)";
+
+                            long corteId;
 
                             using (SQLiteCommand cmdCorte = new SQLiteCommand(sqlCorte, conn, transaction))
                             {
                                 cmdCorte.Parameters.AddWithValue("@ClienteId", clienteId);
                                 cmdCorte.Parameters.AddWithValue("@Descripcion", txtObservacion.Text);
                                 cmdCorte.Parameters.AddWithValue("@Cobro", txtPrecio.Content);
-                                cmdCorte.Parameters.Add("@Foto", DbType.Binary).Value = imagenBytes ?? (object)DBNull.Value;
-
                                 cmdCorte.ExecuteNonQuery();
+
+                                corteId = conn.LastInsertRowId; // Obtener ID del corte
+                            }
+
+                            // 3. Insertar fotos del corte
+                            string sqlFoto = "INSERT INTO FotosCorte (CorteId, Imagen) VALUES (@CorteId, @Imagen)";
+
+                            foreach (var imgBytes in imageList)
+                            {
+                                using (SQLiteCommand cmdFoto = new SQLiteCommand(sqlFoto, conn, transaction))
+                                {
+                                    cmdFoto.Parameters.AddWithValue("@CorteId", corteId);
+                                    cmdFoto.Parameters.Add("@Imagen", DbType.Binary).Value = imgBytes;
+                                    cmdFoto.ExecuteNonQuery();
+                                }
                             }
 
                             transaction.Commit();
-                            MessageBox.Show("Cliente y corte registrados correctamente.");
+                            MessageBox.Show("Cliente, corte y fotos registrados correctamente.");
+                            LimpiarFormulario();
                         }
                         catch (Exception ex)
                         {
@@ -88,18 +100,37 @@ namespace PeluqueriaApp
         }
 
 
+
         private void ptbCliente_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
                 ofd.Filter = "Imágenes|*.jpg;*.jpeg;*.png;*.bmp";
+                ofd.Multiselect = true; // Habilita selección múltiple
+
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    ptbCliente.Image = Image.FromFile(ofd.FileName);
-                    imagenBytes = File.ReadAllBytes(ofd.FileName);
+                    imageList.Clear(); // Limpiá la lista anterior si estás cargando nuevas imágenes
+
+                    foreach (string file in ofd.FileNames)
+                    {
+                        byte[] bytes = File.ReadAllBytes(file);
+                        imageList.Add(bytes);
+                    }
+
+                    // Mostrar la primera imagen como vista previa
+                    if (imageList.Count > 0)
+                    {
+                        using (MemoryStream ms = new MemoryStream(imageList[0]))
+                        {
+                            ptbCliente.Image = Image.FromStream(ms);
+                        }
+                    }
                 }
             }
         }
+
+
 
         private void btnSizeMode_Click(object sender, EventArgs e)
         {
@@ -107,18 +138,23 @@ namespace PeluqueriaApp
             {
                 case PictureBoxSizeMode.Normal:
                     ptbCliente.SizeMode = PictureBoxSizeMode.StretchImage;
+                   
                     break;
                 case PictureBoxSizeMode.StretchImage:
                     ptbCliente.SizeMode = PictureBoxSizeMode.AutoSize;
+                    
                     break;
                 case PictureBoxSizeMode.AutoSize:
                     ptbCliente.SizeMode = PictureBoxSizeMode.CenterImage;
+                    
                     break;
                 case PictureBoxSizeMode.CenterImage:
                     ptbCliente.SizeMode = PictureBoxSizeMode.Zoom;
+                   
                     break;
                 case PictureBoxSizeMode.Zoom:
                     ptbCliente.SizeMode = PictureBoxSizeMode.Normal;
+                  
                     break;
             }
 
@@ -194,5 +230,80 @@ namespace PeluqueriaApp
         {
             txtPrecio.Content = _valorNumerico.ToString(CultureInfo.GetCultureInfo("es-AR"));
         }
+
+
+        int contadorImg = 0; // Empezamos en 0 (primera imagen)
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            if (imageList.Count > 0)
+            {
+                contadorImg++;
+
+                if (contadorImg >= imageList.Count)
+                {
+                    contadorImg = 0;
+                }
+
+                MostrarImagenActual();
+            }
+            else
+            {
+                MessageBox.Show("No hay imágenes para mostrar.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            if (imageList.Count > 0)
+            {
+                contadorImg--;
+
+                if (contadorImg < 0)
+                {
+                    contadorImg = imageList.Count - 1;
+                }
+
+                MostrarImagenActual();
+            }
+            else
+            {
+                MessageBox.Show("No hay imágenes para mostrar.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void MostrarImagenActual()
+        {
+            using (MemoryStream ms = new MemoryStream(imageList[contadorImg]))
+            {
+                ptbCliente.Image = Image.FromStream(ms);
+            }
+        }
+
+
+        private void LimpiarFormulario()
+        {
+            // Limpiar campos de texto
+            txtNombre.Content = string.Empty;
+            txtTelefono.Content = string.Empty;
+            txtEmail.Content = string.Empty;
+            txtDomicilio.Content = string.Empty;
+            txtObservacion.Text = string.Empty;
+
+            // Reiniciar el campo de precio
+            _valorNumerico = 0m;
+            txtPrecio.Content = _valorNumerico.ToString(CultureInfo.GetCultureInfo("es-AR"));
+
+            // Limpiar imágenes
+            imageList.Clear();
+            contadorImg = 0;
+            ptbCliente.Image = null;
+
+            // Opcional: enfocar el primer campo
+            txtNombre.Focus();
+        }
+
+
     }
 }
+

@@ -36,11 +36,12 @@ namespace PeluqueriaApp
             using (var conn = new SQLiteConnection(conexion))
             {
                 conn.Open();
+
                 string sql = @"
-            SELECT c.Foto, c.FechaCreacion, cl.Id AS ClienteId, cl.Nombre AS Cliente
-            FROM Cortes c
+            SELECT f.Imagen, c.FechaCreacion, cl.Id AS ClienteId, cl.Nombre AS Cliente
+            FROM FotosCorte f
+            JOIN Cortes c ON c.Id = f.CorteId
             JOIN Clientes cl ON cl.Id = c.ClienteId
-            WHERE c.Foto IS NOT NULL
             ORDER BY c.FechaCreacion DESC";
 
                 using (var cmd = new SQLiteCommand(sql, conn))
@@ -48,7 +49,7 @@ namespace PeluqueriaApp
                 {
                     while (reader.Read())
                     {
-                        byte[] bytes = (byte[])reader["Foto"];
+                        byte[] bytes = (byte[])reader["Imagen"];
                         DateTime fecha = DateTime.Parse(reader["FechaCreacion"].ToString());
                         string nombreCliente = reader["Cliente"].ToString();
                         int clienteId = Convert.ToInt32(reader["ClienteId"]);
@@ -90,7 +91,7 @@ namespace PeluqueriaApp
                                     zoomForm.ShowDialog();
                                 };
 
-                                // Label del cliente (clickeable)
+                                // Label del cliente
                                 Label lblCliente = new Label();
                                 lblCliente.Text = nombreCliente;
                                 lblCliente.TextAlign = ContentAlignment.MiddleCenter;
@@ -104,13 +105,11 @@ namespace PeluqueriaApp
                                 lblCliente.Click += (s, e) =>
                                 {
                                     int id = (int)((Label)s).Tag;
-                                    // Abrir tu formulario de cliente
-                                    // new FrmDetalleCliente(id).ShowDialog();
                                     ClienteCortes clienteCortes = new ClienteCortes(id);
                                     clienteCortes.ShowDialog();
                                 };
 
-                                // Label de la fecha (clickeable)
+                                // Label de la fecha
                                 Label lblFecha = new Label();
                                 lblFecha.Text = fecha.ToString("dd/MM/yyyy");
                                 lblFecha.TextAlign = ContentAlignment.MiddleCenter;
@@ -122,12 +121,9 @@ namespace PeluqueriaApp
                                 lblFecha.Click += (s, e) =>
                                 {
                                     DateTime f = (DateTime)((Label)s).Tag;
-                                    // Abrir un formulario filtrado por fecha
-                                    // new FrmCortesPorFecha(f).ShowDialog();
                                     MessageBox.Show($"Ver cortes del día {f:dd/MM/yyyy}", "Fecha");
                                 };
 
-                                // Agregar controles al panel
                                 contenedor.Controls.Add(pb);
                                 contenedor.Controls.Add(lblFecha);
                                 contenedor.Controls.Add(lblCliente);

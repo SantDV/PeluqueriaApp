@@ -39,11 +39,12 @@
             txtBuscarTelefono = new CuoreUI.Controls.cuiTextBox();
             txtBuscarEmail = new CuoreUI.Controls.cuiTextBox();
             btnNuevo = new CuoreUI.Controls.cuiButton();
-            dateTimePicker1 = new DateTimePicker();
-            dateTimePicker2 = new DateTimePicker();
+            dtpDesde = new DateTimePicker();
+            dtpHasta = new DateTimePicker();
             btnLimpiar = new CuoreUI.Controls.cuiButton();
             btnBuscar = new CuoreUI.Controls.cuiButton();
             lblCargarTodo = new Label();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
             // 
@@ -89,7 +90,7 @@
             txtBuscarNombre.FocusBackgroundColor = Color.White;
             txtBuscarNombre.FocusImageTint = Color.White;
             txtBuscarNombre.FocusOutlineColor = Color.FromArgb(15, 108, 189);
-            txtBuscarNombre.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtBuscarNombre.Font = new Font("Microsoft Sans Serif", 12F);
             txtBuscarNombre.ForeColor = Color.Gray;
             txtBuscarNombre.Image = null;
             txtBuscarNombre.ImageExpand = new Point(0, 0);
@@ -100,7 +101,7 @@
             txtBuscarNombre.Name = "txtBuscarNombre";
             txtBuscarNombre.NormalImageTint = Color.White;
             txtBuscarNombre.OutlineColor = Color.White;
-            txtBuscarNombre.Padding = new Padding(15, 7, 15, 0);
+            txtBuscarNombre.Padding = new Padding(19, 5, 19, 0);
             txtBuscarNombre.PasswordChar = false;
             txtBuscarNombre.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtBuscarNombre.PlaceholderText = "Nombre";
@@ -118,7 +119,7 @@
             txtBuscarTelefono.FocusBackgroundColor = Color.White;
             txtBuscarTelefono.FocusImageTint = Color.White;
             txtBuscarTelefono.FocusOutlineColor = Color.FromArgb(15, 108, 189);
-            txtBuscarTelefono.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtBuscarTelefono.Font = new Font("Microsoft Sans Serif", 12F);
             txtBuscarTelefono.ForeColor = Color.Gray;
             txtBuscarTelefono.Image = null;
             txtBuscarTelefono.ImageExpand = new Point(0, 0);
@@ -129,7 +130,7 @@
             txtBuscarTelefono.Name = "txtBuscarTelefono";
             txtBuscarTelefono.NormalImageTint = Color.White;
             txtBuscarTelefono.OutlineColor = Color.White;
-            txtBuscarTelefono.Padding = new Padding(15, 7, 15, 0);
+            txtBuscarTelefono.Padding = new Padding(19, 5, 19, 0);
             txtBuscarTelefono.PasswordChar = false;
             txtBuscarTelefono.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtBuscarTelefono.PlaceholderText = "Teléfono";
@@ -147,7 +148,7 @@
             txtBuscarEmail.FocusBackgroundColor = Color.White;
             txtBuscarEmail.FocusImageTint = Color.White;
             txtBuscarEmail.FocusOutlineColor = Color.FromArgb(15, 108, 189);
-            txtBuscarEmail.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtBuscarEmail.Font = new Font("Microsoft Sans Serif", 12F);
             txtBuscarEmail.ForeColor = Color.Gray;
             txtBuscarEmail.Image = null;
             txtBuscarEmail.ImageExpand = new Point(0, 0);
@@ -158,7 +159,7 @@
             txtBuscarEmail.Name = "txtBuscarEmail";
             txtBuscarEmail.NormalImageTint = Color.White;
             txtBuscarEmail.OutlineColor = Color.White;
-            txtBuscarEmail.Padding = new Padding(15, 7, 15, 0);
+            txtBuscarEmail.Padding = new Padding(19, 5, 19, 0);
             txtBuscarEmail.PasswordChar = false;
             txtBuscarEmail.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtBuscarEmail.PlaceholderText = "Email";
@@ -189,7 +190,7 @@
             btnNuevo.ImageAutoCenter = true;
             btnNuevo.ImageExpand = new Point(6, 6);
             btnNuevo.ImageOffset = new Point(0, 0);
-            btnNuevo.Location = new Point(763, 24);
+            btnNuevo.Location = new Point(752, 24);
             btnNuevo.Name = "btnNuevo";
             btnNuevo.NormalBackground = Color.WhiteSmoke;
             btnNuevo.NormalForeColor = Color.Black;
@@ -201,33 +202,35 @@
             btnNuevo.PressedImageTint = Color.White;
             btnNuevo.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             btnNuevo.Rounding = new Padding(4);
-            btnNuevo.Size = new Size(36, 36);
+            btnNuevo.Size = new Size(47, 45);
             btnNuevo.TabIndex = 4;
             btnNuevo.TextAlignment = StringAlignment.Center;
             btnNuevo.TextOffset = new Point(0, 0);
             btnNuevo.Click += btnNuevo_Click;
             // 
-            // dateTimePicker1
+            // dtpDesde
             // 
-            dateTimePicker1.CalendarFont = new Font("Segoe UI", 10F);
-            dateTimePicker1.CalendarForeColor = Color.Gray;
-            dateTimePicker1.Font = new Font("Segoe UI", 10F);
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(14, 72);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(172, 25);
-            dateTimePicker1.TabIndex = 5;
+            dtpDesde.CalendarFont = new Font("Segoe UI", 10F);
+            dtpDesde.CalendarForeColor = Color.Gray;
+            dtpDesde.Font = new Font("Segoe UI", 12F);
+            dtpDesde.Format = DateTimePickerFormat.Short;
+            dtpDesde.Location = new Point(14, 72);
+            dtpDesde.Name = "dtpDesde";
+            dtpDesde.Size = new Size(172, 29);
+            dtpDesde.TabIndex = 5;
+            dtpDesde.ValueChanged += dtpDesde_ValueChanged;
             // 
-            // dateTimePicker2
+            // dtpHasta
             // 
-            dateTimePicker2.CalendarFont = new Font("Segoe UI", 10F);
-            dateTimePicker2.CalendarForeColor = Color.Gray;
-            dateTimePicker2.Font = new Font("Segoe UI", 10F);
-            dateTimePicker2.Format = DateTimePickerFormat.Short;
-            dateTimePicker2.Location = new Point(192, 72);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(172, 25);
-            dateTimePicker2.TabIndex = 6;
+            dtpHasta.CalendarFont = new Font("Segoe UI", 10F);
+            dtpHasta.CalendarForeColor = Color.Gray;
+            dtpHasta.Font = new Font("Segoe UI", 12F);
+            dtpHasta.Format = DateTimePickerFormat.Short;
+            dtpHasta.Location = new Point(192, 72);
+            dtpHasta.Name = "dtpHasta";
+            dtpHasta.Size = new Size(172, 29);
+            dtpHasta.TabIndex = 6;
+            dtpHasta.ValueChanged += hasta_ValueChanged;
             // 
             // btnLimpiar
             // 
@@ -239,7 +242,7 @@
             btnLimpiar.CheckedOutline = Color.FromArgb(221, 221, 221);
             btnLimpiar.Content = "Limpiar";
             btnLimpiar.DialogResult = DialogResult.None;
-            btnLimpiar.Font = new Font("Microsoft Sans Serif", 9.75F);
+            btnLimpiar.Font = new Font("Microsoft Sans Serif", 12F);
             btnLimpiar.ForeColor = Color.FromArgb(51, 51, 51);
             btnLimpiar.HoverBackground = Color.FromArgb(224, 224, 224);
             btnLimpiar.HoveredImageTint = Color.White;
@@ -277,7 +280,7 @@
             btnBuscar.CheckedOutline = Color.FromArgb(52, 152, 219);
             btnBuscar.Content = "Buscar";
             btnBuscar.DialogResult = DialogResult.None;
-            btnBuscar.Font = new Font("Microsoft Sans Serif", 9.75F);
+            btnBuscar.Font = new Font("Microsoft Sans Serif", 12F);
             btnBuscar.ForeColor = Color.White;
             btnBuscar.HoverBackground = Color.FromArgb(41, 128, 185);
             btnBuscar.HoveredImageTint = Color.White;
@@ -309,25 +312,41 @@
             // 
             lblCargarTodo.AutoSize = true;
             lblCargarTodo.Cursor = Cursors.Hand;
-            lblCargarTodo.Location = new Point(372, 80);
+            lblCargarTodo.Font = new Font("Segoe UI", 12F);
+            lblCargarTodo.Location = new Point(372, 78);
             lblCargarTodo.Name = "lblCargarTodo";
-            lblCargarTodo.Size = new Size(95, 15);
+            lblCargarTodo.Size = new Size(126, 21);
             lblCargarTodo.TabIndex = 23;
             lblCargarTodo.Text = "[+] Cargar Todos";
             lblCargarTodo.Click += lblCargarTodo_Click;
             lblCargarTodo.MouseEnter += lblCargarTodo_MouseEnter;
             lblCargarTodo.MouseLeave += lblCargarTodo_MouseLeave;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Cursor = Cursors.Hand;
+            label1.Font = new Font("Segoe UI", 12F);
+            label1.Location = new Point(370, 78);
+            label1.Name = "label1";
+            label1.Size = new Size(126, 21);
+            label1.TabIndex = 23;
+            label1.Text = "[+] Cargar Todos";
+            label1.Click += lblCargarTodo_Click;
+            label1.MouseEnter += lblCargarTodo_MouseEnter;
+            label1.MouseLeave += lblCargarTodo_MouseLeave;
+            // 
             // ClientesGestion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(811, 459);
+            Controls.Add(label1);
             Controls.Add(lblCargarTodo);
             Controls.Add(btnBuscar);
             Controls.Add(btnLimpiar);
-            Controls.Add(dateTimePicker2);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(dtpHasta);
+            Controls.Add(dtpDesde);
             Controls.Add(btnNuevo);
             Controls.Add(txtBuscarEmail);
             Controls.Add(txtBuscarTelefono);
@@ -349,8 +368,8 @@
         private CuoreUI.Controls.cuiTextBox txtBuscarTelefono;
         private CuoreUI.Controls.cuiTextBox txtBuscarEmail;
         private CuoreUI.Controls.cuiButton btnNuevo;
-        private DateTimePicker dateTimePicker1;
-        private DateTimePicker dateTimePicker2;
+        private DateTimePicker dtpDesde;
+        private DateTimePicker dtpHasta;
         private CuoreUI.Controls.cuiButton btnLimpiar;
         private CuoreUI.Controls.cuiButton btnBuscar;
         private DataGridViewTextBoxColumn id;
@@ -359,5 +378,6 @@
         private DataGridViewTextBoxColumn email;
         private DataGridViewTextBoxColumn fechaCreacion;
         private Label lblCargarTodo;
+        private Label label1;
     }
 }

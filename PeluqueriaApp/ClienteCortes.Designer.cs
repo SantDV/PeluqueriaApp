@@ -48,6 +48,8 @@ namespace PeluqueriaApp
             txtPrecio = new CuoreUI.Controls.cuiTextBox();
             btnGaleria = new CuoreUI.Controls.cuiButton();
             txtDomicilio = new CuoreUI.Controls.cuiTextBox();
+            btnSiguiente = new Button();
+            btnAnterior = new Button();
             ((System.ComponentModel.ISupportInitialize)ptbCliente).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCortes).BeginInit();
             SuspendLayout();
@@ -72,7 +74,7 @@ namespace PeluqueriaApp
             btnFullScreen.ImageAutoCenter = true;
             btnFullScreen.ImageExpand = new Point(2, 2);
             btnFullScreen.ImageOffset = new Point(0, 0);
-            btnFullScreen.Location = new Point(517, 47);
+            btnFullScreen.Location = new Point(555, 9);
             btnFullScreen.Name = "btnFullScreen";
             btnFullScreen.NormalBackground = SystemColors.Control;
             btnFullScreen.NormalForeColor = Color.Black;
@@ -110,7 +112,7 @@ namespace PeluqueriaApp
             btnSizeMode.ImageAutoCenter = true;
             btnSizeMode.ImageExpand = new Point(2, 2);
             btnSizeMode.ImageOffset = new Point(0, 0);
-            btnSizeMode.Location = new Point(487, 47);
+            btnSizeMode.Location = new Point(525, 9);
             btnSizeMode.Name = "btnSizeMode";
             btnSizeMode.NormalBackground = SystemColors.Control;
             btnSizeMode.NormalForeColor = Color.Black;
@@ -148,7 +150,7 @@ namespace PeluqueriaApp
             btnRotar.ImageAutoCenter = true;
             btnRotar.ImageExpand = new Point(2, 2);
             btnRotar.ImageOffset = new Point(0, 0);
-            btnRotar.Location = new Point(457, 47);
+            btnRotar.Location = new Point(495, 9);
             btnRotar.Name = "btnRotar";
             btnRotar.NormalBackground = SystemColors.Control;
             btnRotar.NormalForeColor = Color.Black;
@@ -172,9 +174,9 @@ namespace PeluqueriaApp
             ptbCliente.BackgroundImage = Properties.Resources.addPhoto;
             ptbCliente.BackgroundImageLayout = ImageLayout.Center;
             ptbCliente.Enabled = false;
-            ptbCliente.Location = new Point(330, 62);
+            ptbCliente.Location = new Point(367, 26);
             ptbCliente.Name = "ptbCliente";
-            ptbCliente.Size = new Size(324, 286);
+            ptbCliente.Size = new Size(335, 300);
             ptbCliente.SizeMode = PictureBoxSizeMode.Zoom;
             ptbCliente.TabIndex = 16;
             ptbCliente.TabStop = false;
@@ -182,7 +184,8 @@ namespace PeluqueriaApp
             // 
             // txtObservacion
             // 
-            txtObservacion.Location = new Point(12, 240);
+            txtObservacion.Font = new Font("Segoe UI", 12F);
+            txtObservacion.Location = new Point(13, 247);
             txtObservacion.Name = "txtObservacion";
             txtObservacion.Size = new Size(237, 108);
             txtObservacion.TabIndex = 5;
@@ -196,7 +199,7 @@ namespace PeluqueriaApp
             txtEmail.FocusBackgroundColor = Color.White;
             txtEmail.FocusImageTint = Color.White;
             txtEmail.FocusOutlineColor = Color.FromArgb(255, 106, 0);
-            txtEmail.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtEmail.Font = new Font("Segoe UI", 12F);
             txtEmail.ForeColor = Color.Gray;
             txtEmail.Image = null;
             txtEmail.ImageExpand = new Point(0, 0);
@@ -207,12 +210,12 @@ namespace PeluqueriaApp
             txtEmail.Name = "txtEmail";
             txtEmail.NormalImageTint = Color.White;
             txtEmail.OutlineColor = Color.White;
-            txtEmail.Padding = new Padding(15, 7, 15, 0);
+            txtEmail.Padding = new Padding(22, 4, 22, 0);
             txtEmail.PasswordChar = false;
             txtEmail.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtEmail.PlaceholderText = "Email";
             txtEmail.Rounding = new Padding(6);
-            txtEmail.Size = new Size(237, 28);
+            txtEmail.Size = new Size(237, 31);
             txtEmail.TabIndex = 2;
             txtEmail.TextOffset = new Size(0, 0);
             txtEmail.UnderlinedStyle = true;
@@ -225,7 +228,7 @@ namespace PeluqueriaApp
             txtTelefono.FocusBackgroundColor = Color.White;
             txtTelefono.FocusImageTint = Color.White;
             txtTelefono.FocusOutlineColor = Color.FromArgb(255, 106, 0);
-            txtTelefono.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtTelefono.Font = new Font("Segoe UI", 12F);
             txtTelefono.ForeColor = Color.Gray;
             txtTelefono.Image = null;
             txtTelefono.ImageExpand = new Point(0, 0);
@@ -236,12 +239,12 @@ namespace PeluqueriaApp
             txtTelefono.Name = "txtTelefono";
             txtTelefono.NormalImageTint = Color.White;
             txtTelefono.OutlineColor = Color.White;
-            txtTelefono.Padding = new Padding(15, 7, 15, 0);
+            txtTelefono.Padding = new Padding(22, 4, 22, 0);
             txtTelefono.PasswordChar = false;
             txtTelefono.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtTelefono.PlaceholderText = "Teléfono";
             txtTelefono.Rounding = new Padding(6);
-            txtTelefono.Size = new Size(237, 28);
+            txtTelefono.Size = new Size(237, 31);
             txtTelefono.TabIndex = 1;
             txtTelefono.TextOffset = new Size(0, 0);
             txtTelefono.UnderlinedStyle = true;
@@ -254,7 +257,7 @@ namespace PeluqueriaApp
             txtNombre.FocusBackgroundColor = Color.White;
             txtNombre.FocusImageTint = Color.White;
             txtNombre.FocusOutlineColor = Color.FromArgb(255, 106, 0);
-            txtNombre.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtNombre.Font = new Font("Segoe UI", 12F);
             txtNombre.ForeColor = Color.Gray;
             txtNombre.Image = null;
             txtNombre.ImageExpand = new Point(0, 0);
@@ -265,23 +268,25 @@ namespace PeluqueriaApp
             txtNombre.Name = "txtNombre";
             txtNombre.NormalImageTint = Color.White;
             txtNombre.OutlineColor = Color.White;
-            txtNombre.Padding = new Padding(15, 7, 15, 0);
+            txtNombre.Padding = new Padding(22, 4, 22, 0);
             txtNombre.PasswordChar = false;
             txtNombre.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtNombre.PlaceholderText = "Nombre";
             txtNombre.Rounding = new Padding(6);
-            txtNombre.Size = new Size(237, 28);
+            txtNombre.Size = new Size(237, 31);
             txtNombre.TabIndex = 0;
             txtNombre.TextOffset = new Size(0, 0);
             txtNombre.UnderlinedStyle = true;
             // 
             // dgvCortes
             // 
+            dgvCortes.AllowUserToAddRows = false;
+            dgvCortes.AllowUserToDeleteRows = false;
             dgvCortes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCortes.Columns.AddRange(new DataGridViewColumn[] { id, fecha, descripcion, costo });
-            dgvCortes.Location = new Point(12, 371);
+            dgvCortes.Location = new Point(12, 383);
             dgvCortes.Name = "dgvCortes";
-            dgvCortes.Size = new Size(642, 221);
+            dgvCortes.Size = new Size(690, 221);
             dgvCortes.TabIndex = 5;
             dgvCortes.CellClick += dgvCortes_CellClick;
             dgvCortes.CellMouseEnter += dgvCortes_CellMouseEnter;
@@ -381,7 +386,7 @@ namespace PeluqueriaApp
             txtPrecio.FocusBackgroundColor = Color.White;
             txtPrecio.FocusImageTint = Color.White;
             txtPrecio.FocusOutlineColor = Color.FromArgb(255, 106, 0);
-            txtPrecio.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPrecio.Font = new Font("Segoe UI", 12F);
             txtPrecio.ForeColor = Color.Gray;
             txtPrecio.Image = null;
             txtPrecio.ImageExpand = new Point(0, 0);
@@ -392,12 +397,12 @@ namespace PeluqueriaApp
             txtPrecio.Name = "txtPrecio";
             txtPrecio.NormalImageTint = Color.White;
             txtPrecio.OutlineColor = Color.White;
-            txtPrecio.Padding = new Padding(15, 7, 15, 0);
+            txtPrecio.Padding = new Padding(22, 4, 22, 0);
             txtPrecio.PasswordChar = false;
             txtPrecio.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtPrecio.PlaceholderText = "Precio";
             txtPrecio.Rounding = new Padding(6);
-            txtPrecio.Size = new Size(237, 28);
+            txtPrecio.Size = new Size(237, 31);
             txtPrecio.TabIndex = 4;
             txtPrecio.TextOffset = new Size(0, 0);
             txtPrecio.UnderlinedStyle = true;
@@ -424,7 +429,7 @@ namespace PeluqueriaApp
             btnGaleria.ImageAutoCenter = true;
             btnGaleria.ImageExpand = new Point(10, 10);
             btnGaleria.ImageOffset = new Point(0, 0);
-            btnGaleria.Location = new Point(622, 9);
+            btnGaleria.Location = new Point(670, 2);
             btnGaleria.Name = "btnGaleria";
             btnGaleria.NormalBackground = Color.White;
             btnGaleria.NormalForeColor = Color.Black;
@@ -450,7 +455,7 @@ namespace PeluqueriaApp
             txtDomicilio.FocusBackgroundColor = Color.White;
             txtDomicilio.FocusImageTint = Color.White;
             txtDomicilio.FocusOutlineColor = Color.FromArgb(255, 106, 0);
-            txtDomicilio.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtDomicilio.Font = new Font("Segoe UI", 12F);
             txtDomicilio.ForeColor = Color.Gray;
             txtDomicilio.Image = null;
             txtDomicilio.ImageExpand = new Point(0, 0);
@@ -461,21 +466,45 @@ namespace PeluqueriaApp
             txtDomicilio.Name = "txtDomicilio";
             txtDomicilio.NormalImageTint = Color.White;
             txtDomicilio.OutlineColor = Color.White;
-            txtDomicilio.Padding = new Padding(15, 7, 15, 0);
+            txtDomicilio.Padding = new Padding(22, 4, 22, 0);
             txtDomicilio.PasswordChar = false;
             txtDomicilio.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtDomicilio.PlaceholderText = "Domicilio";
             txtDomicilio.Rounding = new Padding(6);
-            txtDomicilio.Size = new Size(237, 28);
+            txtDomicilio.Size = new Size(237, 31);
             txtDomicilio.TabIndex = 3;
             txtDomicilio.TextOffset = new Size(0, 0);
             txtDomicilio.UnderlinedStyle = true;
+            // 
+            // btnSiguiente
+            // 
+            btnSiguiente.Font = new Font("Segoe UI", 12F);
+            btnSiguiente.Location = new Point(544, 332);
+            btnSiguiente.Name = "btnSiguiente";
+            btnSiguiente.Size = new Size(86, 33);
+            btnSiguiente.TabIndex = 26;
+            btnSiguiente.Text = "Siguiente";
+            btnSiguiente.UseVisualStyleBackColor = true;
+            btnSiguiente.Click += btnSiguiente_Click;
+            // 
+            // btnAnterior
+            // 
+            btnAnterior.Font = new Font("Segoe UI", 12F);
+            btnAnterior.Location = new Point(452, 332);
+            btnAnterior.Name = "btnAnterior";
+            btnAnterior.Size = new Size(86, 33);
+            btnAnterior.TabIndex = 27;
+            btnAnterior.Text = "Anterior";
+            btnAnterior.UseVisualStyleBackColor = true;
+            btnAnterior.Click += btnAnterior_Click;
             // 
             // ClienteCortes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(666, 604);
+            ClientSize = new Size(714, 616);
+            Controls.Add(btnAnterior);
+            Controls.Add(btnSiguiente);
             Controls.Add(txtDomicilio);
             Controls.Add(btnGaleria);
             Controls.Add(txtPrecio);
@@ -492,6 +521,7 @@ namespace PeluqueriaApp
             Controls.Add(txtTelefono);
             Controls.Add(txtNombre);
             Name = "ClienteCortes";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Cliente";
             Load += Cliente_Load;
             ((System.ComponentModel.ISupportInitialize)ptbCliente).EndInit();
@@ -512,15 +542,17 @@ namespace PeluqueriaApp
         private CuoreUI.Controls.cuiTextBox txtTelefono;
         private CuoreUI.Controls.cuiTextBox txtNombre;
         private DataGridView dgvCortes;
-        private DataGridViewTextBoxColumn id;
-        private DataGridViewTextBoxColumn fecha;
-        private DataGridViewTextBoxColumn descripcion;
-        private DataGridViewTextBoxColumn costo;
         private Label lblNuevoCorte;
         private Label lblEliminarCorte;
         private CuoreUI.Controls.cuiButton btnGuardar;
         private CuoreUI.Controls.cuiTextBox txtPrecio;
         private CuoreUI.Controls.cuiButton btnGaleria;
         private CuoreUI.Controls.cuiTextBox txtDomicilio;
+        private Button btnSiguiente;
+        private Button btnAnterior;
+        private DataGridViewTextBoxColumn id;
+        private DataGridViewTextBoxColumn fecha;
+        private DataGridViewTextBoxColumn descripcion;
+        private DataGridViewTextBoxColumn costo;
     }
 }

@@ -22,7 +22,7 @@ namespace PeluqueriaApp
         Cliente cliente = new();
         DataTable table = new();
         DataView view = new();
-        List<byte> imageList = new List<byte>();
+        List<byte[]> imageList = new List<byte[]>();
 
         DbConn dbConn = new DbConn();
         int idCorte = -1;
@@ -37,11 +37,11 @@ namespace PeluqueriaApp
             table.Columns.Add("fechaCreacion", typeof(string));
             table.Columns.Add("Cobro", typeof(string));
 
-
             dgvCortes.Columns["id"].DataPropertyName = "Id";
             dgvCortes.Columns["descripcion"].DataPropertyName = "Descripcion";
             dgvCortes.Columns["fecha"].DataPropertyName = "fechaCreacion";
             dgvCortes.Columns["costo"].DataPropertyName = "Cobro";
+
         }
 
         private void Cliente_Load(object sender, EventArgs e)
@@ -65,8 +65,22 @@ namespace PeluqueriaApp
                 MessageBox.Show("Cliente no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
             }
+            
+            int ultimoIdCorte = dbConn.ObtenerUltimoCorteId(cliente.Id);
 
-            ptbCliente.Image = dbConn.MostrarFotoDelCorte(cliente.Id, -1);
+            imageList = dbConn.MostrarFotosDelCorte(ultimoIdCorte);
+
+            if (imageList.Count > 0)
+            {
+                using (MemoryStream ms = new MemoryStream(imageList[0]))
+                {
+                    ptbCliente.Image = Image.FromStream(ms);
+                }
+            }
+            else
+            {
+                ptbCliente.Image = null;
+            }
         }
 
         private void CargarCortes()
@@ -74,7 +88,10 @@ namespace PeluqueriaApp
             table = dbConn.ObtenerCortesPorCliente(cliente.Id);
             view = table.DefaultView;
             dgvCortes.DataSource = view;
+
+          
         }
+
 
         private void EstilizarDataGridView(DataGridView dgv)
         {
@@ -89,7 +106,7 @@ namespace PeluqueriaApp
             // Estilo de los encabezados de columna
             dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(44, 145, 225); // Azul moderno
             dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgv.ColumnHeadersDefaultCellStyle.Padding = new Padding(10, 0, 0, 0);
             dgv.ColumnHeadersHeight = 40;
@@ -98,7 +115,7 @@ namespace PeluqueriaApp
             // Estilo de las filas
             dgv.DefaultCellStyle.BackColor = Color.White;
             dgv.DefaultCellStyle.ForeColor = Color.FromArgb(64, 64, 64); // Gris oscuro para mejor legibilidad
-            dgv.DefaultCellStyle.Font = new Font("Segoe UI", 9.5F);
+            dgv.DefaultCellStyle.Font = new Font("Segoe UI", 12F);
             dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(230, 240, 255); // Azul muy claro
             dgv.DefaultCellStyle.SelectionForeColor = Color.FromArgb(64, 64, 64);
             dgv.DefaultCellStyle.Padding = new Padding(10, 0, 0, 0);
@@ -136,14 +153,35 @@ namespace PeluqueriaApp
             dgv.Region = new Region(new Rectangle(0, 0, dgv.Width, dgv.Height));
         }
 
+
+
+        int contadorImg = 0;
         private void dgvCortes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 idCorte = Convert.ToInt32(dgvCortes.Rows[e.RowIndex].Cells["Id"].Value);
-                ptbCliente.Image = dbConn.MostrarFotoDelCorte(-1, idCorte);
+                string descripcion = dgvCortes.Rows[e.RowIndex].Cells["descripcion"].Value.ToString();
+
+                imageList = dbConn.MostrarFotosDelCorte(idCorte); // Ahora obtenés todas
+
+                txtObservacion.Text = descripcion;
+
+                if (imageList.Count > 0)
+                {
+                    using (MemoryStream ms = new MemoryStream(imageList[contadorImg]))
+                    {
+                        ptbCliente.Image = Image.FromStream(ms);
+                    }
+                }
+                else
+                {
+                    ptbCliente.Image = null;
+                }
             }
         }
+
+
 
         private void btnFullScreen_Click(object sender, EventArgs e)
         {
@@ -224,10 +262,26 @@ namespace PeluqueriaApp
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
                 ofd.Filter = "Imágenes|*.jpg;*.jpeg;*.png;*.bmp";
+                ofd.Multiselect = true; // Habilita selección múltiple
+
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    ptbCliente.Image = Image.FromFile(ofd.FileName);
-                    imagenBytes = File.ReadAllBytes(ofd.FileName);
+                    imageList.Clear(); // Limpiá la lista anterior si estás cargando nuevas imágenes
+
+                    foreach (string file in ofd.FileNames)
+                    {
+                        byte[] bytes = File.ReadAllBytes(file);
+                        imageList.Add(bytes);
+                    }
+
+                    // Mostrar la primera imagen como vista previa
+                    if (imageList.Count > 0)
+                    {
+                        using (MemoryStream ms = new MemoryStream(imageList[0]))
+                        {
+                            ptbCliente.Image = Image.FromStream(ms);
+                        }
+                    }
                 }
             }
         }
@@ -244,14 +298,23 @@ namespace PeluqueriaApp
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtNombre.Content)) // Cambio: txtNombre.Text (en WinForms) en lugar de Content
+            if (!string.IsNullOrWhiteSpace(txtNombre.Content))
             {
+                var clienteParaGuardar = new Entidades.Cliente
+                {
+                    Id = cliente.Id,
+                    Nombre = txtNombre.Content.Trim(),
+                    Telefono = txtTelefono.Content.Trim(),
+                    Email = txtEmail.Content.Trim(),
+                    Observaciones = txtObservacion.Text,
+                    PrecioCorte = txtPrecio.Content
+                };
 
-
-                MessageBox.Show(dbConn.AgregarCorte(new Entidades.Cliente { Id = cliente.Id, Nombre = txtNombre.Content.Trim(), Telefono = txtTelefono.Content.Trim(), Email = txtEmail.Content.Trim(), Observaciones = txtObservacion.Text, PrecioCorte = txtPrecio.Content, Foto = imagenBytes }));
+                string resultado = dbConn.AgregarCorte(clienteParaGuardar, imageList);
+                MessageBox.Show(resultado);
                 btnGuardar.Enabled = false;
+                ptbCliente.Enabled = false;
                 CargarCortes();
-
             }
             else
             {
@@ -259,6 +322,8 @@ namespace PeluqueriaApp
             }
 
         }
+
+
 
         private void lblEliminarCorte_Click(object sender, EventArgs e)
         {
@@ -318,7 +383,7 @@ namespace PeluqueriaApp
 
 
 
-
+        private System.Windows.Forms.ToolTip tooltip = new(); // Variable de clase
         private void dgvCortes_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -359,6 +424,61 @@ namespace PeluqueriaApp
             FrmGaleria frmGaleria = new FrmGaleria(cliente);
 
             frmGaleria.ShowDialog();
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            if (imageList.Count > 0)
+            {
+                contadorImg++;
+
+                if (contadorImg >= imageList.Count)
+                {
+                    contadorImg = 0;
+                }
+
+                MostrarImagenActual();
+            }
+            else
+            {
+                MessageBox.Show("No hay imágenes para mostrar.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void MostrarImagenActual()
+        {
+            if (ptbCliente.Image != null)
+            {
+                ptbCliente.Image.Dispose();
+                ptbCliente.Image = null;
+            }
+
+            if (imageList.Count > 0 && contadorImg < imageList.Count)
+            {
+                using (MemoryStream ms = new MemoryStream(imageList[contadorImg]))
+                {
+                    ptbCliente.Image = Image.FromStream(ms);
+                }
+            }
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            if (imageList.Count > 0)
+            {
+                contadorImg--;
+
+                if (contadorImg < 0)
+                {
+                    contadorImg = imageList.Count - 1;
+                }
+
+                MostrarImagenActual();
+            }
+            else
+            {
+                MessageBox.Show("No hay imágenes para mostrar.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

@@ -63,7 +63,7 @@
             btnExport.ImageOffset = new Point(0, 0);
             btnExport.Location = new Point(757, 12);
             btnExport.Name = "btnExport";
-            btnExport.NormalBackground = Color.White;
+            btnExport.NormalBackground = SystemColors.Control;
             btnExport.NormalForeColor = Color.Black;
             btnExport.NormalImageTint = Color.White;
             btnExport.NormalOutline = Color.FromArgb(64, 128, 128, 128);
@@ -73,7 +73,7 @@
             btnExport.PressedImageTint = Color.White;
             btnExport.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             btnExport.Rounding = new Padding(6);
-            btnExport.Size = new Size(31, 45);
+            btnExport.Size = new Size(31, 34);
             btnExport.TabIndex = 0;
             btnExport.TextAlignment = StringAlignment.Center;
             btnExport.TextOffset = new Point(0, 0);
@@ -87,6 +87,7 @@
             Controls.Add(btnExport);
             Controls.Add(flpGaleria);
             Name = "FrmGaleriaTodos";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmGaleria";
             Load += FrmGaleria_Load;
             ResumeLayout(false);

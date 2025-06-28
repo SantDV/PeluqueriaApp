@@ -99,7 +99,7 @@ namespace PeluqueriaApp
 
             // Label con nombre de la peluquería
             Label lblTitulo = new Label();
-            lblTitulo.Text = "💈 LEMOTIFF - Sergio Coiffeur";
+            lblTitulo.Text = "✂ LEMOTIFF - Sergio Coiffeur";
             lblTitulo.Font = new Font("Segoe UI", 14, FontStyle.Bold);
             lblTitulo.ForeColor = Color.DarkMagenta;
             lblTitulo.AutoSize = true;
@@ -108,7 +108,7 @@ namespace PeluqueriaApp
             // Label con nombre y dirección
             Label lblSubtitulo = new Label();
             lblSubtitulo.Text = "Sergio De Filippo - Marcos Paz 1526";
-            lblSubtitulo.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+            lblSubtitulo.Font = new Font("Segoe UI", 12, FontStyle.Regular);
             lblSubtitulo.ForeColor = Color.DimGray;
             lblSubtitulo.AutoSize = true;
             lblSubtitulo.Location = new Point(18, 35);
