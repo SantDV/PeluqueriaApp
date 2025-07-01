@@ -52,7 +52,7 @@ namespace PeluqueriaApp
             // Estilo de los encabezados de columna
             dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(44, 145, 225); // Azul moderno
             dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold);
             dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgv.ColumnHeadersDefaultCellStyle.Padding = new Padding(10, 0, 0, 0);
             dgv.ColumnHeadersHeight = 40;
@@ -61,7 +61,7 @@ namespace PeluqueriaApp
             // Estilo de las filas
             dgv.DefaultCellStyle.BackColor = Color.White;
             dgv.DefaultCellStyle.ForeColor = Color.FromArgb(64, 64, 64); // Gris oscuro para mejor legibilidad
-            dgv.DefaultCellStyle.Font = new Font("Segoe UI", 12F);
+            dgv.DefaultCellStyle.Font = new Font("Segoe UI", 13F);
             dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(230, 240, 255); // Azul muy claro
             dgv.DefaultCellStyle.SelectionForeColor = Color.FromArgb(64, 64, 64);
             dgv.DefaultCellStyle.Padding = new Padding(10, 0, 0, 0);
@@ -239,6 +239,11 @@ namespace PeluqueriaApp
         private void lblCargarTodo_Click(object sender, EventArgs e)
         {
 
+            CargarTodosLosClientes();
+        }
+
+        public void CargarTodosLosClientes()
+        {
             DbConn dbConn = new DbConn();
 
             try
@@ -289,6 +294,15 @@ namespace PeluqueriaApp
         {
             BuscarPorFecha();
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        
+        }
+
     }
 
-}
+

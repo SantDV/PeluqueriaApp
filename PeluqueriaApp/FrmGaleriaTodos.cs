@@ -139,11 +139,10 @@ namespace PeluqueriaApp
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-           
             using (SaveFileDialog sfd = new SaveFileDialog())
             {
                 sfd.Filter = "Archivo Excel (*.xlsx)|*.xlsx";
-                sfd.FileName = DateTime.Now.ToString("yyyyMMdd") + ".xlsx";
+                sfd.FileName = "Cortes_" + DateTime.Now.ToString("yyyyMMdd") + ".xlsx";
 
                 if (sfd.ShowDialog() != DialogResult.OK)
                     return;
@@ -155,44 +154,53 @@ namespace PeluqueriaApp
                 using (var conn = new SQLiteConnection(conexion))
                 {
                     conn.Open();
-                    string sql = @"SELECT c.FechaCreacion, c.Descripcion, c.Foto, 
-                                  cl.Nombre || ' ' || cl.Apellido AS Cliente 
-                           FROM Cortes c 
-                           JOIN Clientes cl ON cl.Id = c.ClienteId 
-                           WHERE c.Foto IS NOT NULL 
-                           ORDER BY c.FechaCreacion DESC";
+
+                    string sql = @"
+                SELECT 
+                    c.FechaCreacion, 
+                    c.Descripcion, 
+                    cl.Nombre AS Cliente,
+                    f.Imagen,
+                    f.FechaSubida
+                FROM Cortes c
+                JOIN Clientes cl ON cl.Id = c.ClienteId
+                JOIN FotosCorte f ON f.CorteId = c.Id
+                WHERE f.Imagen IS NOT NULL
+                ORDER BY c.FechaCreacion DESC, f.FechaSubida DESC";
 
                     using (var cmd = new SQLiteCommand(sql, conn))
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        
+                        var wb = new XLWorkbook();
+                        var ws = wb.Worksheets.Add("Cortes");
 
-                        using (var reader = cmd.ExecuteReader())
+                        // Encabezados
+                        ws.Cell(1, 1).Value = "Cliente";
+                        ws.Cell(1, 2).Value = "Fecha del Corte";
+                        ws.Cell(1, 3).Value = "Observación";
+                        ws.Cell(1, 4).Value = "Foto";
+
+                        ws.Row(1).Style.Font.Bold = true;
+                        ws.Range("A1:D1").Style.Fill.BackgroundColor = XLColor.LightGray;
+                        ws.Columns().AdjustToContents();
+
+                        int fila = 2;
+
+                        while (reader.Read())
                         {
-                            var wb = new XLWorkbook();
-                            var ws = wb.Worksheets.Add("Cortes");
+                            string cliente = reader["Cliente"].ToString();
+                            DateTime fecha = Convert.ToDateTime(reader["FechaCreacion"]);
+                            string obs = reader["Descripcion"]?.ToString() ?? "";
+                            byte[] fotoBytes = reader["Imagen"] as byte[];
 
-                            // Encabezados
-                            ws.Cell(1, 1).Value = "Cliente";
-                            ws.Cell(1, 2).Value = "Fecha";
-                            ws.Cell(1, 3).Value = "Observación";
-                            ws.Cell(1, 4).Value = "Foto";
+                            if (fotoBytes == null || fotoBytes.Length == 0)
+                                continue;
 
-                            ws.Row(1).Style.Font.Bold = true;
-                            ws.Columns().AdjustToContents();
+                            string nombreImg = $"corte_{fecha:yyyyMMdd}_{fila}.jpg";
+                            string rutaFinalImagen = Path.Combine(carpetaImagenes, nombreImg);
 
-                            int fila = 2;
-
-                            while (reader.Read())
+                            try
                             {
-                                string cliente = reader["Cliente"].ToString();
-                                DateTime fecha = Convert.ToDateTime(reader["FechaCreacion"]);
-                                string obs = reader["Descripcion"].ToString();
-                                byte[] fotoBytes = (byte[])reader["Foto"];
-
-                                string nombreImg = $"corte_{fecha:yyyyMMdd}_{fila}.jpg";
-                                string rutaFinalImagen = Path.Combine(carpetaImagenes, nombreImg);
-
-                                // Guardar imagen completa en carpeta
                                 using (MemoryStream ms = new MemoryStream(fotoBytes))
                                 using (Image img = Image.FromStream(ms))
                                 {
@@ -204,29 +212,31 @@ namespace PeluqueriaApp
                                 ws.Cell(fila, 2).Value = fecha.ToString("dd/MM/yyyy");
                                 ws.Cell(fila, 3).Value = obs;
 
-                                // Insertar imagen miniatura con hipervínculo
                                 ws.Row(fila).Height = 80;
                                 ws.Column(4).Width = 15;
 
                                 var imgExcel = ws.AddPicture(rutaFinalImagen)
                                     .MoveTo(ws.Cell(fila, 4), new Point(5, 5))
-                                    .WithSize(80, 80); // miniatura
+                                    .WithSize(80, 80);
 
                                 ws.Cell(fila, 4).SetHyperlink(new XLHyperlink("imagenes/" + nombreImg));
 
-
                                 fila++;
                             }
-
-                            // Guardar Excel
-                            wb.SaveAs(sfd.FileName);
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error al procesar una imagen:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
                         }
+
+                        wb.SaveAs(sfd.FileName);
                     }
                 }
 
-                MessageBox.Show("Exportación completa. El archivo y las imágenes se guardaron correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Exportación completa.\nEl archivo y las imágenes se guardaron correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
 
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QlwCctDyOlU=",
+  "dgSpecHash": "Bgue7gWC9+0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\SANTIAGO\\source\\repos\\PeluqueriaApp\\PeluqueriaApp\\PeluqueriaApp.csproj",
+  "projectFilePath": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\PeluqueriaApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SANTIAGO\\.nuget\\packages\\closedxml\\0.105.0\\closedxml.0.105.0.nupkg.sha512",
     "C:\\Users\\SANTIAGO\\.nuget\\packages\\closedxml.parser\\2.0.0\\closedxml.parser.2.0.0.nupkg.sha512",

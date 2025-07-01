@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             txtPesos = new CuoreUI.Controls.cuiTextBox();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // txtPesos
@@ -61,20 +63,32 @@
             txtPesos.KeyPress += txtPesos_KeyPress;
             txtPesos.Leave += txtPesos_Leave;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.agm;
+            pictureBox1.Location = new Point(-51, 92);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(654, 245);
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
+            // 
             // Ajustes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(526, 349);
+            Controls.Add(pictureBox1);
             Controls.Add(txtPesos);
             Name = "Ajustes";
             Text = "Ajustes";
             Load += Ajustes_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private CuoreUI.Controls.cuiTextBox txtPesos;
+        private PictureBox pictureBox1;
     }
 }

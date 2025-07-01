@@ -51,7 +51,7 @@
             txtNombre.FocusBackgroundColor = Color.White;
             txtNombre.FocusImageTint = Color.White;
             txtNombre.FocusOutlineColor = Color.FromArgb(255, 106, 0);
-            txtNombre.Font = new Font("Microsoft Sans Serif", 12F);
+            txtNombre.Font = new Font("Microsoft Sans Serif", 13F);
             txtNombre.ForeColor = Color.Gray;
             txtNombre.Image = null;
             txtNombre.ImageExpand = new Point(0, 0);
@@ -62,7 +62,7 @@
             txtNombre.Name = "txtNombre";
             txtNombre.NormalImageTint = Color.White;
             txtNombre.OutlineColor = Color.White;
-            txtNombre.Padding = new Padding(19, 6, 19, 0);
+            txtNombre.Padding = new Padding(20, 5, 20, 0);
             txtNombre.PasswordChar = false;
             txtNombre.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtNombre.PlaceholderText = "Nombre";
@@ -79,7 +79,7 @@
             txtTelefono.FocusBackgroundColor = Color.White;
             txtTelefono.FocusImageTint = Color.White;
             txtTelefono.FocusOutlineColor = Color.FromArgb(255, 106, 0);
-            txtTelefono.Font = new Font("Microsoft Sans Serif", 12F);
+            txtTelefono.Font = new Font("Microsoft Sans Serif", 13F);
             txtTelefono.ForeColor = Color.Gray;
             txtTelefono.Image = null;
             txtTelefono.ImageExpand = new Point(0, 0);
@@ -90,7 +90,7 @@
             txtTelefono.Name = "txtTelefono";
             txtTelefono.NormalImageTint = Color.White;
             txtTelefono.OutlineColor = Color.White;
-            txtTelefono.Padding = new Padding(19, 6, 19, 0);
+            txtTelefono.Padding = new Padding(20, 5, 20, 0);
             txtTelefono.PasswordChar = false;
             txtTelefono.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtTelefono.PlaceholderText = "Teléfono";
@@ -107,7 +107,7 @@
             txtEmail.FocusBackgroundColor = Color.White;
             txtEmail.FocusImageTint = Color.White;
             txtEmail.FocusOutlineColor = Color.FromArgb(255, 106, 0);
-            txtEmail.Font = new Font("Microsoft Sans Serif", 12F);
+            txtEmail.Font = new Font("Microsoft Sans Serif", 13F);
             txtEmail.ForeColor = Color.Gray;
             txtEmail.Image = null;
             txtEmail.ImageExpand = new Point(0, 0);
@@ -118,7 +118,7 @@
             txtEmail.Name = "txtEmail";
             txtEmail.NormalImageTint = Color.White;
             txtEmail.OutlineColor = Color.White;
-            txtEmail.Padding = new Padding(19, 6, 19, 0);
+            txtEmail.Padding = new Padding(20, 5, 20, 0);
             txtEmail.PasswordChar = false;
             txtEmail.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtEmail.PlaceholderText = "Email";
@@ -130,7 +130,7 @@
             // 
             // txtObservacion
             // 
-            txtObservacion.Font = new Font("Microsoft Sans Serif", 12F);
+            txtObservacion.Font = new Font("Microsoft Sans Serif", 13F);
             txtObservacion.Location = new Point(28, 234);
             txtObservacion.Name = "txtObservacion";
             txtObservacion.Size = new Size(237, 149);
@@ -310,7 +310,7 @@
             txtPrecio.FocusBackgroundColor = Color.White;
             txtPrecio.FocusImageTint = Color.White;
             txtPrecio.FocusOutlineColor = Color.FromArgb(255, 106, 0);
-            txtPrecio.Font = new Font("Microsoft Sans Serif", 12F);
+            txtPrecio.Font = new Font("Microsoft Sans Serif", 13F);
             txtPrecio.ForeColor = Color.Gray;
             txtPrecio.Image = null;
             txtPrecio.ImageExpand = new Point(0, 0);
@@ -321,7 +321,7 @@
             txtPrecio.Name = "txtPrecio";
             txtPrecio.NormalImageTint = Color.White;
             txtPrecio.OutlineColor = Color.White;
-            txtPrecio.Padding = new Padding(19, 6, 19, 0);
+            txtPrecio.Padding = new Padding(20, 5, 20, 0);
             txtPrecio.PasswordChar = false;
             txtPrecio.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtPrecio.PlaceholderText = "Precio";
@@ -341,7 +341,7 @@
             txtDomicilio.FocusBackgroundColor = Color.White;
             txtDomicilio.FocusImageTint = Color.White;
             txtDomicilio.FocusOutlineColor = Color.FromArgb(255, 106, 0);
-            txtDomicilio.Font = new Font("Microsoft Sans Serif", 12F);
+            txtDomicilio.Font = new Font("Microsoft Sans Serif", 13F);
             txtDomicilio.ForeColor = Color.Gray;
             txtDomicilio.Image = null;
             txtDomicilio.ImageExpand = new Point(0, 0);
@@ -352,7 +352,7 @@
             txtDomicilio.Name = "txtDomicilio";
             txtDomicilio.NormalImageTint = Color.White;
             txtDomicilio.OutlineColor = Color.White;
-            txtDomicilio.Padding = new Padding(19, 6, 19, 0);
+            txtDomicilio.Padding = new Padding(20, 5, 20, 0);
             txtDomicilio.PasswordChar = false;
             txtDomicilio.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtDomicilio.PlaceholderText = "Domicilio";

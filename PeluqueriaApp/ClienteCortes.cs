@@ -65,7 +65,7 @@ namespace PeluqueriaApp
                 MessageBox.Show("Cliente no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
             }
-            
+
             int ultimoIdCorte = dbConn.ObtenerUltimoCorteId(cliente.Id);
 
             imageList = dbConn.MostrarFotosDelCorte(ultimoIdCorte);
@@ -89,7 +89,7 @@ namespace PeluqueriaApp
             view = table.DefaultView;
             dgvCortes.DataSource = view;
 
-          
+
         }
 
 
@@ -106,7 +106,7 @@ namespace PeluqueriaApp
             // Estilo de los encabezados de columna
             dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(44, 145, 225); // Azul moderno
             dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold);
             dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgv.ColumnHeadersDefaultCellStyle.Padding = new Padding(10, 0, 0, 0);
             dgv.ColumnHeadersHeight = 40;
@@ -115,7 +115,7 @@ namespace PeluqueriaApp
             // Estilo de las filas
             dgv.DefaultCellStyle.BackColor = Color.White;
             dgv.DefaultCellStyle.ForeColor = Color.FromArgb(64, 64, 64); // Gris oscuro para mejor legibilidad
-            dgv.DefaultCellStyle.Font = new Font("Segoe UI", 12F);
+            dgv.DefaultCellStyle.Font = new Font("Segoe UI", 13F);
             dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(230, 240, 255); // Azul muy claro
             dgv.DefaultCellStyle.SelectionForeColor = Color.FromArgb(64, 64, 64);
             dgv.DefaultCellStyle.Padding = new Padding(10, 0, 0, 0);
@@ -244,6 +244,8 @@ namespace PeluqueriaApp
             ptbCliente.Cursor = Cursors.Hand;
             btnGuardar.Enabled = true;
 
+            imageList.Clear(); // Limpiar la lista de imágenes al iniciar un nuevo corte
+
         }
 
         private void lblNuevoCorte_MouseEnter(object sender, EventArgs e)
@@ -300,7 +302,7 @@ namespace PeluqueriaApp
         {
             if (!string.IsNullOrWhiteSpace(txtNombre.Content))
             {
-                var clienteParaGuardar = new Entidades.Cliente
+                var clienteParaGuardar = new Cliente
                 {
                     Id = cliente.Id,
                     Nombre = txtNombre.Content.Trim(),
@@ -478,6 +480,80 @@ namespace PeluqueriaApp
             else
             {
                 MessageBox.Show("No hay imágenes para mostrar.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            EliminarClienteSeleccionado();
+
+        }
+
+        private void EliminarClienteSeleccionado()
+        {
+
+
+
+            int clienteId = cliente.Id;
+
+            DialogResult resultado = MessageBox.Show("¿Estás seguro que querés eliminar este cliente y todos sus datos?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (resultado != DialogResult.Yes)
+                return;
+
+            string conexion = "Data Source=peluqueriaDB.db; Version=3;";
+
+            using (var conn = new SQLiteConnection(conexion))
+            {
+                conn.Open();
+
+                using (var transaccion = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        // Primero eliminar cortes y fotos si no tenés ON DELETE CASCADE (opcional)
+                        // Si ya tenés ON DELETE CASCADE, podés omitir esto.
+
+                        // 1. Eliminar registros relacionados de FotosCorte (si fuera necesario)
+                        string eliminarFotos = @"
+                    DELETE FROM FotosCorte 
+                    WHERE CorteId IN (SELECT Id FROM Cortes WHERE ClienteId = @ClienteId)";
+                        using (var cmd = new SQLiteCommand(eliminarFotos, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@ClienteId", clienteId);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        // 2. Eliminar cortes (si no hay ON DELETE CASCADE en Clientes -> Cortes)
+                        string eliminarCortes = "DELETE FROM Cortes WHERE ClienteId = @ClienteId";
+                        using (var cmd = new SQLiteCommand(eliminarCortes, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@ClienteId", clienteId);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        // 3. Eliminar el cliente
+                        string eliminarCliente = "DELETE FROM Clientes WHERE Id = @ClienteId";
+                        using (var cmd = new SQLiteCommand(eliminarCliente, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@ClienteId", clienteId);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        transaccion.Commit();
+
+                        MessageBox.Show("Cliente eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        this.Close(); // Cerrar el formulario actual
+                        // Actualizar DataGridView
+                        // Asegurate de tener una función así para refrescar los datos
+                    }
+                    catch (Exception ex)
+                    {
+                        transaccion.Rollback();
+                        MessageBox.Show("Ocurrió un error al eliminar el cliente:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
     }

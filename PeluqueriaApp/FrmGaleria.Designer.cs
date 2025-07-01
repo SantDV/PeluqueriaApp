@@ -61,7 +61,7 @@
             btnExport.ImageAutoCenter = true;
             btnExport.ImageExpand = new Point(10, 10);
             btnExport.ImageOffset = new Point(0, 0);
-            btnExport.Location = new Point(743, 100);
+            btnExport.Location = new Point(738, 12);
             btnExport.Name = "btnExport";
             btnExport.NormalBackground = SystemColors.Control;
             btnExport.NormalForeColor = Color.Black;
@@ -77,7 +77,7 @@
             btnExport.TabIndex = 1;
             btnExport.TextAlignment = StringAlignment.Center;
             btnExport.TextOffset = new Point(0, 0);
-            btnExport.Click += this.btnExport_Click_1;
+            btnExport.Click += btnExport_Click_1;
             // 
             // FrmGaleria
             // 

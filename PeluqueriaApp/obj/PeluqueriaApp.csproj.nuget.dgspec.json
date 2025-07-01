@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\SANTIAGO\\source\\repos\\PeluqueriaApp\\PeluqueriaApp\\PeluqueriaApp.csproj": {}
+    "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\PeluqueriaApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\SANTIAGO\\source\\repos\\PeluqueriaApp\\PeluqueriaApp\\PeluqueriaApp.csproj": {
+    "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\PeluqueriaApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SANTIAGO\\source\\repos\\PeluqueriaApp\\PeluqueriaApp\\PeluqueriaApp.csproj",
+        "projectUniqueName": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\PeluqueriaApp.csproj",
         "projectName": "PeluqueriaApp",
-        "projectPath": "C:\\Users\\SANTIAGO\\source\\repos\\PeluqueriaApp\\PeluqueriaApp\\PeluqueriaApp.csproj",
+        "projectPath": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\PeluqueriaApp.csproj",
         "packagesPath": "C:\\Users\\SANTIAGO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SANTIAGO\\source\\repos\\PeluqueriaApp\\PeluqueriaApp\\obj\\",
+        "outputPath": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -186,13 +186,13 @@
             btnNuevo.HoveredImageTint = Color.White;
             btnNuevo.HoverForeColor = Color.Black;
             btnNuevo.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            btnNuevo.Image = Properties.Resources.register;
+            btnNuevo.Image = Properties.Resources.add1;
             btnNuevo.ImageAutoCenter = true;
             btnNuevo.ImageExpand = new Point(6, 6);
             btnNuevo.ImageOffset = new Point(0, 0);
-            btnNuevo.Location = new Point(752, 24);
+            btnNuevo.Location = new Point(659, 32);
             btnNuevo.Name = "btnNuevo";
-            btnNuevo.NormalBackground = Color.WhiteSmoke;
+            btnNuevo.NormalBackground = Color.Gainsboro;
             btnNuevo.NormalForeColor = Color.Black;
             btnNuevo.NormalImageTint = Color.White;
             btnNuevo.NormalOutline = Color.WhiteSmoke;
@@ -202,7 +202,7 @@
             btnNuevo.PressedImageTint = Color.White;
             btnNuevo.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             btnNuevo.Rounding = new Padding(4);
-            btnNuevo.Size = new Size(47, 45);
+            btnNuevo.Size = new Size(63, 67);
             btnNuevo.TabIndex = 4;
             btnNuevo.TextAlignment = StringAlignment.Center;
             btnNuevo.TextOffset = new Point(0, 0);
