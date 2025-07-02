@@ -7,6 +7,9 @@
     <Compile Update="ClienteCortes.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="DetalleCobro.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormImagenCompleta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -14,6 +17,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FrmEstadisticas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmFacturacion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FrmGaleria.cs">

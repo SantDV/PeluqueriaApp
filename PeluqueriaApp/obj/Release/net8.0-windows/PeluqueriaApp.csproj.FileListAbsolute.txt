@@ -108,3 +108,4 @@ C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows
 C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows\PeluqueriaApp.pdb
 C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows\PeluqueriaApp.genruntimeconfig.cache
 C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows\ref\PeluqueriaApp.dll
+C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows\PeluqueriaApp.FrmFacturacion.resources

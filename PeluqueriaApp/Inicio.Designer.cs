@@ -32,6 +32,7 @@
             btnInicio = new CuoreUI.Controls.cuiButton();
             btnClientes = new CuoreUI.Controls.cuiButton();
             btnGaleria = new CuoreUI.Controls.cuiButton();
+            btnFacturacion = new CuoreUI.Controls.cuiButton();
             btnInfo = new CuoreUI.Controls.cuiButton();
             panelContenedor = new Panel();
             flpanel.SuspendLayout();
@@ -42,6 +43,7 @@
             flpanel.Controls.Add(btnInicio);
             flpanel.Controls.Add(btnClientes);
             flpanel.Controls.Add(btnGaleria);
+            flpanel.Controls.Add(btnFacturacion);
             flpanel.Controls.Add(btnInfo);
             flpanel.Dock = DockStyle.Left;
             flpanel.Location = new Point(0, 0);
@@ -85,7 +87,7 @@
             btnInicio.Size = new Size(115, 45);
             btnInicio.TabIndex = 1;
             btnInicio.TextAlignment = StringAlignment.Near;
-            btnInicio.TextOffset = new Point(0, 0);
+            btnInicio.TextOffset = new Point(-7, 0);
             btnInicio.Click += btnInicio_Click;
             // 
             // btnClientes
@@ -123,7 +125,7 @@
             btnClientes.Size = new Size(115, 45);
             btnClientes.TabIndex = 0;
             btnClientes.TextAlignment = StringAlignment.Near;
-            btnClientes.TextOffset = new Point(0, 0);
+            btnClientes.TextOffset = new Point(-7, 0);
             btnClientes.Click += btnClientes_Click;
             // 
             // btnGaleria
@@ -161,8 +163,46 @@
             btnGaleria.Size = new Size(115, 45);
             btnGaleria.TabIndex = 3;
             btnGaleria.TextAlignment = StringAlignment.Near;
-            btnGaleria.TextOffset = new Point(0, 0);
+            btnGaleria.TextOffset = new Point(-7, 0);
             btnGaleria.Click += btnGaleria_Click;
+            // 
+            // btnFacturacion
+            // 
+            btnFacturacion.CheckButton = false;
+            btnFacturacion.Checked = false;
+            btnFacturacion.CheckedBackground = Color.FromArgb(255, 106, 0);
+            btnFacturacion.CheckedForeColor = Color.White;
+            btnFacturacion.CheckedImageTint = Color.White;
+            btnFacturacion.CheckedOutline = Color.FromArgb(255, 106, 0);
+            btnFacturacion.Content = "Cobros";
+            btnFacturacion.DialogResult = DialogResult.None;
+            btnFacturacion.Font = new Font("Segoe UI", 12F);
+            btnFacturacion.ForeColor = Color.Black;
+            btnFacturacion.HoverBackground = Color.White;
+            btnFacturacion.HoveredImageTint = Color.White;
+            btnFacturacion.HoverForeColor = Color.Black;
+            btnFacturacion.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            btnFacturacion.Image = Properties.Resources.wallet;
+            btnFacturacion.ImageAutoCenter = false;
+            btnFacturacion.ImageExpand = new Point(15, 15);
+            btnFacturacion.ImageOffset = new Point(12, 0);
+            btnFacturacion.Location = new Point(3, 156);
+            btnFacturacion.Name = "btnFacturacion";
+            btnFacturacion.NormalBackground = Color.White;
+            btnFacturacion.NormalForeColor = Color.Black;
+            btnFacturacion.NormalImageTint = Color.White;
+            btnFacturacion.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            btnFacturacion.OutlineThickness = 1F;
+            btnFacturacion.PressedBackground = Color.WhiteSmoke;
+            btnFacturacion.PressedForeColor = Color.FromArgb(32, 32, 32);
+            btnFacturacion.PressedImageTint = Color.White;
+            btnFacturacion.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            btnFacturacion.Rounding = new Padding(8);
+            btnFacturacion.Size = new Size(115, 45);
+            btnFacturacion.TabIndex = 5;
+            btnFacturacion.TextAlignment = StringAlignment.Near;
+            btnFacturacion.TextOffset = new Point(-7, 0);
+            btnFacturacion.Click += btnFacturacion_Click;
             // 
             // btnInfo
             // 
@@ -184,8 +224,8 @@
             btnInfo.ImageAutoCenter = true;
             btnInfo.ImageExpand = new Point(0, 0);
             btnInfo.ImageOffset = new Point(0, 0);
-            btnInfo.Location = new Point(3, 498);
-            btnInfo.Margin = new Padding(3, 345, 3, 3);
+            btnInfo.Location = new Point(3, 494);
+            btnInfo.Margin = new Padding(3, 290, 3, 3);
             btnInfo.Name = "btnInfo";
             btnInfo.NormalBackground = Color.White;
             btnInfo.NormalForeColor = Color.Black;
@@ -236,5 +276,6 @@
         private CuoreUI.Controls.cuiButton btnGaleria;
         private CuoreUI.Controls.cuiButton btnInfo;
         private Panel panelContenedor;
+        private CuoreUI.Controls.cuiButton btnFacturacion;
     }
 }

@@ -17,6 +17,11 @@ namespace PeluqueriaApp
         public AcercaDe()
         {
             InitializeComponent();
+
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+
+
             this.Text = "Acerca de";
             this.Size = new Size(450, 340);
             this.FormBorderStyle = FormBorderStyle.FixedDialog;

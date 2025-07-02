@@ -16,6 +16,10 @@ namespace PeluqueriaApp
         public Inicio()
         {
             InitializeComponent();
+            this.MaximizeBox = false;
+
+            // Opcional: Establece el borde como fijo
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         private void AbrirFormulario<Formulario>() where Formulario : Form, new()
@@ -27,7 +31,7 @@ namespace PeluqueriaApp
                 form.TopLevel = false;
                 form.FormBorderStyle = FormBorderStyle.None;
                 form.Dock = DockStyle.Fill;
-               
+
 
                 panelContenedor.Controls.Clear(); // Opcional si querés un solo formulario a la vez
                 panelContenedor.Controls.Add(form);
@@ -42,41 +46,16 @@ namespace PeluqueriaApp
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            AbrirClientes();
-        }
-
-        private void AbrirClientes()
-        {
             AbrirFormulario<ClientesGestion>();
-
-
-            //ClientesGestion clientes = Application.OpenForms.OfType<ClientesGestion>().FirstOrDefault();
-
-            //clientes.empleado = this.empleado;
-
-            //if (this.usuario.IdRol == 1)
-            //{
-            //    clientes.btnEliminar.Enabled = false;
-            //    clientes.btnEliminar.BackColor = Color.LightCoral;
-
-            //    clientes.Refresh();
-            //}
-            //else
-            //{
-            //    clientes.btnEliminar.Enabled = true;
-
-            //    clientes.Refresh();
-            //}
         }
 
-
-
+     
         private void btnInicio_Click(object sender, EventArgs e)
         {
             AbrirFormulario<FrmEstadisticas>();
         }
 
-        
+
 
         private void btnGaleria_Click(object sender, EventArgs e)
         {
@@ -121,6 +100,11 @@ namespace PeluqueriaApp
             this.Controls.Add(panelCaratula);
             this.Controls.SetChildIndex(panelCaratula, 0); // Para que quede arriba
 
+        }
+
+        private void btnFacturacion_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<FrmFacturacion>();
         }
     }
 }

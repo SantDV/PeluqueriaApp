@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -280,7 +281,7 @@ namespace PeluqueriaApp
         }
 
 
-        public void EliminarCorte(int idCorte)
+        public bool EliminarCorte(int idCorte)
         {
             using (var conn = new SQLiteConnection(connectionString))
             {
@@ -290,6 +291,7 @@ namespace PeluqueriaApp
                 {
                     cmd.Parameters.AddWithValue("@Id", idCorte);
                     cmd.ExecuteNonQuery();
+                    return true; // Retorna true si la eliminación fue exitosa
                 }
             }
         }
@@ -453,10 +455,11 @@ namespace PeluqueriaApp
             // Asegurarse de que la fecha "hasta" incluya todo el día
             hasta = hasta.AddDays(1).AddSeconds(-1);
 
+            //WHERE date(c.FechaCreacion) BETWEEN date(@Desde) AND date(@Hasta)
             string query = @"
                             SELECT Id, Nombre, Telefono, Email, FechaCreacion 
                             FROM Clientes 
-                            WHERE FechaCreacion BETWEEN @Desde AND @Hasta
+                            WHERE date(FechaCreacion) BETWEEN date(@Desde) AND date(@Hasta)
                             ORDER BY FechaCreacion DESC";
 
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
@@ -465,8 +468,8 @@ namespace PeluqueriaApp
                 DataTable table = new DataTable();
                 using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@Desde", desde);
-                    cmd.Parameters.AddWithValue("@Hasta", hasta);
+                    cmd.Parameters.AddWithValue("@Desde", desde.Date);
+                    cmd.Parameters.AddWithValue("@Hasta", hasta.Date);
 
                     using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd))
                     {
@@ -480,6 +483,327 @@ namespace PeluqueriaApp
 
             
         }
+
+        public (DataTable Table, decimal Total, int cantidadClientes) ObtenerCobrosPorRangoFechas(DateTime desde, DateTime hasta)
+        {
+            using (var conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+                string sql = @"SELECT c.Id, c.ClienteId as clienteId, c.FechaCreacion, 
+              cl.Nombre AS Cliente,
+              c.Descripcion, 
+              c.Cobro
+       FROM Cortes c
+       JOIN Clientes cl ON cl.Id = c.ClienteId
+       WHERE date(c.FechaCreacion) BETWEEN date(@Desde) AND date(@Hasta)
+         AND c.Cobro IS NOT NULL AND TRIM(c.Cobro) != ''
+       ORDER BY c.FechaCreacion ASC";
+
+                using (var cmd = new SQLiteCommand(sql, conn))
+                {
+                    // Aseguramos que solo se compare la parte de fecha
+                    cmd.Parameters.AddWithValue("@Desde", desde.Date);
+                    cmd.Parameters.AddWithValue("@Hasta", hasta.Date);
+
+                    // Resto del código permanece igual...
+                    using (var da = new SQLiteDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+
+                        decimal total = 0;
+
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            string cobroTexto = row["Cobro"].ToString()
+                                .Replace("$", "")
+                                .Replace(" ", "")
+                                .Replace(".", "")
+                                .Replace(",", ".");
+
+                            if (decimal.TryParse(cobroTexto, System.Globalization.NumberStyles.Any,
+                                System.Globalization.CultureInfo.InvariantCulture, out decimal valor))
+                                total += valor;
+                        }
+
+                        int cantidadClientes = dt
+                            .AsEnumerable()
+                            .Select(row => row.Field<long>("clienteId"))
+                            .Distinct()
+                            .Count();
+
+                        return (dt, total, cantidadClientes);
+                    }
+                }
+            }
+        }
+
+
+        public (DataTable Table, decimal Total, int cantidadClientes) ObtenerCobrosPorCriterio(
+    string criterio, string campoBusqueda = null, int? idCorte = null, long? idCliente = null)
+
+        {
+            using (var conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                string sql = @"
+            SELECT c.Id, c.FechaCreacion,
+                   cl.Id AS ClienteId,
+                   cl.Nombre AS Cliente,
+                   c.Descripcion,
+                   c.Cobro
+            FROM Cortes c
+            JOIN Clientes cl ON cl.Id = c.ClienteId
+            WHERE c.Cobro IS NOT NULL AND TRIM(c.Cobro) != ''";
+
+                // Validación de parámetros
+                if (idCorte.HasValue)
+                {
+                    sql += " AND c.Id = @IdCorte";
+                }
+                else if (idCliente.HasValue)
+                {
+                    sql += " AND c.ClienteId = @IdCliente";
+                }
+                else if (!string.IsNullOrEmpty(campoBusqueda))
+                {
+                    // Validar campo para evitar inyecciones SQL
+                    string[] camposValidos = { "cl.Nombre", "cl.Telefono", "cl.Email" };
+                    if (!camposValidos.Contains(campoBusqueda))
+                        throw new ArgumentException("Campo de búsqueda no válido");
+
+                    sql += $" AND {campoBusqueda} LIKE @Criterio";
+                }
+                else
+                {
+                    throw new ArgumentException("Debe proporcionar un criterio de búsqueda válido");
+                }
+
+                sql += " ORDER BY c.FechaCreacion ASC";
+
+                using (var cmd = new SQLiteCommand(sql, conn))
+                {
+                    // Asignar parámetros según el tipo de búsqueda
+                    if (idCorte.HasValue)
+                    {
+                        cmd.Parameters.AddWithValue("@IdCorte", idCorte);
+                    }
+                    else if (idCliente.HasValue)
+                    {
+                        cmd.Parameters.AddWithValue("@IdCliente", idCliente);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Criterio", "%" + criterio + "%");
+                    }
+
+                    using (var da = new SQLiteDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+
+                        decimal total = 0;
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            string cobroTexto = row["Cobro"].ToString()
+                                .Replace("$", "")
+                                .Replace(" ", "")
+                                .Replace(".", "")
+                                .Replace(",", ".");
+
+                            if (decimal.TryParse(cobroTexto, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal valor))
+                                total += valor;
+                        }
+
+                        int cantidadClientes = dt
+                            .AsEnumerable()
+                            .Select(row => row.Field<long>("ClienteId"))
+                            .Distinct()
+                            .Count();
+
+                        return (dt, total, cantidadClientes);
+                    }
+                }
+            }
+        }
+
+        public (DataTable Table, decimal Total, int cantidadClientes) ObtenerTodosLosCobros()
+        {
+            using (var conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+                string sql = @"SELECT c.Id, c.ClienteId as clienteId, c.FechaCreacion, 
+                      cl.Nombre AS Cliente,
+                      c.Descripcion, 
+                      c.Cobro
+               FROM Cortes c
+               JOIN Clientes cl ON cl.Id = c.ClienteId
+               WHERE c.Cobro IS NOT NULL AND TRIM(c.Cobro) != ''
+               ORDER BY c.FechaCreacion ASC";
+
+                using (var cmd = new SQLiteCommand(sql, conn))
+                {
+                    using (var da = new SQLiteDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+
+                        decimal total = 0;
+
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            string cobroTexto = row["Cobro"].ToString()
+                                .Replace("$", "")
+                                .Replace(" ", "")
+                                .Replace(".", "")
+                                .Replace(",", ".");
+
+                            if (decimal.TryParse(cobroTexto, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out decimal valor))
+                                total += valor;
+                        }
+
+                        int cantidadClientes = dt
+                            .AsEnumerable()
+                            .Select(row => row.Field<long>("clienteId"))
+                            .Distinct()
+                            .Count();
+
+                        return (dt, total, cantidadClientes);
+                    }
+                }
+            }
+        }
+
+
+        public (DataTable Table, decimal Total, int cantidadClientes) ObtenerCobrosPorIdCorte(int idCorte)
+        {
+            using (var conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+                string sql = @"SELECT c.Id, c.ClienteId as clienteId, c.FechaCreacion, 
+                      cl.Nombre AS Cliente,
+                      c.Descripcion, 
+                      c.Cobro
+               FROM Cortes c
+               JOIN Clientes cl ON cl.Id = c.ClienteId
+               WHERE c.Id = @IdCorte
+                 AND c.Cobro IS NOT NULL AND TRIM(c.Cobro) != ''";
+
+                using (var cmd = new SQLiteCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@IdCorte", idCorte);
+
+                    using (var da = new SQLiteDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+
+                        decimal total = 0;
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            string cobroTexto = row["Cobro"].ToString()
+                                .Replace("$", "")
+                                .Replace(" ", "")
+                                .Replace(".", "")
+                                .Replace(",", ".");
+
+                            if (decimal.TryParse(cobroTexto, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal valor))
+                                total += valor;
+                        }
+
+                        int cantidadClientes = dt.Rows.Count; // Solo habrá 1 cliente si el ID del corte es único
+
+                        return (dt, total, cantidadClientes);
+                    }
+                }
+            }
+        }
+
+
+        public (DataTable Table, decimal Total, int cantidadClientes) ObtenerCobrosPorIdCliente(long idCliente)
+        {
+            using (var conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+                string sql = @"SELECT c.Id, c.ClienteId as clienteId, c.FechaCreacion, 
+                      cl.Nombre AS Cliente,
+                      c.Descripcion, 
+                      c.Cobro
+               FROM Cortes c
+               JOIN Clientes cl ON cl.Id = c.ClienteId
+               WHERE c.ClienteId = @IdCliente
+                 AND c.Cobro IS NOT NULL AND TRIM(c.Cobro) != ''
+               ORDER BY c.FechaCreacion ASC";
+
+                using (var cmd = new SQLiteCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@IdCliente", idCliente);
+
+                    using (var da = new SQLiteDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+
+                        decimal total = 0;
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            string cobroTexto = row["Cobro"].ToString()
+                                .Replace("$", "")
+                                .Replace(" ", "")
+                                .Replace(".", "")
+                                .Replace(",", ".");
+
+                            if (decimal.TryParse(cobroTexto, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal valor))
+                                total += valor;
+                        }
+
+                        int cantidadClientes = 1; // Siempre es 1 porque filtras por un cliente específico
+
+                        return (dt, total, cantidadClientes);
+                    }
+                }
+            }
+        }
+
+
+        public bool ModificarCorte(Corte corte)
+        {
+            try
+            {
+                using (var conn = new SQLiteConnection(connectionString))
+                {
+                    conn.Open();
+
+                    string sql = @"
+                UPDATE Cortes 
+                SET 
+                    Descripcion = @Descripcion,
+                    Cobro = @Cobro,
+                    FechaCreacion = @FechaCreacion
+                WHERE Id = @Id";
+
+                    using (var cmd = new SQLiteCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Id", corte.Id);
+                        cmd.Parameters.AddWithValue("@Descripcion", string.IsNullOrEmpty(corte.Descripcion) ? " " : corte.Descripcion);
+                        cmd.Parameters.AddWithValue("@Cobro", string.IsNullOrEmpty(corte.Cobro) ? 0.00 : corte.Cobro);
+                        cmd.Parameters.AddWithValue("@FechaCreacion", corte.FechaCreacion.ToString("yyyy-MM-dd HH:mm:ss"));
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        return rowsAffected > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Puedes registrar el error o mostrarlo
+                MessageBox.Show($"Error al modificar el corte: {ex.Message}");
+                return false;
+            }
+        }
+
+
 
 
     }

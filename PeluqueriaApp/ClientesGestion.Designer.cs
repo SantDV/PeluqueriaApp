@@ -44,7 +44,7 @@
             btnLimpiar = new CuoreUI.Controls.cuiButton();
             btnBuscar = new CuoreUI.Controls.cuiButton();
             lblCargarTodo = new Label();
-            label1 = new Label();
+            cckbRango = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
             // 
@@ -110,6 +110,7 @@
             txtBuscarNombre.TabIndex = 1;
             txtBuscarNombre.TextOffset = new Size(0, 0);
             txtBuscarNombre.UnderlinedStyle = true;
+            txtBuscarNombre.Enter += txtBuscarNombre_Enter;
             txtBuscarNombre.KeyPress += txtBuscarNombre_KeyPress;
             // 
             // txtBuscarTelefono
@@ -139,6 +140,7 @@
             txtBuscarTelefono.TabIndex = 2;
             txtBuscarTelefono.TextOffset = new Size(0, 0);
             txtBuscarTelefono.UnderlinedStyle = true;
+            txtBuscarTelefono.Enter += txtBuscarTelefono_Enter;
             txtBuscarTelefono.KeyPress += txtBuscarTelefono_KeyPress;
             // 
             // txtBuscarEmail
@@ -168,6 +170,7 @@
             txtBuscarEmail.TabIndex = 3;
             txtBuscarEmail.TextOffset = new Size(0, 0);
             txtBuscarEmail.UnderlinedStyle = true;
+            txtBuscarEmail.Enter += txtBuscarEmail_Enter;
             txtBuscarEmail.KeyPress += txtBuscarEmail_KeyPress;
             // 
             // btnNuevo
@@ -224,6 +227,7 @@
             // 
             dtpHasta.CalendarFont = new Font("Segoe UI", 10F);
             dtpHasta.CalendarForeColor = Color.Gray;
+            dtpHasta.Enabled = false;
             dtpHasta.Font = new Font("Segoe UI", 12F);
             dtpHasta.Format = DateTimePickerFormat.Short;
             dtpHasta.Location = new Point(192, 72);
@@ -313,35 +317,32 @@
             lblCargarTodo.AutoSize = true;
             lblCargarTodo.Cursor = Cursors.Hand;
             lblCargarTodo.Font = new Font("Segoe UI", 12F);
-            lblCargarTodo.Location = new Point(372, 78);
+            lblCargarTodo.Location = new Point(484, 78);
             lblCargarTodo.Name = "lblCargarTodo";
-            lblCargarTodo.Size = new Size(126, 21);
+            lblCargarTodo.Size = new Size(60, 21);
             lblCargarTodo.TabIndex = 23;
-            lblCargarTodo.Text = "[+] Cargar Todos";
+            lblCargarTodo.Text = "[Todos]";
             lblCargarTodo.Click += lblCargarTodo_Click;
             lblCargarTodo.MouseEnter += lblCargarTodo_MouseEnter;
             lblCargarTodo.MouseLeave += lblCargarTodo_MouseLeave;
             // 
-            // label1
+            // cckbRango
             // 
-            label1.AutoSize = true;
-            label1.Cursor = Cursors.Hand;
-            label1.Font = new Font("Segoe UI", 12F);
-            label1.Location = new Point(370, 78);
-            label1.Name = "label1";
-            label1.Size = new Size(126, 21);
-            label1.TabIndex = 23;
-            label1.Text = "[+] Cargar Todos";
-            label1.Click += lblCargarTodo_Click;
-            label1.MouseEnter += lblCargarTodo_MouseEnter;
-            label1.MouseLeave += lblCargarTodo_MouseLeave;
+            cckbRango.AutoSize = true;
+            cckbRango.Location = new Point(372, 80);
+            cckbRango.Name = "cckbRango";
+            cckbRango.Size = new Size(60, 19);
+            cckbRango.TabIndex = 37;
+            cckbRango.Text = "Rango";
+            cckbRango.UseVisualStyleBackColor = true;
+            cckbRango.CheckedChanged += cckbRango_CheckedChanged;
             // 
             // ClientesGestion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(811, 459);
-            Controls.Add(label1);
+            Controls.Add(cckbRango);
             Controls.Add(lblCargarTodo);
             Controls.Add(btnBuscar);
             Controls.Add(btnLimpiar);
@@ -378,6 +379,6 @@
         private DataGridViewTextBoxColumn email;
         private DataGridViewTextBoxColumn fechaCreacion;
         private Label lblCargarTodo;
-        private Label label1;
+        private CheckBox cckbRango;
     }
 }

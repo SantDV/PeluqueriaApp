@@ -19,7 +19,7 @@ namespace PeluqueriaApp
         {
             InitializeComponent();
             EstilizarDataGridView(dgvClientes);
-            ConfigurarMonitoreoCambios();
+
             table.Columns.Add("id", typeof(string));
             table.Columns.Add("nombre", typeof(string));
             table.Columns.Add("telefono", typeof(string));
@@ -34,7 +34,7 @@ namespace PeluqueriaApp
             dgvClientes.Columns["email"].DataPropertyName = "email";
             dgvClientes.Columns["fechaCreacion"].DataPropertyName = "fechaCreacion";
 
-
+            BuscarPorFecha();
 
         }
 
@@ -181,29 +181,11 @@ namespace PeluqueriaApp
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
+            txtBuscarEmail.Content = string.Empty;
+            txtBuscarNombre.Content = string.Empty;
+            txtBuscarTelefono.Content = string.Empty;
             table.Clear();
         }
-
-        private void ConfigurarMonitoreoCambios()
-        {
-            // Todos estos eventos llamarán a ActualizarConteoClientes()
-            //dgvClientes.CellValueChanged += (s, e) => ActualizarConteoClientes();
-            //dgvClientes.RowsAdded += (s, e) => ActualizarConteoClientes();
-            //dgvClientes.RowsRemoved += (s, e) => ActualizarConteoClientes();
-            //dgvClientes.DataSourceChanged += (s, e) => ActualizarConteoClientes();
-        }
-
-        //private void ActualizarConteoClientes()
-        //{
-        //    int filasValidas = dgvClientes.Rows
-        //        .Cast<DataGridViewRow>()
-        //        .Count(r => !r.IsNewRow && r.Cells[0].Value != null);
-
-        //    lblCustomerCount.Text = filasValidas.ToString();
-
-        //    // Opcional: Cambiar color si hay muchas filas
-        //    lblCustomerCount.ForeColor = filasValidas > 10 ? Color.Red : Color.Black;
-        //}
 
         private void txtBuscarTelefono_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -238,8 +220,8 @@ namespace PeluqueriaApp
 
         private void lblCargarTodo_Click(object sender, EventArgs e)
         {
-
             CargarTodosLosClientes();
+
         }
 
         public void CargarTodosLosClientes()
@@ -270,18 +252,34 @@ namespace PeluqueriaApp
             BuscarPorFecha();
         }
 
-        void BuscarPorFecha()
+        public void BuscarPorFecha()
         {
             try
             {
-                DateTime desde = dtpDesde.Value.Date; // Fecha inicial (00:00:00)
-                DateTime hasta = dtpHasta.Value.Date; // Fecha final (se ajustará para incluir todo el día)
 
 
-                table = dbConn.ObtenerClientesPorRangoFechas(desde, hasta);
-                view = table.DefaultView;
+                if (dtpHasta.Enabled == false)
+                {
+                    DateTime desde = dtpDesde.Value.Date; // Fecha inicial (00:00:00)
+                    DateTime hasta = desde; // Fecha final (se ajustará para incluir todo el día)
 
-                dgvClientes.DataSource = view;
+
+                    table = dbConn.ObtenerClientesPorRangoFechas(desde, hasta);
+                    view = table.DefaultView;
+
+                    dgvClientes.DataSource = view;
+                }
+                else
+                {
+                    DateTime desde = dtpDesde.Value.Date; // Fecha inicial (00:00:00)
+                    DateTime hasta = dtpHasta.Value.Date; // Fecha final (se ajustará para incluir todo el día)
+
+
+                    table = dbConn.ObtenerClientesPorRangoFechas(desde, hasta);
+                    view = table.DefaultView;
+
+                    dgvClientes.DataSource = view;
+                }
 
             }
             catch (Exception ex)
@@ -297,12 +295,42 @@ namespace PeluqueriaApp
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-           
+
         }
 
-        
+        private void cckbRango_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cckbRango.Checked == true)
+            {
+                dtpHasta.Enabled = true;
+                BuscarPorFecha();
+            }
+            else
+            {
+                dtpHasta.Enabled = false;
+                BuscarPorFecha();
+            }
         }
 
+        private void txtBuscarNombre_Enter(object sender, EventArgs e)
+        {
+            txtBuscarEmail.Content = string.Empty;
+            txtBuscarTelefono.Content = string.Empty;
+        }
+
+        private void txtBuscarTelefono_Enter(object sender, EventArgs e)
+        {
+            txtBuscarEmail.Content = string.Empty;
+            txtBuscarNombre.Content = string.Empty;
+        }
+
+        private void txtBuscarEmail_Enter(object sender, EventArgs e)
+        {
+            txtBuscarNombre.Content = string.Empty;
+            txtBuscarTelefono.Content = string.Empty;
+        }
     }
+
+}
 
 

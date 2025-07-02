@@ -30,6 +30,12 @@ namespace PeluqueriaApp
         public ClienteCortes(int id)
         {
             InitializeComponent();
+
+            this.MaximizeBox = false;
+
+            // Opcional: Establece el borde como fijo
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+
             cliente.Id = id;
 
             table.Columns.Add("Id", typeof(string));
@@ -309,7 +315,7 @@ namespace PeluqueriaApp
                     Telefono = txtTelefono.Content.Trim(),
                     Email = txtEmail.Content.Trim(),
                     Observaciones = txtObservacion.Text,
-                    PrecioCorte = txtPrecio.Content
+                    PrecioCorte = string.IsNullOrWhiteSpace(txtPrecio.Content) ? "$ 0,00" : txtPrecio.Content
                 };
 
                 string resultado = dbConn.AgregarCorte(clienteParaGuardar, imageList);

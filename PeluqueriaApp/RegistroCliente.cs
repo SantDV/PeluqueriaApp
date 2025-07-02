@@ -23,6 +23,11 @@ namespace PeluqueriaApp
         {
             InitializeComponent();
 
+            this.MaximizeBox = false;
+
+            // Opcional: Establece el borde como fijo
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+
         }
 
         private void btnRegistrar_Click(object sender, EventArgs e)
@@ -62,7 +67,7 @@ namespace PeluqueriaApp
                             {
                                 cmdCorte.Parameters.AddWithValue("@ClienteId", clienteId);
                                 cmdCorte.Parameters.AddWithValue("@Descripcion", txtObservacion.Text);
-                                cmdCorte.Parameters.AddWithValue("@Cobro", txtPrecio.Content);
+                                cmdCorte.Parameters.AddWithValue("@Cobro", string.IsNullOrWhiteSpace(txtPrecio.Content) ? "$ 0,00" : txtPrecio.Content);
                                 cmdCorte.ExecuteNonQuery();
 
                                 corteId = conn.LastInsertRowId; // Obtener ID del corte
@@ -84,6 +89,13 @@ namespace PeluqueriaApp
                             transaction.Commit();
                             MessageBox.Show("Cliente, corte y fotos registrados correctamente.");
                             LimpiarFormulario();
+
+                            ClientesGestion clientesGestion = Application.OpenForms.OfType<ClientesGestion>().FirstOrDefault();
+
+                            if (clientesGestion != null)
+                            {
+                                clientesGestion.BuscarPorFecha(); // Actualizar la lista de clientes en el formulario principal
+                            }
                         }
                         catch (Exception ex)
                         {
