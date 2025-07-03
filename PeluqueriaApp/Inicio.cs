@@ -16,7 +16,7 @@ namespace PeluqueriaApp
         public Inicio()
         {
             InitializeComponent();
-            this.MaximizeBox = false;
+            //this.MaximizeBox = false;
 
             // Opcional: Establece el borde como fijo
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -49,7 +49,7 @@ namespace PeluqueriaApp
             AbrirFormulario<ClientesGestion>();
         }
 
-     
+
         private void btnInicio_Click(object sender, EventArgs e)
         {
             AbrirFormulario<FrmEstadisticas>();
@@ -106,5 +106,6 @@ namespace PeluqueriaApp
         {
             AbrirFormulario<FrmFacturacion>();
         }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Wordprocessing;
 using PeluqueriaApp.Entidades;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,8 @@ namespace PeluqueriaApp
         public FrmGaleria(Cliente cliente)
         {
             InitializeComponent();
+            this.KeyPreview = true; // Podés ponerlo en el constructor o en Load
+
             this.cliente = cliente;
         }
 
@@ -80,16 +83,21 @@ namespace PeluqueriaApp
 
                                     pb.Click += (s, e) =>
                                     {
-                                        var zoomForm = new Form();
-                                        zoomForm.StartPosition = FormStartPosition.CenterParent;
-                                        zoomForm.Size = new Size(500, 500);
+                                        //var zoomForm = new Form();
+                                        //zoomForm.StartPosition = FormStartPosition.CenterParent;
+                                        //zoomForm.Size = new Size(500, 500);
                                         var zoomPb = new PictureBox
                                         {
                                             Dock = DockStyle.Fill,
                                             Image = ((PictureBox)s).Image,
                                             SizeMode = PictureBoxSizeMode.Zoom
                                         };
-                                        zoomForm.Controls.Add(zoomPb);
+                                        //zoomForm.Controls.Add(zoomPb);
+                                        //zoomForm.ShowDialog();
+
+                                        ZoomFrm zoomForm = new ZoomFrm(img);
+                                        zoomForm.StartPosition = FormStartPosition.CenterParent;
+                                        zoomForm.Size = new Size(500, 500);
                                         zoomForm.ShowDialog();
                                     };
 
@@ -231,6 +239,16 @@ namespace PeluqueriaApp
         private void btnExport_Click_1(object sender, EventArgs e)
         {
             Exportar();
+        }
+
+        private void FrmGaleria_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                this.Close();
+                e.Handled = true;
+            }
+
         }
     }
 }

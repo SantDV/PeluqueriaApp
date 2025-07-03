@@ -50,10 +50,13 @@
             // 
             // dgvClientes
             // 
+            dgvClientes.AllowUserToAddRows = false;
+            dgvClientes.AllowUserToDeleteRows = false;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvClientes.Columns.AddRange(new DataGridViewColumn[] { id, nombre, telefono, email, fechaCreacion });
             dgvClientes.Location = new Point(12, 114);
             dgvClientes.Name = "dgvClientes";
+            dgvClientes.ReadOnly = true;
             dgvClientes.Size = new Size(787, 333);
             dgvClientes.TabIndex = 0;
             dgvClientes.CellClick += dgvClientes_CellClick;
@@ -62,26 +65,31 @@
             // 
             id.HeaderText = "ID";
             id.Name = "id";
+            id.ReadOnly = true;
             // 
             // nombre
             // 
             nombre.HeaderText = "Nombre";
             nombre.Name = "nombre";
+            nombre.ReadOnly = true;
             // 
             // telefono
             // 
             telefono.HeaderText = "Teléfono";
             telefono.Name = "telefono";
+            telefono.ReadOnly = true;
             // 
             // email
             // 
             email.HeaderText = "Email";
             email.Name = "email";
+            email.ReadOnly = true;
             // 
             // fechaCreacion
             // 
             fechaCreacion.HeaderText = "Feche Creación";
             fechaCreacion.Name = "fechaCreacion";
+            fechaCreacion.ReadOnly = true;
             // 
             // txtBuscarNombre
             // 
@@ -193,7 +201,8 @@
             btnNuevo.ImageAutoCenter = true;
             btnNuevo.ImageExpand = new Point(6, 6);
             btnNuevo.ImageOffset = new Point(0, 0);
-            btnNuevo.Location = new Point(659, 32);
+            btnNuevo.Location = new Point(736, 32);
+            btnNuevo.MaximumSize = new Size(120, 67);
             btnNuevo.Name = "btnNuevo";
             btnNuevo.NormalBackground = Color.Gainsboro;
             btnNuevo.NormalForeColor = Color.Black;

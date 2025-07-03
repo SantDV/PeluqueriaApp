@@ -31,6 +31,8 @@ namespace PeluqueriaApp
         {
             InitializeComponent();
 
+            this.KeyPreview = true; // Podés ponerlo en el constructor o en Load
+
             this.MaximizeBox = false;
 
             // Opcional: Establece el borde como fijo
@@ -550,6 +552,12 @@ namespace PeluqueriaApp
 
                         MessageBox.Show("Cliente eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                        ClientesGestion clienteGestion = Application.OpenForms.OfType<ClientesGestion>().FirstOrDefault();
+                        if (clienteGestion != null)
+                        {
+                            clienteGestion.BuscarPorFecha(); 
+                        }
+
                         this.Close(); // Cerrar el formulario actual
                         // Actualizar DataGridView
                         // Asegurate de tener una función así para refrescar los datos
@@ -560,6 +568,15 @@ namespace PeluqueriaApp
                         MessageBox.Show("Ocurrió un error al eliminar el cliente:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+            }
+        }
+
+        private void ClienteCortes_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                this.Close();
+                e.Handled = true;
             }
         }
     }

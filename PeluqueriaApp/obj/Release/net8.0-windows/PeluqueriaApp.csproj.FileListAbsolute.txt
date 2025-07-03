@@ -88,14 +88,17 @@ C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows
 C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows\PeluqueriaApp.Ajustes.resources
 C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows\PeluqueriaApp.ClienteCortes.resources
 C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows\PeluqueriaApp.ClientesGestion.resources
+C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows\PeluqueriaApp.DetalleCobro.resources
 C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows\PeluqueriaApp.FormImagenCompleta.resources
 C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows\PeluqueriaApp.FrmEstadisticas.resources
+C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows\PeluqueriaApp.FrmFacturacion.resources
 C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows\PeluqueriaApp.FrmGaleria.resources
 C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows\PeluqueriaApp.FrmGaleriaTodos.resources
 C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows\PeluqueriaApp.FrmSplash.resources
 C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows\PeluqueriaApp.Inicio.resources
 C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows\PeluqueriaApp.Properties.Resources.resources
 C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows\PeluqueriaApp.RegistroCliente.resources
+C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows\PeluqueriaApp.ZoomFrm.resources
 C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows\PeluqueriaApp.csproj.GenerateResource.cache
 C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows\PeluqueriaApp.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows\PeluqueriaApp.AssemblyInfoInputs.cache
@@ -108,4 +111,3 @@ C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows
 C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows\PeluqueriaApp.pdb
 C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows\PeluqueriaApp.genruntimeconfig.cache
 C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows\ref\PeluqueriaApp.dll
-C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Release\net8.0-windows\PeluqueriaApp.FrmFacturacion.resources

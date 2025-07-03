@@ -403,8 +403,9 @@
             Controls.Add(txtTelefono);
             Controls.Add(txtNombre);
             Name = "RegistroCliente";
-            Text = "RegistroCliente";
+            Text = "REGISTRAR CLIENTE";
             Load += RegistroCliente_Load;
+            KeyPress += RegistroCliente_KeyPress;
             ((System.ComponentModel.ISupportInitialize)ptbCliente).EndInit();
             ResumeLayout(false);
         }

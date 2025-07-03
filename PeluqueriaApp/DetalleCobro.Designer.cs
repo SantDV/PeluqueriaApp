@@ -312,7 +312,8 @@
             Controls.Add(lblIdCliente1);
             Controls.Add(txtNombre);
             Name = "DetalleCobro";
-            Text = "DetalleCobro";
+            Text = "DETALLE DE COBRO";
+            KeyPress += DetalleCobro_KeyPress;
             ResumeLayout(false);
             PerformLayout();
         }

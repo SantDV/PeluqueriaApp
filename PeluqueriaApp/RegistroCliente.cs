@@ -22,6 +22,7 @@ namespace PeluqueriaApp
         public RegistroCliente()
         {
             InitializeComponent();
+            this.KeyPreview = true; // Podés ponerlo en el constructor o en Load
 
             this.MaximizeBox = false;
 
@@ -150,23 +151,23 @@ namespace PeluqueriaApp
             {
                 case PictureBoxSizeMode.Normal:
                     ptbCliente.SizeMode = PictureBoxSizeMode.StretchImage;
-                   
+
                     break;
                 case PictureBoxSizeMode.StretchImage:
                     ptbCliente.SizeMode = PictureBoxSizeMode.AutoSize;
-                    
+
                     break;
                 case PictureBoxSizeMode.AutoSize:
                     ptbCliente.SizeMode = PictureBoxSizeMode.CenterImage;
-                    
+
                     break;
                 case PictureBoxSizeMode.CenterImage:
                     ptbCliente.SizeMode = PictureBoxSizeMode.Zoom;
-                   
+
                     break;
                 case PictureBoxSizeMode.Zoom:
                     ptbCliente.SizeMode = PictureBoxSizeMode.Normal;
-                  
+
                     break;
             }
 
@@ -315,7 +316,15 @@ namespace PeluqueriaApp
             txtNombre.Focus();
         }
 
+        private void RegistroCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                this.Close();
+                e.Handled = true;
+            }
 
+        }
     }
 }
 

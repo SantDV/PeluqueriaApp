@@ -18,6 +18,8 @@ namespace PeluqueriaApp
         {
             InitializeComponent();
 
+            this.KeyPreview = true;
+
             this.MaximizeBox = false;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
@@ -128,7 +130,17 @@ namespace PeluqueriaApp
 
         private void Info_Load(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void AcercaDe_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                this.Close();
+                e.Handled = true;
+            }
+
         }
     }
 }

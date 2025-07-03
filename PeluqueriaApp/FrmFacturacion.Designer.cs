@@ -61,11 +61,14 @@
             // 
             // dgvFacturacion
             // 
+            dgvFacturacion.AllowUserToAddRows = false;
+            dgvFacturacion.AllowUserToDeleteRows = false;
             dgvFacturacion.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             dgvFacturacion.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvFacturacion.Columns.AddRange(new DataGridViewColumn[] { Id, fechaCreacion, cliente, descripcion, cobro, clienteId });
             dgvFacturacion.Location = new Point(12, 99);
             dgvFacturacion.Name = "dgvFacturacion";
+            dgvFacturacion.ReadOnly = true;
             dgvFacturacion.Size = new Size(780, 239);
             dgvFacturacion.TabIndex = 0;
             dgvFacturacion.CellClick += dgvFacturacion_CellClick;
@@ -74,31 +77,37 @@
             // 
             Id.HeaderText = "ID PAGO/CORTE";
             Id.Name = "Id";
+            Id.ReadOnly = true;
             // 
             // fechaCreacion
             // 
             fechaCreacion.HeaderText = "Fecha";
             fechaCreacion.Name = "fechaCreacion";
+            fechaCreacion.ReadOnly = true;
             // 
             // cliente
             // 
             cliente.HeaderText = "Cliente";
             cliente.Name = "cliente";
+            cliente.ReadOnly = true;
             // 
             // descripcion
             // 
             descripcion.HeaderText = "Descripción";
             descripcion.Name = "descripcion";
+            descripcion.ReadOnly = true;
             // 
             // cobro
             // 
             cobro.HeaderText = "Cobro";
             cobro.Name = "cobro";
+            cobro.ReadOnly = true;
             // 
             // clienteId
             // 
             clienteId.HeaderText = "ClienteId";
             clienteId.Name = "clienteId";
+            clienteId.ReadOnly = true;
             clienteId.Visible = false;
             // 
             // lblCargarTodos

@@ -1,6 +1,6 @@
 ﻿namespace PeluqueriaApp
 {
-    partial class AcercaDe
+    partial class ZoomFrm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,20 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
+            pictureBox = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             SuspendLayout();
             // 
-            // AcercaDe
+            // pictureBox
+            // 
+            pictureBox.Dock = DockStyle.Fill;
+            pictureBox.Location = new Point(0, 0);
+            pictureBox.Name = "pictureBox";
+            pictureBox.Size = new Size(484, 461);
+            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox.TabIndex = 0;
+            pictureBox.TabStop = false;
+            pictureBox.Click += pictureBox_Click;
+            // 
+            // ZoomFrm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Name = "AcercaDe";
-            Text = "Info";
-            Load += Info_Load;
-            KeyPress += AcercaDe_KeyPress;
+            ClientSize = new Size(484, 461);
+            Controls.Add(pictureBox);
+            Name = "ZoomFrm";
+            Text = "Zoom";
+            KeyPress += ZoomFrm_KeyPress;
+            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
+
+        private PictureBox pictureBox;
     }
 }

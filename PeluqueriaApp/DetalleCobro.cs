@@ -21,7 +21,7 @@ namespace PeluqueriaApp
 
             this.corte = corte;
             InitializeComponent();
-
+            this.KeyPreview = true;
             this.MaximizeBox = false;
 
             // Opcional: Establece el borde como fijo
@@ -131,7 +131,17 @@ namespace PeluqueriaApp
                     MessageBox.Show("No se pudo eliminar el cobro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-           
+
+        }
+
+        private void DetalleCobro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                this.Close();
+                e.Handled = true;
+            }
+
         }
     }
 }

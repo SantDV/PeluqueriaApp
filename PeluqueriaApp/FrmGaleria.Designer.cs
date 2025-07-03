@@ -87,8 +87,9 @@
             Controls.Add(btnExport);
             Controls.Add(flpGaleria);
             Name = "FrmGaleria";
-            Text = "FrmGaleria";
+            Text = "Galeria";
             Load += FrmGaleria_Load;
+            KeyPress += FrmGaleria_KeyPress;
             ResumeLayout(false);
         }
 

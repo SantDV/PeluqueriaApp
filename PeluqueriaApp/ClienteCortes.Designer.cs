@@ -287,6 +287,7 @@ namespace PeluqueriaApp
             dgvCortes.Columns.AddRange(new DataGridViewColumn[] { id, fecha, descripcion, costo });
             dgvCortes.Location = new Point(12, 383);
             dgvCortes.Name = "dgvCortes";
+            dgvCortes.ReadOnly = true;
             dgvCortes.Size = new Size(731, 192);
             dgvCortes.TabIndex = 5;
             dgvCortes.CellClick += dgvCortes_CellClick;
@@ -297,21 +298,25 @@ namespace PeluqueriaApp
             // 
             id.HeaderText = "ID";
             id.Name = "id";
+            id.ReadOnly = true;
             // 
             // fecha
             // 
             fecha.HeaderText = "Fecha";
             fecha.Name = "fecha";
+            fecha.ReadOnly = true;
             // 
             // descripcion
             // 
             descripcion.HeaderText = "Descripción";
             descripcion.Name = "descripcion";
+            descripcion.ReadOnly = true;
             // 
             // costo
             // 
             costo.HeaderText = "Costo";
             costo.Name = "costo";
+            costo.ReadOnly = true;
             // 
             // lblNuevoCorte
             // 
@@ -564,8 +569,9 @@ namespace PeluqueriaApp
             Controls.Add(txtNombre);
             Name = "ClienteCortes";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Cliente";
+            Text = "CLIENTE CORTES";
             Load += Cliente_Load;
+            KeyPress += ClienteCortes_KeyPress;
             ((System.ComponentModel.ISupportInitialize)ptbCliente).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvCortes).EndInit();
             ResumeLayout(false);

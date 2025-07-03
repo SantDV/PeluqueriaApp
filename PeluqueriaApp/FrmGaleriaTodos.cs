@@ -78,16 +78,21 @@ namespace PeluqueriaApp
 
                                 pb.Click += (s, e) =>
                                 {
-                                    var zoomForm = new Form();
-                                    zoomForm.StartPosition = FormStartPosition.CenterParent;
-                                    zoomForm.Size = new Size(500, 500);
+                                    //var zoomForm = new Form();
+                                    //zoomForm.StartPosition = FormStartPosition.CenterParent;
+                                    //zoomForm.Size = new Size(500, 500);
                                     var zoomPb = new PictureBox
                                     {
                                         Dock = DockStyle.Fill,
                                         Image = ((PictureBox)s).Image,
                                         SizeMode = PictureBoxSizeMode.Zoom
                                     };
-                                    zoomForm.Controls.Add(zoomPb);
+                                    //zoomForm.Controls.Add(zoomPb);
+                                    //zoomForm.ShowDialog();
+
+                                    ZoomFrm zoomForm = new ZoomFrm(img);
+                                    zoomForm.StartPosition = FormStartPosition.CenterParent;
+                                    zoomForm.Size = new Size(500, 500);
                                     zoomForm.ShowDialog();
                                 };
 

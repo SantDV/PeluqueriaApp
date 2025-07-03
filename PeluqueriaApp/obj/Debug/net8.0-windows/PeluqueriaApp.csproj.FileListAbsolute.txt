@@ -110,3 +110,4 @@ C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Debug\net8.0-windows\P
 C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Debug\net8.0-windows\PeluqueriaApp.genruntimeconfig.cache
 C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Debug\net8.0-windows\ref\PeluqueriaApp.dll
 C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Debug\net8.0-windows\PeluqueriaApp.DetalleCobro.resources
+C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\obj\Debug\net8.0-windows\PeluqueriaApp.ZoomFrm.resources
