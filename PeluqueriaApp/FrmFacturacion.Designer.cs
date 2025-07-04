@@ -55,21 +55,27 @@
             lblTotalFacturado = new Label();
             txtIdCorte = new CuoreUI.Controls.cuiTextBox();
             cckbRango = new CheckBox();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            flowLayoutPanel1 = new FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)dgvFacturacion).BeginInit();
             gpBox.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // dgvFacturacion
             // 
             dgvFacturacion.AllowUserToAddRows = false;
             dgvFacturacion.AllowUserToDeleteRows = false;
-            dgvFacturacion.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             dgvFacturacion.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvFacturacion.Columns.AddRange(new DataGridViewColumn[] { Id, fechaCreacion, cliente, descripcion, cobro, clienteId });
-            dgvFacturacion.Location = new Point(12, 99);
+            dgvFacturacion.Dock = DockStyle.Fill;
+            dgvFacturacion.Location = new Point(3, 103);
             dgvFacturacion.Name = "dgvFacturacion";
             dgvFacturacion.ReadOnly = true;
-            dgvFacturacion.Size = new Size(780, 239);
+            dgvFacturacion.Size = new Size(798, 256);
             dgvFacturacion.TabIndex = 0;
             dgvFacturacion.CellClick += dgvFacturacion_CellClick;
             // 
@@ -115,7 +121,7 @@
             lblCargarTodos.AutoSize = true;
             lblCargarTodos.Cursor = Cursors.Hand;
             lblCargarTodos.Font = new Font("Segoe UI", 12F);
-            lblCargarTodos.Location = new Point(586, 50);
+            lblCargarTodos.Location = new Point(69, 0);
             lblCargarTodos.Name = "lblCargarTodos";
             lblCargarTodos.Size = new Size(60, 21);
             lblCargarTodos.TabIndex = 31;
@@ -124,6 +130,7 @@
             // 
             // btnBuscar
             // 
+            btnBuscar.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             btnBuscar.CheckButton = false;
             btnBuscar.Checked = false;
             btnBuscar.CheckedBackground = Color.FromArgb(52, 152, 219);
@@ -142,7 +149,8 @@
             btnBuscar.ImageAutoCenter = true;
             btnBuscar.ImageExpand = new Point(0, 0);
             btnBuscar.ImageOffset = new Point(0, 0);
-            btnBuscar.Location = new Point(693, 13);
+            btnBuscar.Location = new Point(639, 3);
+            btnBuscar.MaximumSize = new Size(230, 35);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.NormalBackground = Color.FromArgb(52, 152, 219);
             btnBuscar.NormalForeColor = Color.White;
@@ -154,7 +162,7 @@
             btnBuscar.PressedImageTint = Color.White;
             btnBuscar.PressedOutline = Color.FromArgb(36, 114, 164);
             btnBuscar.Rounding = new Padding(4);
-            btnBuscar.Size = new Size(102, 28);
+            btnBuscar.Size = new Size(156, 28);
             btnBuscar.TabIndex = 30;
             btnBuscar.TextAlignment = StringAlignment.Center;
             btnBuscar.TextOffset = new Point(0, 0);
@@ -162,6 +170,7 @@
             // 
             // btnLimpiar
             // 
+            btnLimpiar.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             btnLimpiar.CheckButton = false;
             btnLimpiar.Checked = false;
             btnLimpiar.CheckedBackground = Color.WhiteSmoke;
@@ -180,7 +189,8 @@
             btnLimpiar.ImageAutoCenter = true;
             btnLimpiar.ImageExpand = new Point(0, 0);
             btnLimpiar.ImageOffset = new Point(0, 0);
-            btnLimpiar.Location = new Point(690, 49);
+            btnLimpiar.Location = new Point(639, 50);
+            btnLimpiar.MaximumSize = new Size(230, 35);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.NormalBackground = Color.WhiteSmoke;
             btnLimpiar.NormalForeColor = Color.FromArgb(51, 51, 51);
@@ -192,7 +202,7 @@
             btnLimpiar.PressedImageTint = Color.White;
             btnLimpiar.PressedOutline = Color.FromArgb(187, 187, 187);
             btnLimpiar.Rounding = new Padding(4);
-            btnLimpiar.Size = new Size(102, 28);
+            btnLimpiar.Size = new Size(156, 28);
             btnLimpiar.TabIndex = 29;
             btnLimpiar.TextAlignment = StringAlignment.Center;
             btnLimpiar.TextOffset = new Point(0, 0);
@@ -200,31 +210,36 @@
             // 
             // dtpHasta
             // 
+            dtpHasta.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dtpHasta.CalendarFont = new Font("Segoe UI", 10F);
             dtpHasta.CalendarForeColor = Color.Gray;
             dtpHasta.Enabled = false;
             dtpHasta.Font = new Font("Segoe UI", 12F);
             dtpHasta.Format = DateTimePickerFormat.Short;
-            dtpHasta.Location = new Point(292, 48);
+            dtpHasta.Location = new Point(321, 50);
+            dtpHasta.MaximumSize = new Size(230, 35);
             dtpHasta.Name = "dtpHasta";
-            dtpHasta.Size = new Size(172, 29);
+            dtpHasta.Size = new Size(153, 29);
             dtpHasta.TabIndex = 28;
             dtpHasta.ValueChanged += dtpHasta_ValueChanged;
             // 
             // dtpDesde
             // 
+            dtpDesde.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dtpDesde.CalendarFont = new Font("Segoe UI", 10F);
             dtpDesde.CalendarForeColor = Color.Gray;
             dtpDesde.Font = new Font("Segoe UI", 12F);
             dtpDesde.Format = DateTimePickerFormat.Short;
-            dtpDesde.Location = new Point(114, 48);
+            dtpDesde.Location = new Point(162, 50);
+            dtpDesde.MaximumSize = new Size(230, 35);
             dtpDesde.Name = "dtpDesde";
-            dtpDesde.Size = new Size(172, 29);
+            dtpDesde.Size = new Size(153, 29);
             dtpDesde.TabIndex = 27;
             dtpDesde.ValueChanged += dtpDesde_ValueChanged;
             // 
             // txtBuscarEmail
             // 
+            txtBuscarEmail.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtBuscarEmail.BackgroundColor = Color.White;
             txtBuscarEmail.Content = "";
             txtBuscarEmail.FocusBackgroundColor = Color.White;
@@ -235,8 +250,9 @@
             txtBuscarEmail.Image = null;
             txtBuscarEmail.ImageExpand = new Point(0, 0);
             txtBuscarEmail.ImageOffset = new Point(0, 0);
-            txtBuscarEmail.Location = new Point(474, 13);
+            txtBuscarEmail.Location = new Point(481, 4);
             txtBuscarEmail.Margin = new Padding(4);
+            txtBuscarEmail.MaximumSize = new Size(230, 35);
             txtBuscarEmail.Multiline = false;
             txtBuscarEmail.Name = "txtBuscarEmail";
             txtBuscarEmail.NormalImageTint = Color.White;
@@ -246,7 +262,7 @@
             txtBuscarEmail.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtBuscarEmail.PlaceholderText = "Email";
             txtBuscarEmail.Rounding = new Padding(6);
-            txtBuscarEmail.Size = new Size(172, 28);
+            txtBuscarEmail.Size = new Size(151, 28);
             txtBuscarEmail.TabIndex = 26;
             txtBuscarEmail.TextOffset = new Size(0, 0);
             txtBuscarEmail.UnderlinedStyle = true;
@@ -255,6 +271,7 @@
             // 
             // txtBuscarTelefono
             // 
+            txtBuscarTelefono.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtBuscarTelefono.BackgroundColor = Color.White;
             txtBuscarTelefono.Content = "";
             txtBuscarTelefono.FocusBackgroundColor = Color.White;
@@ -265,8 +282,9 @@
             txtBuscarTelefono.Image = null;
             txtBuscarTelefono.ImageExpand = new Point(0, 0);
             txtBuscarTelefono.ImageOffset = new Point(0, 0);
-            txtBuscarTelefono.Location = new Point(294, 13);
+            txtBuscarTelefono.Location = new Point(322, 4);
             txtBuscarTelefono.Margin = new Padding(4);
+            txtBuscarTelefono.MaximumSize = new Size(230, 35);
             txtBuscarTelefono.Multiline = false;
             txtBuscarTelefono.Name = "txtBuscarTelefono";
             txtBuscarTelefono.NormalImageTint = Color.White;
@@ -276,7 +294,7 @@
             txtBuscarTelefono.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtBuscarTelefono.PlaceholderText = "Teléfono";
             txtBuscarTelefono.Rounding = new Padding(6);
-            txtBuscarTelefono.Size = new Size(172, 28);
+            txtBuscarTelefono.Size = new Size(151, 28);
             txtBuscarTelefono.TabIndex = 25;
             txtBuscarTelefono.TextOffset = new Size(0, 0);
             txtBuscarTelefono.UnderlinedStyle = true;
@@ -285,6 +303,7 @@
             // 
             // txtBuscarNombre
             // 
+            txtBuscarNombre.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtBuscarNombre.BackgroundColor = Color.White;
             txtBuscarNombre.Content = "";
             txtBuscarNombre.FocusBackgroundColor = Color.White;
@@ -295,8 +314,9 @@
             txtBuscarNombre.Image = null;
             txtBuscarNombre.ImageExpand = new Point(0, 0);
             txtBuscarNombre.ImageOffset = new Point(0, 0);
-            txtBuscarNombre.Location = new Point(114, 13);
+            txtBuscarNombre.Location = new Point(163, 4);
             txtBuscarNombre.Margin = new Padding(4);
+            txtBuscarNombre.MaximumSize = new Size(230, 35);
             txtBuscarNombre.Multiline = false;
             txtBuscarNombre.Name = "txtBuscarNombre";
             txtBuscarNombre.NormalImageTint = Color.White;
@@ -306,7 +326,7 @@
             txtBuscarNombre.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtBuscarNombre.PlaceholderText = "Nombre";
             txtBuscarNombre.Rounding = new Padding(6);
-            txtBuscarNombre.Size = new Size(172, 28);
+            txtBuscarNombre.Size = new Size(151, 28);
             txtBuscarNombre.TabIndex = 24;
             txtBuscarNombre.TextOffset = new Size(0, 0);
             txtBuscarNombre.UnderlinedStyle = true;
@@ -315,6 +335,7 @@
             // 
             // txtIdCliente
             // 
+            txtIdCliente.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtIdCliente.BackgroundColor = Color.White;
             txtIdCliente.Content = "";
             txtIdCliente.FocusBackgroundColor = Color.White;
@@ -325,8 +346,9 @@
             txtIdCliente.Image = null;
             txtIdCliente.ImageExpand = new Point(0, 0);
             txtIdCliente.ImageOffset = new Point(0, 0);
-            txtIdCliente.Location = new Point(12, 13);
+            txtIdCliente.Location = new Point(4, 4);
             txtIdCliente.Margin = new Padding(4);
+            txtIdCliente.MaximumSize = new Size(230, 35);
             txtIdCliente.Multiline = false;
             txtIdCliente.Name = "txtIdCliente";
             txtIdCliente.NormalImageTint = Color.White;
@@ -336,7 +358,7 @@
             txtIdCliente.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtIdCliente.PlaceholderText = "ID Cliente";
             txtIdCliente.Rounding = new Padding(6);
-            txtIdCliente.Size = new Size(94, 28);
+            txtIdCliente.Size = new Size(151, 28);
             txtIdCliente.TabIndex = 33;
             txtIdCliente.TextOffset = new Size(-10, 0);
             txtIdCliente.UnderlinedStyle = true;
@@ -353,9 +375,10 @@
             gpBox.Controls.Add(lblClientes);
             gpBox.Controls.Add(btnExport);
             gpBox.Controls.Add(lblTotalFacturado);
-            gpBox.Location = new Point(12, 352);
+            gpBox.Dock = DockStyle.Fill;
+            gpBox.Location = new Point(3, 365);
             gpBox.Name = "gpBox";
-            gpBox.Size = new Size(780, 98);
+            gpBox.Size = new Size(798, 94);
             gpBox.TabIndex = 34;
             gpBox.TabStop = false;
             // 
@@ -511,6 +534,7 @@
             // 
             // txtIdCorte
             // 
+            txtIdCorte.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtIdCorte.BackgroundColor = Color.White;
             txtIdCorte.Content = "";
             txtIdCorte.FocusBackgroundColor = Color.White;
@@ -521,8 +545,9 @@
             txtIdCorte.Image = null;
             txtIdCorte.ImageExpand = new Point(0, 0);
             txtIdCorte.ImageOffset = new Point(0, 0);
-            txtIdCorte.Location = new Point(12, 49);
+            txtIdCorte.Location = new Point(4, 51);
             txtIdCorte.Margin = new Padding(4);
+            txtIdCorte.MaximumSize = new Size(230, 35);
             txtIdCorte.Multiline = false;
             txtIdCorte.Name = "txtIdCorte";
             txtIdCorte.NormalImageTint = Color.White;
@@ -532,7 +557,7 @@
             txtIdCorte.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtIdCorte.PlaceholderText = "ID Corte";
             txtIdCorte.Rounding = new Padding(6);
-            txtIdCorte.Size = new Size(94, 28);
+            txtIdCorte.Size = new Size(151, 28);
             txtIdCorte.TabIndex = 35;
             txtIdCorte.TextOffset = new Size(-10, 0);
             txtIdCorte.UnderlinedStyle = true;
@@ -542,7 +567,7 @@
             // cckbRango
             // 
             cckbRango.AutoSize = true;
-            cckbRango.Location = new Point(474, 54);
+            cckbRango.Location = new Point(3, 3);
             cckbRango.Name = "cckbRango";
             cckbRango.Size = new Size(60, 19);
             cckbRango.TabIndex = 36;
@@ -550,31 +575,76 @@
             cckbRango.UseVisualStyleBackColor = true;
             cckbRango.CheckedChanged += cckbRango_CheckedChanged;
             // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 0);
+            tableLayoutPanel1.Controls.Add(gpBox, 0, 2);
+            tableLayoutPanel1.Controls.Add(dgvFacturacion, 0, 1);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
+            tableLayoutPanel1.Size = new Size(804, 462);
+            tableLayoutPanel1.TabIndex = 37;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 5;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPanel2.Controls.Add(txtIdCorte, 0, 1);
+            tableLayoutPanel2.Controls.Add(dtpHasta, 2, 1);
+            tableLayoutPanel2.Controls.Add(dtpDesde, 1, 1);
+            tableLayoutPanel2.Controls.Add(txtBuscarEmail, 3, 0);
+            tableLayoutPanel2.Controls.Add(txtIdCliente, 0, 0);
+            tableLayoutPanel2.Controls.Add(btnBuscar, 4, 0);
+            tableLayoutPanel2.Controls.Add(btnLimpiar, 4, 1);
+            tableLayoutPanel2.Controls.Add(txtBuscarTelefono, 2, 0);
+            tableLayoutPanel2.Controls.Add(txtBuscarNombre, 1, 0);
+            tableLayoutPanel2.Controls.Add(flowLayoutPanel1, 3, 1);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Location = new Point(3, 3);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 2;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel2.Size = new Size(798, 94);
+            tableLayoutPanel2.TabIndex = 35;
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Controls.Add(cckbRango);
+            flowLayoutPanel1.Controls.Add(lblCargarTodos);
+            flowLayoutPanel1.Location = new Point(480, 50);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(136, 41);
+            flowLayoutPanel1.TabIndex = 10;
+            // 
             // FrmFacturacion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(804, 462);
-            Controls.Add(cckbRango);
-            Controls.Add(txtIdCorte);
-            Controls.Add(gpBox);
-            Controls.Add(txtIdCliente);
-            Controls.Add(lblCargarTodos);
-            Controls.Add(btnBuscar);
-            Controls.Add(btnLimpiar);
-            Controls.Add(dtpHasta);
-            Controls.Add(dtpDesde);
-            Controls.Add(txtBuscarEmail);
-            Controls.Add(txtBuscarTelefono);
-            Controls.Add(txtBuscarNombre);
-            Controls.Add(dgvFacturacion);
+            Controls.Add(tableLayoutPanel1);
             Name = "FrmFacturacion";
             Text = "FrmFacturacion";
             ((System.ComponentModel.ISupportInitialize)dgvFacturacion).EndInit();
             gpBox.ResumeLayout(false);
             gpBox.PerformLayout();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -606,5 +676,8 @@
         private DataGridViewTextBoxColumn cobro;
         private DataGridViewTextBoxColumn clienteId;
         private CheckBox cckbRango;
+        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tableLayoutPanel2;
+        private FlowLayoutPanel flowLayoutPanel1;
     }
 }

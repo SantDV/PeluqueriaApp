@@ -105,7 +105,7 @@ namespace PeluqueriaApp
             dgv.ShowCellToolTips = true;
 
             // Bordes redondeados (requiere override de OnPaint si quieres bordes completamente personalizados)
-            dgv.Region = new Region(new Rectangle(0, 0, dgv.Width, dgv.Height));
+            //dgv.Region = new Region(new Rectangle(0, 0, dgv.Width, dgv.Height));
         }
 
         private void dtpDesde_ValueChanged(object sender, EventArgs e)

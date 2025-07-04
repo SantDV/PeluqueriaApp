@@ -803,8 +803,5 @@ namespace PeluqueriaApp
             }
         }
 
-
-
-
     }
 }

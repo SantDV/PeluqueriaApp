@@ -45,7 +45,13 @@
             btnBuscar = new CuoreUI.Controls.cuiButton();
             lblCargarTodo = new Label();
             cckbRango = new CheckBox();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
+            tableLayoutPanel2.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // dgvClientes
@@ -54,10 +60,12 @@
             dgvClientes.AllowUserToDeleteRows = false;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvClientes.Columns.AddRange(new DataGridViewColumn[] { id, nombre, telefono, email, fechaCreacion });
-            dgvClientes.Location = new Point(12, 114);
+            dgvClientes.Dock = DockStyle.Fill;
+            dgvClientes.Location = new Point(0, 119);
+            dgvClientes.Margin = new Padding(3, 3, 10, 3);
             dgvClientes.Name = "dgvClientes";
             dgvClientes.ReadOnly = true;
-            dgvClientes.Size = new Size(787, 333);
+            dgvClientes.Size = new Size(811, 340);
             dgvClientes.TabIndex = 0;
             dgvClientes.CellClick += dgvClientes_CellClick;
             // 
@@ -93,6 +101,7 @@
             // 
             // txtBuscarNombre
             // 
+            txtBuscarNombre.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtBuscarNombre.BackgroundColor = Color.White;
             txtBuscarNombre.Content = "";
             txtBuscarNombre.FocusBackgroundColor = Color.White;
@@ -103,8 +112,9 @@
             txtBuscarNombre.Image = null;
             txtBuscarNombre.ImageExpand = new Point(0, 0);
             txtBuscarNombre.ImageOffset = new Point(0, 0);
-            txtBuscarNombre.Location = new Point(12, 32);
-            txtBuscarNombre.Margin = new Padding(4);
+            txtBuscarNombre.Location = new Point(3, 15);
+            txtBuscarNombre.Margin = new Padding(3, 15, 3, 3);
+            txtBuscarNombre.MaximumSize = new Size(230, 35);
             txtBuscarNombre.Multiline = false;
             txtBuscarNombre.Name = "txtBuscarNombre";
             txtBuscarNombre.NormalImageTint = Color.White;
@@ -114,7 +124,7 @@
             txtBuscarNombre.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtBuscarNombre.PlaceholderText = "Nombre";
             txtBuscarNombre.Rounding = new Padding(6);
-            txtBuscarNombre.Size = new Size(172, 28);
+            txtBuscarNombre.Size = new Size(156, 28);
             txtBuscarNombre.TabIndex = 1;
             txtBuscarNombre.TextOffset = new Size(0, 0);
             txtBuscarNombre.UnderlinedStyle = true;
@@ -123,6 +133,7 @@
             // 
             // txtBuscarTelefono
             // 
+            txtBuscarTelefono.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtBuscarTelefono.BackgroundColor = Color.White;
             txtBuscarTelefono.Content = "";
             txtBuscarTelefono.FocusBackgroundColor = Color.White;
@@ -133,8 +144,9 @@
             txtBuscarTelefono.Image = null;
             txtBuscarTelefono.ImageExpand = new Point(0, 0);
             txtBuscarTelefono.ImageOffset = new Point(0, 0);
-            txtBuscarTelefono.Location = new Point(192, 32);
-            txtBuscarTelefono.Margin = new Padding(4);
+            txtBuscarTelefono.Location = new Point(165, 15);
+            txtBuscarTelefono.Margin = new Padding(3, 15, 3, 3);
+            txtBuscarTelefono.MaximumSize = new Size(230, 35);
             txtBuscarTelefono.Multiline = false;
             txtBuscarTelefono.Name = "txtBuscarTelefono";
             txtBuscarTelefono.NormalImageTint = Color.White;
@@ -144,7 +156,7 @@
             txtBuscarTelefono.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtBuscarTelefono.PlaceholderText = "Teléfono";
             txtBuscarTelefono.Rounding = new Padding(6);
-            txtBuscarTelefono.Size = new Size(172, 28);
+            txtBuscarTelefono.Size = new Size(156, 28);
             txtBuscarTelefono.TabIndex = 2;
             txtBuscarTelefono.TextOffset = new Size(0, 0);
             txtBuscarTelefono.UnderlinedStyle = true;
@@ -153,6 +165,7 @@
             // 
             // txtBuscarEmail
             // 
+            txtBuscarEmail.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtBuscarEmail.BackgroundColor = Color.White;
             txtBuscarEmail.Content = "";
             txtBuscarEmail.FocusBackgroundColor = Color.White;
@@ -163,8 +176,9 @@
             txtBuscarEmail.Image = null;
             txtBuscarEmail.ImageExpand = new Point(0, 0);
             txtBuscarEmail.ImageOffset = new Point(0, 0);
-            txtBuscarEmail.Location = new Point(372, 32);
-            txtBuscarEmail.Margin = new Padding(4);
+            txtBuscarEmail.Location = new Point(327, 15);
+            txtBuscarEmail.Margin = new Padding(3, 15, 3, 3);
+            txtBuscarEmail.MaximumSize = new Size(230, 35);
             txtBuscarEmail.Multiline = false;
             txtBuscarEmail.Name = "txtBuscarEmail";
             txtBuscarEmail.NormalImageTint = Color.White;
@@ -174,7 +188,7 @@
             txtBuscarEmail.PlaceholderColor = Color.FromArgb(64, 64, 64);
             txtBuscarEmail.PlaceholderText = "Email";
             txtBuscarEmail.Rounding = new Padding(6);
-            txtBuscarEmail.Size = new Size(172, 28);
+            txtBuscarEmail.Size = new Size(156, 28);
             txtBuscarEmail.TabIndex = 3;
             txtBuscarEmail.TextOffset = new Size(0, 0);
             txtBuscarEmail.UnderlinedStyle = true;
@@ -183,6 +197,7 @@
             // 
             // btnNuevo
             // 
+            btnNuevo.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             btnNuevo.CheckButton = false;
             btnNuevo.Checked = false;
             btnNuevo.CheckedBackground = Color.FromArgb(255, 106, 0);
@@ -201,8 +216,9 @@
             btnNuevo.ImageAutoCenter = true;
             btnNuevo.ImageExpand = new Point(6, 6);
             btnNuevo.ImageOffset = new Point(0, 0);
-            btnNuevo.Location = new Point(736, 32);
-            btnNuevo.MaximumSize = new Size(120, 67);
+            btnNuevo.Location = new Point(651, 15);
+            btnNuevo.Margin = new Padding(3, 15, 3, 3);
+            btnNuevo.MaximumSize = new Size(230, 35);
             btnNuevo.Name = "btnNuevo";
             btnNuevo.NormalBackground = Color.Gainsboro;
             btnNuevo.NormalForeColor = Color.Black;
@@ -214,7 +230,7 @@
             btnNuevo.PressedImageTint = Color.White;
             btnNuevo.PressedOutline = Color.FromArgb(64, 128, 128, 128);
             btnNuevo.Rounding = new Padding(4);
-            btnNuevo.Size = new Size(63, 67);
+            btnNuevo.Size = new Size(157, 28);
             btnNuevo.TabIndex = 4;
             btnNuevo.TextAlignment = StringAlignment.Center;
             btnNuevo.TextOffset = new Point(0, 0);
@@ -222,31 +238,38 @@
             // 
             // dtpDesde
             // 
+            dtpDesde.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dtpDesde.CalendarFont = new Font("Segoe UI", 10F);
             dtpDesde.CalendarForeColor = Color.Gray;
             dtpDesde.Font = new Font("Segoe UI", 12F);
             dtpDesde.Format = DateTimePickerFormat.Short;
-            dtpDesde.Location = new Point(14, 72);
+            dtpDesde.Location = new Point(3, 74);
+            dtpDesde.Margin = new Padding(3, 15, 3, 3);
+            dtpDesde.MaximumSize = new Size(230, 35);
             dtpDesde.Name = "dtpDesde";
-            dtpDesde.Size = new Size(172, 29);
+            dtpDesde.Size = new Size(156, 29);
             dtpDesde.TabIndex = 5;
             dtpDesde.ValueChanged += dtpDesde_ValueChanged;
             // 
             // dtpHasta
             // 
+            dtpHasta.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dtpHasta.CalendarFont = new Font("Segoe UI", 10F);
             dtpHasta.CalendarForeColor = Color.Gray;
             dtpHasta.Enabled = false;
             dtpHasta.Font = new Font("Segoe UI", 12F);
             dtpHasta.Format = DateTimePickerFormat.Short;
-            dtpHasta.Location = new Point(192, 72);
+            dtpHasta.Location = new Point(165, 74);
+            dtpHasta.Margin = new Padding(3, 15, 3, 3);
+            dtpHasta.MaximumSize = new Size(230, 35);
             dtpHasta.Name = "dtpHasta";
-            dtpHasta.Size = new Size(172, 29);
+            dtpHasta.Size = new Size(156, 29);
             dtpHasta.TabIndex = 6;
             dtpHasta.ValueChanged += hasta_ValueChanged;
             // 
             // btnLimpiar
             // 
+            btnLimpiar.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             btnLimpiar.CheckButton = false;
             btnLimpiar.Checked = false;
             btnLimpiar.CheckedBackground = Color.WhiteSmoke;
@@ -265,7 +288,9 @@
             btnLimpiar.ImageAutoCenter = true;
             btnLimpiar.ImageExpand = new Point(0, 0);
             btnLimpiar.ImageOffset = new Point(0, 0);
-            btnLimpiar.Location = new Point(551, 72);
+            btnLimpiar.Location = new Point(489, 74);
+            btnLimpiar.Margin = new Padding(3, 15, 3, 3);
+            btnLimpiar.MaximumSize = new Size(230, 35);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.NormalBackground = Color.WhiteSmoke;
             btnLimpiar.NormalForeColor = Color.FromArgb(51, 51, 51);
@@ -277,7 +302,7 @@
             btnLimpiar.PressedImageTint = Color.White;
             btnLimpiar.PressedOutline = Color.FromArgb(187, 187, 187);
             btnLimpiar.Rounding = new Padding(4);
-            btnLimpiar.Size = new Size(102, 28);
+            btnLimpiar.Size = new Size(156, 28);
             btnLimpiar.TabIndex = 7;
             btnLimpiar.TextAlignment = StringAlignment.Center;
             btnLimpiar.TextOffset = new Point(0, 0);
@@ -285,6 +310,7 @@
             // 
             // btnBuscar
             // 
+            btnBuscar.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             btnBuscar.CheckButton = false;
             btnBuscar.Checked = false;
             btnBuscar.CheckedBackground = Color.FromArgb(52, 152, 219);
@@ -303,7 +329,9 @@
             btnBuscar.ImageAutoCenter = true;
             btnBuscar.ImageExpand = new Point(0, 0);
             btnBuscar.ImageOffset = new Point(0, 0);
-            btnBuscar.Location = new Point(551, 32);
+            btnBuscar.Location = new Point(489, 15);
+            btnBuscar.Margin = new Padding(3, 15, 3, 3);
+            btnBuscar.MaximumSize = new Size(230, 35);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.NormalBackground = Color.FromArgb(52, 152, 219);
             btnBuscar.NormalForeColor = Color.White;
@@ -315,7 +343,7 @@
             btnBuscar.PressedImageTint = Color.White;
             btnBuscar.PressedOutline = Color.FromArgb(36, 114, 164);
             btnBuscar.Rounding = new Padding(4);
-            btnBuscar.Size = new Size(102, 28);
+            btnBuscar.Size = new Size(156, 28);
             btnBuscar.TabIndex = 8;
             btnBuscar.TextAlignment = StringAlignment.Center;
             btnBuscar.TextOffset = new Point(0, 0);
@@ -323,10 +351,11 @@
             // 
             // lblCargarTodo
             // 
+            lblCargarTodo.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lblCargarTodo.AutoSize = true;
             lblCargarTodo.Cursor = Cursors.Hand;
             lblCargarTodo.Font = new Font("Segoe UI", 12F);
-            lblCargarTodo.Location = new Point(484, 78);
+            lblCargarTodo.Location = new Point(83, 5);
             lblCargarTodo.Name = "lblCargarTodo";
             lblCargarTodo.Size = new Size(60, 21);
             lblCargarTodo.TabIndex = 23;
@@ -337,38 +366,78 @@
             // 
             // cckbRango
             // 
+            cckbRango.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             cckbRango.AutoSize = true;
-            cckbRango.Location = new Point(372, 80);
+            cckbRango.Font = new Font("Segoe UI", 12F);
+            cckbRango.Location = new Point(3, 3);
             cckbRango.Name = "cckbRango";
-            cckbRango.Size = new Size(60, 19);
+            cckbRango.Size = new Size(74, 25);
             cckbRango.TabIndex = 37;
             cckbRango.Text = "Rango";
             cckbRango.UseVisualStyleBackColor = true;
             cckbRango.CheckedChanged += cckbRango_CheckedChanged;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 5;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPanel2.Controls.Add(btnNuevo, 4, 0);
+            tableLayoutPanel2.Controls.Add(txtBuscarNombre, 0, 0);
+            tableLayoutPanel2.Controls.Add(dtpDesde, 0, 1);
+            tableLayoutPanel2.Controls.Add(dtpHasta, 1, 1);
+            tableLayoutPanel2.Controls.Add(txtBuscarTelefono, 1, 0);
+            tableLayoutPanel2.Controls.Add(btnBuscar, 3, 0);
+            tableLayoutPanel2.Controls.Add(txtBuscarEmail, 2, 0);
+            tableLayoutPanel2.Controls.Add(flowLayoutPanel1, 2, 1);
+            tableLayoutPanel2.Controls.Add(btnLimpiar, 3, 1);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Location = new Point(0, 0);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 2;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Size = new Size(811, 119);
+            tableLayoutPanel2.TabIndex = 1;
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Controls.Add(cckbRango);
+            flowLayoutPanel1.Controls.Add(lblCargarTodo);
+            flowLayoutPanel1.Location = new Point(327, 62);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(155, 54);
+            flowLayoutPanel1.TabIndex = 10;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(tableLayoutPanel2);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(811, 119);
+            panel1.TabIndex = 39;
             // 
             // ClientesGestion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(811, 459);
-            Controls.Add(cckbRango);
-            Controls.Add(lblCargarTodo);
-            Controls.Add(btnBuscar);
-            Controls.Add(btnLimpiar);
-            Controls.Add(dtpHasta);
-            Controls.Add(dtpDesde);
-            Controls.Add(btnNuevo);
-            Controls.Add(txtBuscarEmail);
-            Controls.Add(txtBuscarTelefono);
-            Controls.Add(txtBuscarNombre);
             Controls.Add(dgvClientes);
+            Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ClientesGestion";
             Text = "CorteApp";
             ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
+            tableLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -389,5 +458,8 @@
         private DataGridViewTextBoxColumn fechaCreacion;
         private Label lblCargarTodo;
         private CheckBox cckbRango;
+        private TableLayoutPanel tableLayoutPanel2;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Panel panel1;
     }
 }

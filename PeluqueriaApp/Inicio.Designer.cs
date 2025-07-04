@@ -206,6 +206,7 @@
             // 
             // btnInfo
             // 
+            btnInfo.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnInfo.CheckButton = false;
             btnInfo.Checked = false;
             btnInfo.CheckedBackground = Color.FromArgb(255, 106, 0);
@@ -245,7 +246,7 @@
             // 
             // panelContenedor
             // 
-            panelContenedor.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panelContenedor.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panelContenedor.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panelContenedor.BackColor = SystemColors.ActiveCaption;
             panelContenedor.Location = new Point(124, 54);

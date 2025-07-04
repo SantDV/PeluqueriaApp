@@ -38,11 +38,11 @@ namespace PeluqueriaApp
                 conn.Open();
 
                 string sql = @"
-            SELECT f.Imagen, c.FechaCreacion, cl.Id AS ClienteId, cl.Nombre AS Cliente
-            FROM FotosCorte f
-            JOIN Cortes c ON c.Id = f.CorteId
-            JOIN Clientes cl ON cl.Id = c.ClienteId
-            ORDER BY c.FechaCreacion DESC";
+    SELECT f.Imagen, c.FechaCreacion, cl.Id AS ClienteId, cl.Nombre AS Cliente
+    FROM FotosCorte f
+    JOIN Cortes c ON c.Id = f.CorteId
+    JOIN Clientes cl ON cl.Id = c.ClienteId
+    ORDER BY c.FechaCreacion DESC";
 
                 using (var cmd = new SQLiteCommand(sql, conn))
                 using (var reader = cmd.ExecuteReader())
