@@ -1,7 +1,7 @@
 ; Script generado por el Inno Setup Script Wizard.
 ; Configuración básica
 #define MyAppName "PeluqueriaApp"
-#define MyAppVersion "1.1.0"
+#define MyAppVersion "1.2.1"
 #define MyAppPublisher "AGM Services"
 #define MyAppURL "https://api.whatsapp.com/send/?phone=5493813273910&text&type=phone_number&app_absent=0"
 #define MyAppExeName "PeluqueriaApp.exe"
@@ -22,7 +22,7 @@ DisableProgramGroupPage=yes
 PrivilegesRequired=admin 
 
 OutputDir=C:\Users\SANTIAGO\Desktop\TRABAJOS\Instaladores
-OutputBaseFilename=SETUP
+OutputBaseFilename=SETUP1.2.1
 SolidCompression=yes
 WizardStyle=modern
 
@@ -54,7 +54,11 @@ Source: "C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\bin\Release\net8.
 Source: "C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\bin\Release\net8.0-windows\System.Data.SQLite.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\bin\Release\net8.0-windows\System.Data.SQLite.EF6.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\bin\Release\net8.0-windows\System.IO.Packaging.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\bin\Release\net8.0-windows\new\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+//Source: "C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\bin\Release\net8.0-windows\new\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\bin\Release\net8.0-windows\runtimes\*"; \
+    DestDir: "{app}\runtimes"; Flags: recursesubdirs createallsubdirs
+
+
 
 ; Configuración especial para la base de datos
 Source: "C:\Users\SANTIAGO\source\repos\LEMOTIFF\PeluqueriaApp\bin\Release\net8.0-windows\peluqueriaDB.db"; DestDir: "{app}"
