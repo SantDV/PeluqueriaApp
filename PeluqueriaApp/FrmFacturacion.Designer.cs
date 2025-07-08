@@ -637,6 +637,7 @@
             Controls.Add(tableLayoutPanel1);
             Name = "FrmFacturacion";
             Text = "FrmFacturacion";
+            Resize += FrmFacturacion_Resize;
             ((System.ComponentModel.ISupportInitialize)dgvFacturacion).EndInit();
             gpBox.ResumeLayout(false);
             gpBox.PerformLayout();

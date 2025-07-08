@@ -432,6 +432,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ClientesGestion";
             Text = "CorteApp";
+            Resize += ClientesGestion_Resize;
             ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
             tableLayoutPanel2.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);

@@ -559,5 +559,11 @@ namespace PeluqueriaApp
             txtTotalPesos.Text = "$ 0,00";
             table.Clear();
         }
+
+        private void FrmFacturacion_Resize(object sender, EventArgs e)
+        {
+            this.Invalidate();  // Fuerza el repintado del formulario
+            this.Refresh();     // Fuerza el refresco visual
+        }
     }
 }

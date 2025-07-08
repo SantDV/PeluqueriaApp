@@ -97,7 +97,7 @@ namespace PeluqueriaApp
 
             // Bordes redondeados (requiere override de OnPaint si quieres bordes completamente personalizados)
             //dgv.Region = new Region(new Rectangle(0, 0, dgv.Width, dgv.Height));
-           
+
 
         }
 
@@ -330,6 +330,12 @@ namespace PeluqueriaApp
         {
             txtBuscarNombre.Content = string.Empty;
             txtBuscarTelefono.Content = string.Empty;
+        }
+
+        private void ClientesGestion_Resize(object sender, EventArgs e)
+        {
+            this.Invalidate();  // Fuerza el repintado del formulario
+            this.Refresh();
         }
     }
 
