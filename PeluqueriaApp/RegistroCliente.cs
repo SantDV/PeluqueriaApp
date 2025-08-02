@@ -44,8 +44,8 @@ namespace PeluqueriaApp
                         try
                         {
                             // 1. Insertar cliente
-                            string sqlCliente = "INSERT INTO Clientes (Nombre, Telefono, Email, Domicilio) " +
-                                                "VALUES (@Nombre, @Telefono, @Email, @Domicilio)";
+                            string sqlCliente = "INSERT INTO Clientes (Nombre, Telefono, Email, Domicilio, FechaCreacion) " +
+                                                "VALUES (@Nombre, @Telefono, @Email, @Domicilio, @FechaCreacion)";
 
                             using (SQLiteCommand cmdCliente = new SQLiteCommand(sqlCliente, conn, transaction))
                             {
@@ -53,6 +53,7 @@ namespace PeluqueriaApp
                                 cmdCliente.Parameters.AddWithValue("@Telefono", txtTelefono.Content);
                                 cmdCliente.Parameters.AddWithValue("@Email", txtEmail.Content);
                                 cmdCliente.Parameters.AddWithValue("@Domicilio", txtDomicilio.Content);
+                                cmdCliente.Parameters.AddWithValue("@FechaCreacion", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                                 cmdCliente.ExecuteNonQuery();
                             }
 

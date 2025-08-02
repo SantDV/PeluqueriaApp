@@ -240,8 +240,8 @@ namespace PeluqueriaApp
                         }
 
                         // Insertar nuevo corte
-                        string sqlCorte = "INSERT INTO Cortes (ClienteId, Descripcion, Cobro) " +
-                                          "VALUES (@ClienteId, @Descripcion, @Cobro)";
+                        string sqlCorte = "INSERT INTO Cortes (ClienteId, Descripcion, Cobro, FechaCreacion) " +
+                                          "VALUES (@ClienteId, @Descripcion, @Cobro, @FechaCreacion)";
 
                         long corteId;
 
@@ -250,13 +250,14 @@ namespace PeluqueriaApp
                             cmdCorte.Parameters.AddWithValue("@ClienteId", cliente.Id);
                             cmdCorte.Parameters.AddWithValue("@Descripcion", cliente.Observaciones);
                             cmdCorte.Parameters.AddWithValue("@Cobro", cliente.PrecioCorte);
+                            cmdCorte.Parameters.AddWithValue("@FechaCreacion", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
                             cmdCorte.ExecuteNonQuery();
                             corteId = conn.LastInsertRowId;
                         }
 
                         // Insertar imágenes en la nueva tabla FotosCorte
-                        string sqlFoto = "INSERT INTO FotosCorte (CorteId, Imagen) VALUES (@CorteId, @Imagen)";
+                        string sqlFoto = "INSERT INTO FotosCorte (CorteId, Imagen, FechaSubida) VALUES (@CorteId, @Imagen, @FechaSubida)";
 
                         foreach (var img in listaImagenes)
                         {
@@ -264,6 +265,7 @@ namespace PeluqueriaApp
                             {
                                 cmdFoto.Parameters.AddWithValue("@CorteId", corteId);
                                 cmdFoto.Parameters.Add("@Imagen", DbType.Binary).Value = img ?? (object)DBNull.Value;
+                                cmdFoto.Parameters.AddWithValue("@FechaSubida", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                                 cmdFoto.ExecuteNonQuery();
                             }
                         }
