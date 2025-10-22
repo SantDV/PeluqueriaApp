@@ -107,5 +107,9 @@ namespace PeluqueriaApp
             AbrirFormulario<FrmFacturacion>();
         }
 
+        private void btnTurnos_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<TurnosFrm>();
+        }
     }
 }

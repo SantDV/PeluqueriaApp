@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -24,6 +24,8 @@
   <ItemGroup>
     <PackageReference Include="ClosedXML" Version="0.105.0" />
     <PackageReference Include="CuoreUI.Winforms" Version="2025.6.19" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="8.0.10" />
+    <PackageReference Include="Microsoft.JSInterop" Version="8.0.10" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.119" />
   </ItemGroup>
 

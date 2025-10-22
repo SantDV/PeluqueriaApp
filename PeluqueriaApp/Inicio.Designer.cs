@@ -33,6 +33,7 @@
             btnClientes = new CuoreUI.Controls.cuiButton();
             btnGaleria = new CuoreUI.Controls.cuiButton();
             btnFacturacion = new CuoreUI.Controls.cuiButton();
+            btnTurnos = new CuoreUI.Controls.cuiButton();
             btnInfo = new CuoreUI.Controls.cuiButton();
             panelContenedor = new Panel();
             flpanel.SuspendLayout();
@@ -44,6 +45,7 @@
             flpanel.Controls.Add(btnClientes);
             flpanel.Controls.Add(btnGaleria);
             flpanel.Controls.Add(btnFacturacion);
+            flpanel.Controls.Add(btnTurnos);
             flpanel.Controls.Add(btnInfo);
             flpanel.Dock = DockStyle.Left;
             flpanel.Location = new Point(0, 0);
@@ -204,6 +206,44 @@
             btnFacturacion.TextOffset = new Point(-7, 0);
             btnFacturacion.Click += btnFacturacion_Click;
             // 
+            // btnTurnos
+            // 
+            btnTurnos.CheckButton = false;
+            btnTurnos.Checked = false;
+            btnTurnos.CheckedBackground = Color.FromArgb(255, 106, 0);
+            btnTurnos.CheckedForeColor = Color.White;
+            btnTurnos.CheckedImageTint = Color.White;
+            btnTurnos.CheckedOutline = Color.FromArgb(255, 106, 0);
+            btnTurnos.Content = "Turnos";
+            btnTurnos.DialogResult = DialogResult.None;
+            btnTurnos.Font = new Font("Segoe UI", 12F);
+            btnTurnos.ForeColor = Color.Black;
+            btnTurnos.HoverBackground = Color.White;
+            btnTurnos.HoveredImageTint = Color.White;
+            btnTurnos.HoverForeColor = Color.Black;
+            btnTurnos.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            btnTurnos.Image = Properties.Resources.wallet;
+            btnTurnos.ImageAutoCenter = false;
+            btnTurnos.ImageExpand = new Point(15, 15);
+            btnTurnos.ImageOffset = new Point(12, 0);
+            btnTurnos.Location = new Point(3, 207);
+            btnTurnos.Name = "btnTurnos";
+            btnTurnos.NormalBackground = Color.White;
+            btnTurnos.NormalForeColor = Color.Black;
+            btnTurnos.NormalImageTint = Color.White;
+            btnTurnos.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            btnTurnos.OutlineThickness = 1F;
+            btnTurnos.PressedBackground = Color.WhiteSmoke;
+            btnTurnos.PressedForeColor = Color.FromArgb(32, 32, 32);
+            btnTurnos.PressedImageTint = Color.White;
+            btnTurnos.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            btnTurnos.Rounding = new Padding(8);
+            btnTurnos.Size = new Size(115, 45);
+            btnTurnos.TabIndex = 6;
+            btnTurnos.TextAlignment = StringAlignment.Near;
+            btnTurnos.TextOffset = new Point(-7, 0);
+            btnTurnos.Click += btnTurnos_Click;
+            // 
             // btnInfo
             // 
             btnInfo.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
@@ -225,8 +265,8 @@
             btnInfo.ImageAutoCenter = true;
             btnInfo.ImageExpand = new Point(0, 0);
             btnInfo.ImageOffset = new Point(0, 0);
-            btnInfo.Location = new Point(3, 494);
-            btnInfo.Margin = new Padding(3, 290, 3, 3);
+            btnInfo.Location = new Point(3, 495);
+            btnInfo.Margin = new Padding(3, 240, 3, 3);
             btnInfo.Name = "btnInfo";
             btnInfo.NormalBackground = Color.White;
             btnInfo.NormalForeColor = Color.Black;
@@ -278,5 +318,6 @@
         private CuoreUI.Controls.cuiButton btnInfo;
         private Panel panelContenedor;
         private CuoreUI.Controls.cuiButton btnFacturacion;
+        private CuoreUI.Controls.cuiButton btnTurnos;
     }
 }

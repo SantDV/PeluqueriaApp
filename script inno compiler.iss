@@ -1,7 +1,7 @@
 ; Script generado por el Inno Setup Script Wizard.
 ; Configuración básica
-#define MyAppName "PeluqueriaApp"
-#define MyAppVersion "1.2.1"
+#define MyAppName "LEMOTIFF"
+#define MyAppVersion "1.2.2"
 #define MyAppPublisher "AGM Services"
 #define MyAppURL "https://api.whatsapp.com/send/?phone=5493813273910&text&type=phone_number&app_absent=0"
 #define MyAppExeName "PeluqueriaApp.exe"
@@ -23,7 +23,7 @@ PrivilegesRequired=admin
 LicenseFile=C:\Users\SANTIAGO\source\repos\LEMOTIFF\LICENSE.txt
 
 OutputDir=C:\Users\SANTIAGO\Desktop\TRABAJOS\Instaladores
-OutputBaseFilename=SETUP1.2.1
+OutputBaseFilename=SETUP1.2.2
 SolidCompression=yes
 WizardStyle=modern
 

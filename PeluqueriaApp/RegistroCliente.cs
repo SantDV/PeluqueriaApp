@@ -60,8 +60,8 @@ namespace PeluqueriaApp
                             long clienteId = conn.LastInsertRowId;
 
                             // 2. Insertar corte (sin foto)
-                            string sqlCorte = "INSERT INTO Cortes (ClienteId, Descripcion, Cobro) " +
-                                              "VALUES (@ClienteId, @Descripcion, @Cobro)";
+                            string sqlCorte = "INSERT INTO Cortes (ClienteId, Descripcion, Cobro, FechaCreacion) " +
+                                              "VALUES (@ClienteId, @Descripcion, @Cobro, @FechaCreacion)";
 
                             long corteId;
 
@@ -69,6 +69,7 @@ namespace PeluqueriaApp
                             {
                                 cmdCorte.Parameters.AddWithValue("@ClienteId", clienteId);
                                 cmdCorte.Parameters.AddWithValue("@Descripcion", txtObservacion.Text);
+                                cmdCorte.Parameters.AddWithValue("@FechaCreacion", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                                 cmdCorte.Parameters.AddWithValue("@Cobro", string.IsNullOrWhiteSpace(txtPrecio.Content) ? "$ 0,00" : txtPrecio.Content);
                                 cmdCorte.ExecuteNonQuery();
 

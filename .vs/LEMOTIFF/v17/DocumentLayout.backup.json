@@ -1,70 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\",
+  "WorkspaceRootPath": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF - Blazor\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|c:\\users\\santiago\\source\\repos\\lemotiff\\peluqueriaapp\\dbconn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\dbconn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|c:\\users\\santiago\\source\\repos\\lemotiff - blazor\\peluqueriaapp\\pages\\turnos.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\pages\\turnos.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|c:\\users\\santiago\\source\\repos\\lemotiff\\peluqueriaapp\\clientecortes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\clientecortes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|c:\\users\\santiago\\source\\repos\\lemotiff - blazor\\peluqueriaapp\\models\\turno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\models\\turno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\peluqueriaapp\\clientecortes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\clientecortes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF - Blazor\\peluqueriaapp\\inicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\inicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\peluqueriaapp\\registrocliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\registrocliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|c:\\users\\santiago\\source\\repos\\lemotiff - blazor\\peluqueriaapp\\inicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\inicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\peluqueriaapp\\frmfacturacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\frmfacturacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\peluqueriaapp\\frmgaleriatodos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\frmgaleriatodos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|c:\\users\\santiago\\source\\repos\\lemotiff\\peluqueriaapp\\registrocliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\registrocliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|c:\\users\\santiago\\source\\repos\\lemotiff\\peluqueriaapp\\appinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\appinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\peluqueriaapp\\frmsplash.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\frmsplash.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\peluqueriaapp\\frmgaleria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\frmgaleria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|c:\\users\\santiago\\source\\repos\\lemotiff\\peluqueriaapp\\frmfacturacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\frmfacturacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\peluqueriaapp\\frmestadisticas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\frmestadisticas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\peluqueriaapp\\formimagencompleta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\formimagencompleta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\peluqueriaapp\\detallecobro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\detallecobro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|c:\\users\\santiago\\source\\repos\\lemotiff\\peluqueriaapp\\clientesgestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\clientesgestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\peluqueriaapp\\clientesgestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\clientesgestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|c:\\users\\santiago\\source\\repos\\lemotiff - blazor\\peluqueriaapp\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{32E7C9CD-1968-46E8-8F8C-578A6A1F2380}|PeluqueriaApp\\PeluqueriaApp.csproj|solutionrelative:peluqueriaapp\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -79,189 +35,64 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DbConn.cs",
-              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\DbConn.cs",
-              "RelativeDocumentMoniker": "PeluqueriaApp\\DbConn.cs",
-              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\DbConn.cs",
-              "RelativeToolTip": "PeluqueriaApp\\DbConn.cs",
-              "ViewState": "AgIAAPIAAAAAAAAAAAAAAAABAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T13:08:18.541Z",
+              "Title": "Turnos.razor",
+              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF - Blazor\\PeluqueriaApp\\Pages\\Turnos.razor",
+              "RelativeDocumentMoniker": "PeluqueriaApp\\Pages\\Turnos.razor",
+              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF - Blazor\\PeluqueriaApp\\Pages\\Turnos.razor*",
+              "RelativeToolTip": "PeluqueriaApp\\Pages\\Turnos.razor*",
+              "ViewState": "AgIAADMAAAAAAAAAAAAawEAAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-22T00:56:48.947Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ClienteCortes.cs",
-              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\ClienteCortes.cs",
-              "RelativeDocumentMoniker": "PeluqueriaApp\\ClienteCortes.cs",
-              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\ClienteCortes.cs",
-              "RelativeToolTip": "PeluqueriaApp\\ClienteCortes.cs",
-              "ViewState": "AgIAADEBAAAAAAAAAAAQwEIBAAA2AAAAAAAAAA==",
+              "Title": "Turno.cs",
+              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF - Blazor\\PeluqueriaApp\\Models\\Turno.cs",
+              "RelativeDocumentMoniker": "PeluqueriaApp\\Models\\Turno.cs",
+              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF - Blazor\\PeluqueriaApp\\Models\\Turno.cs",
+              "RelativeToolTip": "PeluqueriaApp\\Models\\Turno.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T13:08:11.836Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "RegistroCliente.cs",
-              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\RegistroCliente.cs",
-              "RelativeDocumentMoniker": "PeluqueriaApp\\RegistroCliente.cs",
-              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\RegistroCliente.cs",
-              "RelativeToolTip": "PeluqueriaApp\\RegistroCliente.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAA6wCoAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T12:22:22.158Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "RegistroCliente.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\RegistroCliente.cs",
-              "RelativeDocumentMoniker": "PeluqueriaApp\\RegistroCliente.cs",
-              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\RegistroCliente.cs [Dise\u00F1o]",
-              "RelativeToolTip": "PeluqueriaApp\\RegistroCliente.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T12:20:37.876Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AppInfo.cs",
-              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\AppInfo.cs",
-              "RelativeDocumentMoniker": "PeluqueriaApp\\AppInfo.cs",
-              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\AppInfo.cs",
-              "RelativeToolTip": "PeluqueriaApp\\AppInfo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T21:40:29.408Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "FrmGaleriaTodos.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\FrmGaleriaTodos.cs",
-              "RelativeDocumentMoniker": "PeluqueriaApp\\FrmGaleriaTodos.cs",
-              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\FrmGaleriaTodos.cs [Dise\u00F1o]",
-              "RelativeToolTip": "PeluqueriaApp\\FrmGaleriaTodos.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T21:39:50.639Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "FrmGaleria.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\FrmGaleria.cs",
-              "RelativeDocumentMoniker": "PeluqueriaApp\\FrmGaleria.cs",
-              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\FrmGaleria.cs [Dise\u00F1o]",
-              "RelativeToolTip": "PeluqueriaApp\\FrmGaleria.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T21:36:03.1Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "FrmFacturacion.cs",
-              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\FrmFacturacion.cs",
-              "RelativeDocumentMoniker": "PeluqueriaApp\\FrmFacturacion.cs",
-              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\FrmFacturacion.cs",
-              "RelativeToolTip": "PeluqueriaApp\\FrmFacturacion.cs",
-              "ViewState": "AgIAAB0CAAAAAAAAAAAnwDUCAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T21:35:59.755Z",
+              "WhenOpened": "2025-10-22T00:45:18.713Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "FrmFacturacion.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\FrmFacturacion.cs",
-              "RelativeDocumentMoniker": "PeluqueriaApp\\FrmFacturacion.cs",
-              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\FrmFacturacion.cs [Dise\u00F1o]",
-              "RelativeToolTip": "PeluqueriaApp\\FrmFacturacion.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T21:35:44.002Z"
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF - Blazor\\PeluqueriaApp\\wwwroot\\index.html",
+              "RelativeDocumentMoniker": "PeluqueriaApp\\wwwroot\\index.html",
+              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF - Blazor\\PeluqueriaApp\\wwwroot\\index.html",
+              "RelativeToolTip": "PeluqueriaApp\\wwwroot\\index.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-10-21T05:48:51.101Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ClienteCortes.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\ClienteCortes.cs",
-              "RelativeDocumentMoniker": "PeluqueriaApp\\ClienteCortes.cs",
-              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\ClienteCortes.cs [Dise\u00F1o]",
-              "RelativeToolTip": "PeluqueriaApp\\ClienteCortes.cs [Dise\u00F1o]",
+              "DocumentIndex": 3,
+              "Title": "Inicio.cs",
+              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF - Blazor\\PeluqueriaApp\\Inicio.cs",
+              "RelativeDocumentMoniker": "PeluqueriaApp\\Inicio.cs",
+              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF - Blazor\\PeluqueriaApp\\Inicio.cs",
+              "RelativeToolTip": "PeluqueriaApp\\Inicio.cs",
+              "ViewState": "AgIAAGIAAAAAAAAAAIAwwGgAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T21:35:27.945Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "FrmSplash.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\FrmSplash.cs",
-              "RelativeDocumentMoniker": "PeluqueriaApp\\FrmSplash.cs",
-              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\FrmSplash.cs [Dise\u00F1o]",
-              "RelativeToolTip": "PeluqueriaApp\\FrmSplash.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T21:39:52.372Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "FrmEstadisticas.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\FrmEstadisticas.cs",
-              "RelativeDocumentMoniker": "PeluqueriaApp\\FrmEstadisticas.cs",
-              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\FrmEstadisticas.cs [Dise\u00F1o]",
-              "RelativeToolTip": "PeluqueriaApp\\FrmEstadisticas.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T21:35:41.362Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "FormImagenCompleta.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\FormImagenCompleta.cs",
-              "RelativeDocumentMoniker": "PeluqueriaApp\\FormImagenCompleta.cs",
-              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\FormImagenCompleta.cs [Dise\u00F1o]",
-              "RelativeToolTip": "PeluqueriaApp\\FormImagenCompleta.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T21:35:38.09Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "DetalleCobro.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\DetalleCobro.cs",
-              "RelativeDocumentMoniker": "PeluqueriaApp\\DetalleCobro.cs",
-              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\DetalleCobro.cs [Dise\u00F1o]",
-              "RelativeToolTip": "PeluqueriaApp\\DetalleCobro.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T21:35:37.01Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "ClientesGestion.cs",
-              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\ClientesGestion.cs",
-              "RelativeDocumentMoniker": "PeluqueriaApp\\ClientesGestion.cs",
-              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\ClientesGestion.cs",
-              "RelativeToolTip": "PeluqueriaApp\\ClientesGestion.cs",
-              "ViewState": "AgIAADkBAAAAAAAAAAAnwFEBAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T21:32:44.387Z",
+              "WhenOpened": "2025-10-21T05:46:34.044Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "ClientesGestion.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\ClientesGestion.cs",
-              "RelativeDocumentMoniker": "PeluqueriaApp\\ClientesGestion.cs",
-              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF\\PeluqueriaApp\\ClientesGestion.cs [Dise\u00F1o]",
-              "RelativeToolTip": "PeluqueriaApp\\ClientesGestion.cs [Dise\u00F1o]",
+              "DocumentIndex": 2,
+              "Title": "Inicio.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF - Blazor\\PeluqueriaApp\\Inicio.cs",
+              "RelativeDocumentMoniker": "PeluqueriaApp\\Inicio.cs",
+              "ToolTip": "C:\\Users\\SANTIAGO\\source\\repos\\LEMOTIFF - Blazor\\PeluqueriaApp\\Inicio.cs [Dise\u00F1o]",
+              "RelativeToolTip": "PeluqueriaApp\\Inicio.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T21:31:16.096Z"
+              "WhenOpened": "2025-10-21T05:46:30.349Z"
             }
           ]
         }
