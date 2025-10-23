@@ -36,7 +36,9 @@ namespace PeluqueriaApp
             var provider = services.BuildServiceProvider();
 
             // Configuración del BlazorWebView
-            blazorWebView1.HostPage = "wwwroot/index.html";
+            var hostPagePath = Path.Combine(AppContext.BaseDirectory, "wwwroot", "index.html");
+            blazorWebView1.HostPage = hostPagePath;
+
             blazorWebView1.Services = provider;
             blazorWebView1.RootComponents.Add<App>("#app");
 
